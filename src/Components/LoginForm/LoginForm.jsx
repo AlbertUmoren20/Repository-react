@@ -7,34 +7,81 @@ import SignUp from "../SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
 
+const LoginForm = () => {
       const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
       //A user regex, that going to be used to validate name with
       //It must start with a lower/upperCase letter, and then followed by 3 to 23 characters that can be lower or upper case letters. digits hyphens  or underscores
       const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
       //A password regex to validate the password
       //requires at least one lowercase, uppercase, one digit and one special character
-   
-      const [fullName, setFullName] = useState('');
-      const [matricNumber, setMatricNumber] = useState('');
-      const [password, setPassword] = useState('');
-      const navigate = useNavigate()
-   
-      const handleSubmit = (event) => {
-         event.preventDefault();
-         // Implement your login logic here
-         console.log('Full Name:', fullName);
-         console.log('Matric Number:', matricNumber);
-         console.log('Password:', password);
-       };
-   
-       const [clicked, setClicked] = useState(false);
-       const handleButtonClick = ()=>{
-           setClicked(true);
-           navigate('/SignUp')
+      const [fullname, setfullname] = useState('');
+      const [matricnumber, setmatricnumber] = useState('');
+      const [password, setpassword] = useState('');
+      const [email, setemail] = useState ('')
+      const [level, setlevel] = useState('')
 
-       }
+
+      // const [fullName, setFullName] = useState('');
+      // const [matricNumber, setMatricNumber] = useState('');
+      // const [password, setPassword] = useState('');
+      const [formData, setFormData ]= useState ({
+        fullname: '',
+        matricnumber: '',
+        password: '',
+        level: '',
+        email: '',
+      })
+
+      const levels = [100, 200, 300, 400];
+      const navigate = useNavigate()
+      
+   
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+        const student = { fullname, matricnumber, password, email, level};
+      
+        // Assuming this is to retrieve all students
+        try {
+         const response= await fetch("http://localhost:8080/student/login", {
+           
+            method: "POST",
+            body: JSON.stringify(student),
+            headers: { "Content-Type": "application/json" }, // Not strictly necessary for GET, but can be included
+          });
+      
+          if (response.ok) {
+            const students = await response.json();
+            navigate(`/StudentBody?fullName=${fullname}`);
+            console.log("Students retrieved:", students);
+            // Use the retrieved students data here (e.g., display in UI)
+          } else {
+            console.error("Error retrieving students:", await response.text());
+            // Handle potential errors during student retrieval
+          }
+        } catch (error) {
+          console.error("Error retrieving students:", error);
+          // Handle unexpected errors (e.g., network issues)
+        }
+      
+        // Code to handle form data storage or other actions (optional)
+        // ...
+      };
+      
+      const handleChange = (event)=>{
+        setFormData = ({...formData, [event.target.name]: event.target.value})
+      }
+
+         // Implement your login logic here
+      //    console.log('Full Name:', fullName);
+      //    console.log('Matric Number:', matricNumber);
+      //    console.log('Password:', password);
+      //  };
+   
+      //  const [clicked, setClicked] = useState(false);
+
+       
+     
    //  const details = JSON.parse(localStorage.getItem('detailsremember'))
 
     //Local Storage in Javascript, Tenary in Javascript
@@ -91,8 +138,10 @@ const LoginForm = () => {
    //     }
    //     window.location.reload()
    //  }
+      
 
-    return (
+  
+  return (
 //       <div style={{
 //          display: "flex",
 //          justifyContent:"center",
@@ -143,12 +192,13 @@ const LoginForm = () => {
 //         </form>
 //     </div>
 //     </div>
-<div className="SignUpHome-Page" style={{
+
+<div className="LoginHome-Page" style={{
    position:"relative",
 
 }}> 
   <div className="HomeHeader">
-  TRINITY UNIVERSITY APPRASAIL SITE <br/> LOG IN
+  TRINITY UNIVERSITY E-REPOSITORY <br/> LOG IN
    </div>
    <div className="HomeLogo">
    <img src={logo} style={
@@ -174,18 +224,18 @@ const LoginForm = () => {
     type="text"
     id="fullName"
     name="fullName"
-    value={fullName}
-    onChange={(e) => setFullName(e.target.value)}
+    value={fullname}
+    onChange={(e) => setfullname(e.target.value)}
     required
-    style={{ backgroundColor: 'white' }}
+    style={{ backgroundColor: 'white',}}
   />
-  <label htmlFor="matricNumber" className="login-form-label">Matric Number</label>
+  <label htmlFor="email" className="login-form-label">Email</label>
   <input
     type="text"
-    id="matricNumber"
-    name="matricNumber"
-    value={matricNumber}
-    onChange={(e) => setMatricNumber(e.target.value)}
+    id="email"
+    name="email"
+    value={email}
+    onChange={(e) => setemail(e.target.value)}
     required
     style={{ backgroundColor: 'white' }}
   />
@@ -195,36 +245,57 @@ const LoginForm = () => {
     id="password"
     name="password"
     value={password}
-    onChange={(e) => setPassword(e.target.value)}
+    onChange={(e) => setpassword(e.target.value)}
     required
-    style={{ backgroundColor: 'white' }}
+    style={{ backgroundColor: 'white',  }}
   />
+  <label htmlFor="matricnumber" className="login-form-label">MatricNumber</label>
+  <input
+    type="text"
+    id="matricnumber"
+    name="matricnumber"
+    value={matricnumber}
+    onChange={(e) => setmatricnumber(e.target.value)}
+    required
+    style={{ backgroundColor: 'white',  }}
+  />
+
+  <label htmlFor="level" className="login-form-label" >Level</label>
+      <select id="level"
+       name="level" 
+       value={level} 
+       onChange={(e) => setlevel(e.target.value)}
+       required  
+       style={{ backgroundColor: 'white' }} >
+
+      <option value=""></option> {/* Default option */}
+        {levels.map((level) => (
+          <option key={level} value={level}>
+          {level}
+          </option> 
+
+        ))} 
+    
+      </select>
+
+  <button type="submit" style={{display:"flex",   margin: "0",
+  position: "absolute",
+  top: "100%",
+  left:"46%",
+  fontSize:"20px",
+  cursor:"pointer",
+  transform: "translateY(-50%)"}}>Submit</button>
 
 </form>
 </div>
-
   </div>
-
   </div>
-  <div className="Body-text">
-  <h1>
-          Don't have an account?<br/>
-          Click <span style={{ color: "red" }} className="SignUp-button1" onClick={handleButtonClick}>Sign Up</span>
-        </h1>
-        <button type="submit">Submit</button>
-  </div>
-
    </div>
-
-  );
-  
-
+      
+    );
 }
-
-   
-
-
 export default LoginForm;
+
 
 // import { useState } from "react";
 // function Square ({value, onSquareClick}){

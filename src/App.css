@@ -65,10 +65,17 @@ code {
     color: black;
     padding: 20px 45px 20px 20px;
 }
+.input-box select{
+  background: transparent;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  color: black;
+}
 
 .input-box input::placeholder{
     color:  black;
-}
+} 
 
 .input-box .icon{
     position: absolute;
@@ -130,7 +137,6 @@ code {
 
 .HomePage{
     color: black;
-
   }
 
 .HomeHeader{
@@ -206,7 +212,7 @@ code {
 
                     /* Log In FORM */
 .Rectangle{
-  height: 390px;
+  height: 410px;
   width: 600px;
   position: relative;
   background-color: #83D0FC;
@@ -223,34 +229,51 @@ code {
   width: 100%;
 }
 
+.login-form-container input{
+  padding: 10px;
+}
+
 .login-form-container input#fullName{
   width: 85%;
+  position: relative;
   margin-left: 50px;
   font-family: "Katibeh", serif;
-  font-size: 25px;
+  font-size: 20px;
 }
+
 
 .login-form-container input#matricNumber{
   width: 85%;
   margin-left: 50px;
   font-family: "Katibeh", serif;
-  font-size: 25px;
+  font-size: 20px;
 }
 .login-form-container input#password{
-  width: 85%;
+   width: 85%;
     margin-left: 50px;
     font-family: "Katibeh", serif;
-    font-size: 25px;
+    font-size: 20px;
 }
 
-.login-form-label{
+select#level{
+  width: 85%;
+  height: 43px;
+  position: relative;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 20px;
+}
+
+
+.login-form-label {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
   font-weight: bold;
   font-family: "Katibeh", serif;
-  font-size: 35px;
+  font-size: 25px;
 }
+
 .Body-text{
   position: relative;
   text-align: right;
@@ -267,4 +290,382 @@ code {
 .SignUp-button1{
   cursor: pointer;
 }
+
+                /* SIGN-UP PAGE */
+
+.wrapper{
+  height: 400px;
+  width: 500px;
+  position: relative;
+  background-color: white;
+  margin: auto;
+  top: 15px;
+  box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
+  
+}
+.wrapper input{
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.smallBox::placeholder{
+  text-align: center;
+}
+.smallBox1::placeholder{
+  text-align: center;
+}
+.smallBox2::placeholder{
+  text-align: center;
+}
+.smallBox3::placeholder{
+  text-align: center;
+}
+
+.smallBox4::placeholder{
+  text-align: center;
+}
+
+.smallBox5::placeholder{
+  text-align: center;
+}
+
+.smallBox{
+  height: 60px;
+  width: 240px;
+  font-family: "Katibeh", serif;
+  background-color: #83D0FC;
+  position:relative;
+  border: none;
+  top: 10px;
+  left: 40px;
+  border-radius: 6%;
+}
+
+.smallBox1{
+  height: 60px;
+  border: none;
+  width: 240px;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 80px;
+  right: 60px;
+  border-radius: 6%;
+}
+
+.smallBox4{
+  height: 60px;
+  width: 240px;
+  border: none;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 90px;
+  right: 40px;
+  border-radius: 6%;
+}
+
+.smallBox5{
+  height: 60px;
+  width: 240px;
+  border: none;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 100px;
+  left:40px;
+  border-radius: 6%8
+}
+.smallBox6{
+  height: 60px;
+  width: 240px;
+  border: none;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 180px;
+  right:40px;
+  border-radius: 6%;
+}
+
+.wrapper form{
+  width: 100%;
+}
+.Login-button1{
+  cursor: pointer;
+}
+.LogText{
+  position: relative;
+  text-align: right;
+  font-family: "Katibeh", serif;
+  top: 19px;
+  right: 30px;
+}
+
+.wrapper input[type="text"] {
+  padding: 10px;
+}
+
+
+                /* Student Body */
+
+.block-elements{
+  display: flex;
+  justify-content: space-evenly;
+  border: 20px;
+  margin-top: 40px;
+
+}
+.Exeat{
+  border-style: solid;
+  border-width: 5px;
+  background-color: #83D0FC;
+  text-align: center;
+  padding: 20px;
+  height: 200px;  
+  width: 400px; 
+}
+
+/* }
+.Exeat h2{
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.Exeat p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.Exeat-text{
+background-color: red;
+margin-top: 40px;
+box-shadow: -35px 0px 50px 0px black;
+height: 150px;
+border-radius: 4%;
+}
+
+.Exeat .buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.Exeat .buttons button {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+
+} */
+
+/* Student-Faculty */
+.faculty-wrapper{
+  position: relative;
+  height : 100vh;
+  overflow: hidden;
+
+ 
+}
+.faculty-wrapper-continer{
+  position: absolute;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100; 
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.faculty-wrapper-details{
+  position : relative;
+  background-color: #83D0FC;
+  color: black;
+  font-family: "Katibeh", serif;
+  font-size: 30px;
+  padding: 30px;
+  height: 60%;
+  width: 60%;
+}
+.faculty-wrapper-details-1{
+  position : relative;
+  background-color: red;
+  color: black;
+  font-family: "Katibeh", serif;
+  font-size: 30px;
+  padding: 30px;
+  height: 60%;
+  width: 60%;
+}
+
+.faculty h1{
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  font-family: "Katibeh", serif;
+  font-size: 50px;
+  font-weight: 100;
+}
+.faculty-container{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 90px;
+}
+
+.faculty-button{
+  font-family: "Katibeh", serif;
+  background: red;
+  border: none;
+  cursor: pointer;
+  box-shadow:10px 10px 5px red;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition */
+  font-size: 29px;
+  border-radius:15px;
+
+}
+.faculty-button-1{
+  font-family: "Katibeh", serif;
+  background: #83D0FC;
+  border: none;
+  cursor: pointer;
+  box-shadow:10px 10px 5px #83D0FC;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 0.25s ease-out; /* Smooth transition */
+  font-size: 29px;
+  border-radius:15px;
+}
+
+.faculty-button:hover {
+  transform: scale(1.50);
+  background-color: white; /* Change to your desired color */
+  color:red ;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px black;
+}
+.faculty-button-1:hover {
+  transform: scale(1.50);
+  background-color: white; /* Change to your desired color */
+  color: #83D0FC;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px black;
+  
+}
+
+                              /* FBMAS */
+.HomeHeader-1{
+  font-size: 55px;
+  text-align: center;
+  padding: 10px;
+  font-family: "Katibeh", serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+
+@keyframes stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: -100% 0; }
+} 
+
+.search-box-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.year-box{
+  border: 2px solid black;
+  outline: none;
+  padding: 10px;
+  width: 150px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.department-box-container{
+  border: 2px solid black;
+  outline: none;
+  padding: 10px;
+  width: 150px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.search-box{
+  -webkit-appearance: none;
+  border: 2px solid black;
+  outline: none;
+  padding: 10px;
+  width: 150px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.filtered-projects{
+  width: 85vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  height : 230px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.project-card{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 0, 0);
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+.faculty-wrapper-details{
+  position : relative;
+  background-color: #83D0FC;
+  color: black;
+  font-family: "Katibeh", serif;
+  font-size: 30px;
+  padding: 30px;
+  height: 60%;
+  width: 60%;
+}
+
+.project-card:hover{
+  transform: scale(1.05);
+}
+
+.project-card-1{
+  display: flex;
+  flex-direction: column;
+  background-color: #83D0FC;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+
+.project-card-1:hover{
+  transform: scale(1.05);
+}
+
 

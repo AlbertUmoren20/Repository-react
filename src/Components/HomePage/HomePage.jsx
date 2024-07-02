@@ -13,7 +13,6 @@ import logo9 from "../Assets/icons8-document-48 2.png"
 import logo10 from "../Assets/Rectangle 30 (1).png"
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 import LoginForm from "../LoginForm/LoginForm";
 import SignUp from "../SignUp/SignUp";
 
@@ -29,7 +28,7 @@ const HomePage = () => {
         position:"relative"
     }}> 
         <div className="HomeHeader">
-             WELCOME <br/>TO<br/>TRINITY UNIVERSITY APPRASAIL<br/>SITE
+             WELCOME <br/>TO<br/>TRINITY UNIVERSITY <br/>E-REPOSITORY SITE
     </div>
 
         <div className="HomeLogo">
@@ -152,8 +151,6 @@ const HomePage = () => {
         </Routes>
 </div>
 </div>  
-
- 
 
   )
 }

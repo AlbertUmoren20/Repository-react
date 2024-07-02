@@ -3,9 +3,10 @@ import React  from "react";
 import logo from "../Assets/Ellipse 2.png"
 import { FaUser } from "react-icons/fa6";
 import { MdLockOutline } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-
+  
    const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
    //A user regex, that going to be used to validate name with
    //It must start with a lower/upperCase letter, and then followed by 3 to 23 characters that can be lower or upper case letters. digits hyphens  or underscores
@@ -127,6 +128,64 @@ const SignUp = () => {
 //        }
 //        window.location.reload()
 //     }
+
+const [fullname, setFullname] = useState('');
+const [matricnumber, setMatricnumber] = useState('');
+const [password, setPassword] = useState('');
+const [email, setEmail] = useState ('');
+const [level, setLevel] = useState ('');
+const [currentLevel, setCurrentLevel] = useState('')
+const [courseStudy, setCourseStudy] = useState('')
+const [formData, setFormData] = useState ({
+  fullname: '',
+  matricnumber: '',
+  password: '',
+  level: '',
+  email: ''
+})
+
+const navigate = useNavigate()
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const student = { fullname, matricnumber, password, email, level};
+
+  // This is for adding a new student into the database
+  try {
+    const response = await fetch("http://localhost:8080/student/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(student),
+    });
+
+    if (response.ok) {
+      console.log("New Student Added");
+      navigate('/Login');
+      // Update UI or display success message to user
+    } else {
+      console.error("Error adding student:", await response.text());
+      // Handle potential errors during student addition (e.g., display error message to user)
+    }
+  } catch (error) {
+    console.error("Error adding student:", error);
+    // Handle unexpected errors (e.g., network issues)
+  } finally {
+    // Code to be executed regardless of success or failure (e.g., reset form)
+  }
+};
+
+
+const [clicked, setClicked] = useState(false);
+const handleButtonClick = ()=>{
+  setClicked(true);
+  navigate('/Login');
+
+}
+
+const handleChange = (event)=>{
+  setFormData = ({...formData, [event.target.name]: event.target.value})
+}
+
   return (
 
 
@@ -248,7 +307,103 @@ const SignUp = () => {
 //   </div>
 //   </div>
 
-<h1>My Name is ALbert</h1>
+<div className="LoginHome-Page" style={{
+  position:"relative",
+
+}}> 
+ <div className="HomeHeader">
+ TRINITY UNIVERSITY E-REPOSITORY <br/> SIGN UP
+  </div>
+  <div className="HomeLogo">
+  <img src={logo} style={
+     {   width: "100px",
+         height: "100px",
+         position: "absolute",
+         top:"0px",
+         left:"0px",
+         padding:"10px"       
+     }} 
+     alt="">
+</img>
+</div>
+
+<div className="wrapper">
+
+<form onSubmit={handleSubmit}>
+  <label htmlFor="fullName"></label>
+
+  <input
+    type="text"
+    // id="fullName"
+    className="smallBox"
+    name="fullName"
+    placeholder="Input Full Name"
+    value={fullname}
+    onChange={(e) => setFullname(e.target.value)}
+    required
+  />
+
+  <input
+    type="text"
+    // id="fullName"
+    className="smallBox4"
+    name="matricNumber"
+    placeholder="Matric Number"
+    value={matricnumber}
+    onChange={(e) => setMatricnumber(e.target.value)}
+    required
+  />
+
+  <input
+  type="text"
+  // id="fullName"
+  className="smallBox5"
+  name="password"
+  placeholder="Create Password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  required
+/>
+
+<input
+type="text"
+// id="fullName"
+className="smallBox6"
+name="email"
+placeholder="Email"
+value={email}
+onChange={(e) => setEmail(e.target.value)}
+required
+/>
+<input
+type="text"
+// id="fullName"
+className="smallBox6"
+name="level"
+placeholder="Level"
+value={level}
+onChange={(e) => setLevel(e.target.value)}
+required
+/>
+
+
+<button type="submit" style={{display:"flex",   margin: "0",
+position: "absolute",
+top: "380px",
+left:"46%",
+fontSize:"20px",
+cursor:"pointer",
+transform: "translateY(-50%)"}}>Submit</button>
+
+</form>
+</div>
+<div className="LogText">
+<h1>
+Already have an account?
+Click <span style={{ color: "red" }} className="Login-button1" onClick={handleButtonClick}>Log In</span>
+</h1>
+</div>
+</div>
   );
   
 
