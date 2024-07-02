@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const StudentBody = () => {
+  
   const location = useLocation();
   const fullName = new URLSearchParams(location.search).get("fullName");
   const navigate = useNavigate();

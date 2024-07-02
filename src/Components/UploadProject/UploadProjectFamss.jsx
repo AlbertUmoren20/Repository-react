@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { FaThumbsDown } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-const FamssStudent = () => {
+const UploadProjectFamss = () => {
   const [searchField, setSearchField] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
@@ -120,7 +120,7 @@ const FamssStudent = () => {
         }}
           alt="" />
       </div>
-    
+      <div className='uploadBtn-Famss' style={{ width: "100px", height: "40px", position: "absolute", top: "50px", right: "50px", padding: "10px" }} onClick={uploadClick}>+ UPLOAD</div>
 
       <div className='search-box-container'>
         <input
@@ -167,4 +167,4 @@ const FamssStudent = () => {
   );
 }
 
-export default FamssStudent;
+export default UploadProjectFamss;

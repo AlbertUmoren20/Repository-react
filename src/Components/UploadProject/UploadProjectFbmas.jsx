@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { FaThumbsDown } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-const FamssStudent = () => {
+const UploadProjectFbmas = () => {
   const [searchField, setSearchField] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
@@ -33,7 +33,7 @@ const FamssStudent = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:8080/student/getFamssUpload');
+      const response = await fetch('http://localhost:8080/student/getFbmasUpload');
       if (!response.ok) {
         throw new Error(`Error fetching projects: ${response.statusText}`);
       }
@@ -48,7 +48,7 @@ const FamssStudent = () => {
 
   const uploadClick = (event) => {
     setClicked(true);
-    navigate("/AttachProjectFamss");
+    navigate("/AttachProject");
   }
 
   const onRemovedesc = () => {
@@ -87,27 +87,27 @@ const FamssStudent = () => {
     <div className='faculty-wrapper'>
       <div className='faculty-wrapper-continer' style={{ display: showDescript ? "flex" : "none" }} onClick={onRemovedesc}>
         {selectedProject ? (
-          <div className='faculty-wrapper-details' onClick={onRemovedesc}>
-          <p>Title: {selectedProject.title}</p>
-          <p>By: {selectedProject.projectBy}</p>
-          <p>Year: {selectedProject.year}</p>
-          <p>Supervisor: {selectedProject.supervisor}</p>
+          <div className='faculty-wrapper-details-1' onClick={onRemovedesc}>
+            <p>Title: {selectedProject.title}</p>
+            <p>By: {selectedProject.projectBy}</p>
+            <p>Year: {selectedProject.year}</p>
+            <p>Supervisor: {selectedProject.supervisor}</p>
 
-          <div className='abstract-div'>
-           <div style={{
-            textAlign: 'center',
-            marginTop: '10px',
-           }}>Abstract:</div>
-          <p style={{alignItems:"center", padding:"10px"}}>
-          {selectedProject.description}</p>
+            <div className='abstract-div'>
+             <div style={{
+              textAlign: 'center',
+              marginTop: '10px'
+             }}>Abstract:</div>
+            <p style={{alignItems:"center", padding:"10px"}}>
+            {selectedProject.description}</p>
+            </div>
+
           </div>
-
-        </div>
         ) : null}
       </div>
       <div className="HomeHeader-1">
-        <span style={{ fontSize: "60px", textDecoration: "underline #83D0FC 10px" }}>FAMSS<br />E-REPOSITORY<br /></span>
-        <h5>Faculty of Art Management and Social Sciences</h5>
+        <span style={{ fontSize: "60px", textDecoration: "underline red 10px" }}>FBMAS<br />E-REPOSITORY<br /></span>
+        <h5>Faculty of Basic Medical and Applied Sciences</h5>
       </div>
       <div className="HomeLogo">
         <img src={logo} style={{
@@ -120,7 +120,7 @@ const FamssStudent = () => {
         }}
           alt="" />
       </div>
-    
+      <div className='upload' style={{ width: "100px", height: "40px", position: "absolute", top: "50px", right: "50px", padding: "10px" }} onClick={uploadClick}>+ UPLOAD</div>
 
       <div className='search-box-container'>
         <input
@@ -153,8 +153,8 @@ const FamssStudent = () => {
 
       <div className="filtered-projects">
         {filteredProjects.map((project) => (
-          <div key={project.id} className="project-card-1" onClick={() => onProjectClicked(project)}>
-            <h2 style={{ fontSize: "15px" }}>{project.title.slice(0,20)}.... </h2>
+          <div key={project.id} className="project-card" onClick={() => onProjectClicked(project)}>
+            <h2 style={{ fontSize: "15px" }}>{project.title.slice(0,30)}....</h2>
             <h3> {project.projectBy}</h3>
             <p> {project.department}</p>
             <p> {project.supervisor}</p>
@@ -167,4 +167,4 @@ const FamssStudent = () => {
   );
 }
 
-export default FamssStudent;
+export default UploadProjectFbmas;

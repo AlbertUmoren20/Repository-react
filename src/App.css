@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Katibeh&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,9 +18,11 @@ body {
   /* background: url("./Components/Assets/OIP.jpeg");  */
   background-size:cover;
   background-position: center;
+  /* background-color: rgb(161, 220, 245); */
   /* background-color: white; */
   
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -55,21 +57,20 @@ code {
 }
 
 .input-box input{
-    width: 100%;
-    height: 100%;
+    width: 80%;
     background: transparent;
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
+    border-radius: 1px;
     font-size: 16px;
     color: black;
-    padding: 20px 45px 20px 20px;
+    
 }
+
 .input-box select{
   background: transparent;
   outline: none;
   border: 2px solid rgba(255, 255, 255, .2);
-  border-radius: 40px;
   color: black;
 }
 
@@ -147,9 +148,37 @@ code {
   font-weight: 400;
   font-style: normal;
 }
+
+.HomeHeader-home{
+  font-size:30px;
+  padding: 10px;
+  font-family: "Katibeh", serif;
+  font-weight: 400;
+  font-style: normal;
+  float: right; 
+  position: absolute;
+  top: 100px;
+  text-align: Left;
+  display: block;
+  /* color: white; */
+  margin: 0 auto;
+  word-wrap: break-word; 
+  width: 600px;
+  padding: 20px;
+}
+
+.HomeHeader-home h1{
+ font-size: larger;
+ margin-bottom: 20px;
+}
+.HomeHeader-home p{
+  font-size: 30px;
+  display: inline-block;
+}
+
+
 .HomeBody{
     margin: 20px;
-    
 }
 .Home-Button{
     font-family: "Katibeh", serif;
@@ -162,32 +191,36 @@ code {
 /* Home Button */
 .SignUp-button{
   font-family: "Katibeh", serif;
-  background: #83D0FC;
+  background: #83d0fc;
   border: none;
   cursor: pointer;
-  box-shadow:10px 10px 5px #83D0FC;
-  padding: 16px 32px;
+  padding: 20px 20px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
-  font-size: 29px;
+  font-size: 25px;
   border-radius:15px;
+  margin: 20px;
+  
 }
-
+.LogSgn-btn{
+  position: absolute;
+  left: 10px;
+}
 .LogIn-button{
   font-family: "Katibeh", serif;
   background: #83D0FC;
   border: none;
   cursor: pointer;
-  box-shadow:10px 10px 5px #83D0FC;
-  padding: 16px 32px;
+  padding: 20px 20px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
   transition: background-color 0.3s; /* Smooth transition */
-  font-size: 29px;
+  font-size: 25px;
   border-radius:15px;
 }
+
 .LogIn-button:hover {
   /* Hover style */
   background-color: white; /* Change to your desired color */
@@ -209,6 +242,23 @@ code {
 } */
 
 
+button[type="submit-btn"] {
+  background-color: white;
+  color: #83D0FC;
+  width: 100%;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+button[type="submit-btn"]:hover {
+  background-color: #83D0FC;
+  color: white;
+  width: 100%;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+
 
                     /* Log In FORM */
 .Rectangle{
@@ -221,20 +271,8 @@ code {
   box-shadow:10px 14px 10px 15px #83D0FC;
 }
 
-.login-form-container h1{
-  display: flex;
-  justify-content: center;
-}
-.login-form-container form{
-  width: 100%;
-}
-
-.login-form-container input{
-  padding: 10px;
-}
-
 .login-form-container input#fullName{
-  width: 85%;
+  width: 80%;
   position: relative;
   margin-left: 50px;
   font-family: "Katibeh", serif;
@@ -242,22 +280,30 @@ code {
 }
 
 
-.login-form-container input#matricNumber{
-  width: 85%;
+.login-form-container input#matricnumber{
+  width: 80%;
+  height: 30px;
   margin-left: 50px;
   font-family: "Katibeh", serif;
   font-size: 20px;
 }
 .login-form-container input#password{
-   width: 85%;
+    width: 80%;
+    height: 30px;
     margin-left: 50px;
     font-family: "Katibeh", serif;
     font-size: 20px;
 }
-
-select#level{
-  width: 85%;
-  height: 43px;
+.login-form-container input#email{
+    width: 80%;
+    height: 30px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 20px;
+}
+select.my-select-class{
+  width: 80%;
+  height: 50px;
   position: relative;
   margin-left: 50px;
   font-family: "Katibeh", serif;
@@ -268,10 +314,10 @@ select#level{
 .login-form-label {
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
   font-weight: bold;
   font-family: "Katibeh", serif;
   font-size: 25px;
+  padding: 6px;
 }
 
 .Body-text{
@@ -374,7 +420,7 @@ select#level{
   position: relative;
   top: 100px;
   left:40px;
-  border-radius: 6%8
+  border-radius: 6%
 }
 .smallBox6{
   height: 60px;
@@ -383,9 +429,21 @@ select#level{
   background-color: #83D0FC;
   font-family: "Katibeh", serif;
   position: relative;
-  top: 180px;
+  top: 170px;
   right:40px;
   border-radius: 6%;
+}
+.smallBox7{
+  height: 60px;
+  width: 240px;
+  border: none;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 180px;
+  left:40px;
+  border-radius: 6%;
+  font-size: 25px;
 }
 
 .wrapper form{
@@ -486,8 +544,11 @@ border-radius: 4%;
   font-family: "Katibeh", serif;
   font-size: 30px;
   padding: 30px;
-  height: 60%;
+  height: 80%;
   width: 60%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: max-content;
 }
 .faculty-wrapper-details-1{
   position : relative;
@@ -496,10 +557,16 @@ border-radius: 4%;
   font-family: "Katibeh", serif;
   font-size: 30px;
   padding: 30px;
-  height: 60%;
+  height: 80%;
   width: 60%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: max-content;
+  
 }
-
+  .abstract-div{
+    background-color: white;
+  }
 .faculty h1{
   text-align: center;
   margin: auto;
@@ -632,9 +699,23 @@ border-radius: 4%;
   cursor: pointer;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
-  transform: translateZ(0);
+  transform: translateZ(0); 
   transition: transform 0.25s ease-out;
 }
+.project-cardFamss{
+  display: flex;
+  flex-direction: column;
+  background-color: #83D0FC;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0); 
+  transition: transform 0.25s ease-out;
+}
+
 .faculty-wrapper-details{
   position : relative;
   background-color: #83D0FC;
@@ -644,6 +725,9 @@ border-radius: 4%;
   padding: 30px;
   height: 60%;
   width: 60%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
 }
 
 .project-card:hover{
@@ -669,3 +753,125 @@ border-radius: 4%;
 }
 
 
+.uploadBtn-Famss{
+  background-color: #83D0FC;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 2px;
+  cursor: pointer; 
+}
+
+                      /* Attach Project */
+                 .Rectangle-attach {
+                       border-radius: 5px;
+                         background-color: #f2f2f2;
+                         padding: 5px;
+                       
+                       }
+                     
+                    .input-box-attach {
+                         width: 70%;
+                        margin: auto;
+                        left: 200px;
+                         padding: 12px;
+                         border: 1px solid #ccc;
+                         border-radius: 4px;
+                         resize: vertical;
+                       }
+                     
+                       label.address {
+                         padding: 12px 12px 12px 0;
+                         display: inline-block;
+                       }
+                     
+                       input[type="topic"], select, textarea {
+                         width: 70%;
+                         padding: 12px;
+                         border: 1px solid #ccc;
+                         border-radius: 4px;
+                         resize: vertical;
+                       }
+                       .uploadBtn-Famss{
+                        background-color: #83D0FC;
+                        border: 1px solid grey;
+                        border-radius: 5px;
+                        padding: 2px;
+                        cursor: pointer; 
+                      }
+                      .upload{
+                        background-color: red;
+                        color: white;
+                        padding: 12px 20px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        float: right;
+                        transition: background-color 0.25s ease-out; 
+                      }
+                      
+                      .fbmas-upload{
+                         background-color: red;
+                         color: black;
+                         padding: 12px 20px;
+                         border: none;
+                         border-radius: 4px;
+                         cursor: pointer;
+                         float: right;
+                         transition: background-color 0.25s ease-out; 
+                       }
+  
+                       .fbmas-upload:hover{
+                        transform: scale(1.50);
+                        background-color: white;
+                        color:red;
+                        border: 1px solid black;
+                        box-shadow: 1px 1px 1px black;
+                       }
+
+                      .upload-btn{
+                         background-color: #83D0FC;
+                         color: black;
+                         padding: 12px 20px;
+                         border: none;
+                         border-radius: 4px;
+                         cursor: pointer;
+                         float: right;
+                         transition: background-color 0.25s ease-out; 
+                       }
+                     
+                       .upload-btn:hover {
+                        transform: scale(1.50);
+                        background-color: white; 
+                        color: #83D0FC;
+                        border: 1px solid black;
+                        box-shadow: 1px 1px 1px black;
+                       }
+
+
+                     
+                      .col-25 {
+                         float: left;
+                         width: 25%;
+                         margin-top: 6px;
+                       }
+                     
+                      .col-75 {
+                         float: left;
+                         width: 75%;
+                         margin-top: 6px;
+                       }
+                     
+                       /* Clear floats after the columns */
+                      .row::after {
+                         content: "";
+                         display: table;
+                         clear: both;
+                       }
+                     
+                       /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+                       @media screen and (max-width: 600px) {
+                        .col-25,.col-75, input[type="submit"] {
+                           width: 100%;
+                           margin-top: 0;
+                         }
+                    }

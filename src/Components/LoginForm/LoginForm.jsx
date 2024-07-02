@@ -33,13 +33,12 @@ const LoginForm = () => {
         email: '',
       })
 
-      const levels = [100, 200, 300, 400];
       const navigate = useNavigate()
       
    
       const handleSubmit = async (event) => {
         event.preventDefault();
-        const student = { fullname, matricnumber, password, email, level};
+        const student = {fullname, matricnumber, password, email, level};
       
         // Assuming this is to retrieve all students
         try {
@@ -49,18 +48,23 @@ const LoginForm = () => {
             body: JSON.stringify(student),
             headers: { "Content-Type": "application/json" }, // Not strictly necessary for GET, but can be included
           });
-      
-          if (response.ok) {
+            if(student.level === "400"){
+            navigate(`/StudentBody400Level?fullName=${fullname}`);
+          }
+          else if (response.ok) {
             const students = await response.json();
             navigate(`/StudentBody?fullName=${fullname}`);
             console.log("Students retrieved:", students);
+            alert("Student Retrieved");
             // Use the retrieved students data here (e.g., display in UI)
           } else {
             console.error("Error retrieving students:", await response.text());
+            alert("Error Retrieving Student")
             // Handle potential errors during student retrieval
           }
         } catch (error) {
           console.error("Error retrieving students:", error);
+          alert("Error Retrieving Student")
           // Handle unexpected errors (e.g., network issues)
         }
       
@@ -68,10 +72,29 @@ const LoginForm = () => {
         // ...
       };
       
-      const handleChange = (event)=>{
-        setFormData = ({...formData, [event.target.name]: event.target.value})
-      }
-
+      const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({...prevFormData, [name]: value }));
+        switch (name) {
+          case 'fullName':
+            setfullname(value);
+            break;
+          case 'matricnumber':
+            setmatricnumber(value);
+            break;
+          case 'password':
+            setpassword(value);
+            break;
+          case 'email':
+            setemail(value);
+            break;
+          case 'level':
+            setlevel(value); // <--- Add this line
+            break;
+          default:
+            break;
+        }
+      };
          // Implement your login logic here
       //    console.log('Full Name:', fullName);
       //    console.log('Matric Number:', matricNumber);
@@ -221,21 +244,22 @@ const LoginForm = () => {
 <form onSubmit={handleSubmit}>
   <label htmlFor="fullName" className="login-form-label">Full Name</label>
   <input
-    type="text"
+    type="fullname"
     id="fullName"
     name="fullName"
     value={fullname}
     onChange={(e) => setfullname(e.target.value)}
     required
-    style={{ backgroundColor: 'white',}}
+    style={{ backgroundColor: 'white'}}
   />
+
   <label htmlFor="email" className="login-form-label">Email</label>
   <input
-    type="text"
+    type="email"
     id="email"
     name="email"
     value={email}
-    onChange={(e) => setemail(e.target.value)}
+    onChange={handleChange}
     required
     style={{ backgroundColor: 'white' }}
   />
@@ -245,45 +269,44 @@ const LoginForm = () => {
     id="password"
     name="password"
     value={password}
-    onChange={(e) => setpassword(e.target.value)}
+    onChange={handleChange}
     required
     style={{ backgroundColor: 'white',  }}
   />
   <label htmlFor="matricnumber" className="login-form-label">MatricNumber</label>
   <input
-    type="text"
+    type="matricnumber"
     id="matricnumber"
     name="matricnumber"
     value={matricnumber}
-    onChange={(e) => setmatricnumber(e.target.value)}
+    onChange={handleChange}
     required
     style={{ backgroundColor: 'white',  }}
   />
 
   <label htmlFor="level" className="login-form-label" >Level</label>
-      <select id="level"
+      <select 
        name="level" 
+       className="my-select-class"
        value={level} 
        onChange={(e) => setlevel(e.target.value)}
        required  
        style={{ backgroundColor: 'white' }} >
-
-      <option value=""></option> {/* Default option */}
-        {levels.map((level) => (
-          <option key={level} value={level}>
-          {level}
-          </option> 
-
-        ))} 
-    
+       <option value="">Pick Level</option>
+       <option value="100">100</option>
+       <option value="200">200</option>
+       <option value="300">300</option>
+       <option value="400">400</option>
       </select>
 
-  <button type="submit" style={{display:"flex",   margin: "0",
+  <button type="submit-btn" style={{display:"flex",   margin: "0",
   position: "absolute",
   top: "100%",
-  left:"46%",
+  left:"42%",
   fontSize:"20px",
   cursor:"pointer",
+  height:"40px",
+  width:"80px",
   transform: "translateY(-50%)"}}>Submit</button>
 
 </form>

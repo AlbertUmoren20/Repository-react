@@ -136,6 +136,7 @@ const [email, setEmail] = useState ('');
 const [level, setLevel] = useState ('');
 const [currentLevel, setCurrentLevel] = useState('')
 const [courseStudy, setCourseStudy] = useState('')
+
 const [formData, setFormData] = useState ({
   fullname: '',
   matricnumber: '',
@@ -161,6 +162,7 @@ const handleSubmit = async (event) => {
     if (response.ok) {
       console.log("New Student Added");
       navigate('/Login');
+      alert("New Student Added");
       // Update UI or display success message to user
     } else {
       console.error("Error adding student:", await response.text());
@@ -337,7 +339,7 @@ const handleChange = (event)=>{
     // id="fullName"
     className="smallBox"
     name="fullName"
-    placeholder="Input Full Name"
+    placeholder="Full Name....."
     value={fullname}
     onChange={(e) => setFullname(e.target.value)}
     required
@@ -348,7 +350,7 @@ const handleChange = (event)=>{
     // id="fullName"
     className="smallBox4"
     name="matricNumber"
-    placeholder="Matric Number"
+    placeholder="Matric Number......"
     value={matricnumber}
     onChange={(e) => setMatricnumber(e.target.value)}
     required
@@ -359,7 +361,7 @@ const handleChange = (event)=>{
   // id="fullName"
   className="smallBox5"
   name="password"
-  placeholder="Create Password"
+  placeholder="Password....."
   value={password}
   onChange={(e) => setPassword(e.target.value)}
   required
@@ -370,21 +372,24 @@ type="text"
 // id="fullName"
 className="smallBox6"
 name="email"
-placeholder="Email"
+placeholder="Email..."
 value={email}
 onChange={(e) => setEmail(e.target.value)}
 required
 />
-<input
-type="text"
-// id="fullName"
-className="smallBox6"
-name="level"
-placeholder="Level"
-value={level}
-onChange={(e) => setLevel(e.target.value)}
-required
-/>
+
+<select 
+name="level" 
+className="smallBox7"
+value={level} 
+onChange= {(e) => setLevel(e.target.value)}
+required>
+<option value="">Level....</option>
+<option value="100">100</option>
+<option value="200">200</option>
+<option value="300">300</option>
+<option value="400">400</option>
+</select>
 
 
 <button type="submit" style={{display:"flex",   margin: "0",
