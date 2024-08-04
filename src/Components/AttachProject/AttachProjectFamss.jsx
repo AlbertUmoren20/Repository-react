@@ -67,6 +67,7 @@ const AttachProjectFamss = () => {
                 <div class="col-75">
                 <input type="topic" name="projectBy" value={formData.projectBy} onChange={handleChange} required />
               </div>
+              
               </div>
               <div class="row">
               <div class="col-25"> 
@@ -106,10 +107,10 @@ const AttachProjectFamss = () => {
               <div class="col-75">
                 <select name="department" value={formData.department} onChange={handleChange} required>
                   <option value="">Pick Department....</option>
-                  <option value="Computer Science">Computer Science</option>
-                  <option value="Information Science">Information Science</option>
-                  <option value="Microbiology">Microbiology</option>
-                  <option value="BioChemistry">BioChemistry</option>
+                  <option value="Mass Communication">Mass Communication</option>
+                  <option value="Business Admin">Business Admin</option>
+                  <option value="Economics">Economics</option>
+                  <option value="Accounting">Accounting</option>
                 </select>
               </div>
             </div>

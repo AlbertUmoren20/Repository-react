@@ -16,14 +16,6 @@ const FamssStudent = () => {
   const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
 
-
-  const filterProjects = (projects, searchQuery, year, department) => {
-    return projects.filter(project => {
-      return project.title.toLowerCase().includes(searchQuery) &&
-        (year === "" || project.year === year) &&
-        (department === "" || project.department.toLowerCase().includes(department));
-    });
-  }
   useEffect(() => {
     fetchProjects();
   }, []); // Empty array means it will run only once on mount
@@ -31,7 +23,6 @@ const FamssStudent = () => {
   const fetchProjects = async () => {
     setIsLoading(true);
     setError(null);
-
     try {
       const response = await fetch('http://localhost:8080/student/getFamssUpload');
       if (!response.ok) {
@@ -45,7 +36,19 @@ const FamssStudent = () => {
       setIsLoading(false);
     }
   };
-
+  
+  const filterProjects = (projects, searchQuery, year, department) => {
+    const parsedYear = year ? parseInt(year, 10) : null
+   
+    return projects.filter(project => {
+      return project.title.toLowerCase().includes(searchQuery) &&
+        (!parsedYear || project.year === parsedYear) &&
+        (!department || project.department.toLowerCase() === department.toLowerCase());
+    } 
+  ); }
+  
+  const filteredProjects = filterProjects(projects, searchField, selectedYear, selectedDepartment) ;
+ 
   const uploadClick = (event) => {
     setClicked(true);
     navigate("/AttachProjectFamss");
@@ -60,28 +63,25 @@ const FamssStudent = () => {
     setSelectedProject(project);
     setShowDescript(true);
   }
-
-  const filteredProjects = filterProjects(projects, searchField, selectedYear, selectedDepartment);
-
+  
   const onSearchChange = (event) => {
     const searchField = event.target.value.toLowerCase();
+    console.log(searchField)
     setSearchField(searchField);
   }
 
   const handleYearChange = (event) => {
     const selectedYear = event.target.value;
+    console.log(selectedYear)
     setSelectedYear(selectedYear);
   }
-
   const onDepartmentChange = (event) => {
     const selectedDepartment = event.target.value.toLowerCase();
+    console.log(selectedDepartment)
     setSelectedDepartment(selectedDepartment);
   }
-
-  
-
-  const years = ["2020", "2021", "2022", "2023", "2024"];
-  const departments = ["Computer Science & Information sciences", "Nursing", "Biotech", "Microbiology"];
+  const years = [2022, 2023, 2024, 2025, 2026];
+  const departments = ["Mass Communication", "Economics", "Business Admin", "Accounting", "Inter rel.", "Political Science"];
 
   return (
     <div className='faculty-wrapper'>
@@ -90,6 +90,7 @@ const FamssStudent = () => {
           <div className='faculty-wrapper-details' onClick={onRemovedesc}>
           <p>Title: {selectedProject.title}</p>
           <p>By: {selectedProject.projectBy}</p>
+          <p>Department: {selectedProject.department}</p>
           <p>Year: {selectedProject.year}</p>
           <p>Supervisor: {selectedProject.supervisor}</p>
 
@@ -109,19 +110,12 @@ const FamssStudent = () => {
         <span style={{ fontSize: "60px", textDecoration: "underline #83D0FC 10px" }}>FAMSS<br />E-REPOSITORY<br /></span>
         <h5>Faculty of Art Management and Social Sciences</h5>
       </div>
-      <div className="HomeLogo">
-        <img src={logo} style={{
-          width: "100px",
-          height: "100px",
-          position: "absolute",
-          top: "0px",
-          left: "0px",
-          padding: "10px"
-        }}
-          alt="" />
+
+      <div className="HomeLogoFaculty">
+        <img src={logo} 
+          alt=""/>
       </div>
     
-
       <div className='search-box-container'>
         <input
           className="search-box"
@@ -131,30 +125,29 @@ const FamssStudent = () => {
         />
         <select
           className='department-box-container'
-          value={selectedDepartment}
           onChange={onDepartmentChange}
-        >
-          <option value="">Departments</option>
+        ><option value="">Departments</option>
           {departments.map(department => (
             <option key={department} value={department}>{department}</option>
           ))}
         </select>
         <select
           className='year-box'
-          value={selectedYear}
           onChange={handleYearChange}
-        >
-          <option value="">All Years</option>
+        > <option value="">All years</option>
           {years.map(year => (
             <option key={year} value={year}>{year}</option>
           ))}
         </select>
       </div>
-
+      {filteredProjects.length === 0 && <p style={{
+        fontSize:"40px",
+        textAlign:"center"
+      }}>Nothing found!!</p>}
       <div className="filtered-projects">
         {filteredProjects.map((project) => (
           <div key={project.id} className="project-card-1" onClick={() => onProjectClicked(project)}>
-            <h2 style={{ fontSize: "15px" }}>{project.title.slice(0,20)}.... </h2>
+            <h2>{project.title.slice(0,20)}.... </h2>
             <h3> {project.projectBy}</h3>
             <p> {project.department}</p>
             <p> {project.supervisor}</p>
@@ -163,7 +156,9 @@ const FamssStudent = () => {
           </div>
         ))}
       </div>
+      
     </div>
+  
   );
 }
 

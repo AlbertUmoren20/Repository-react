@@ -14,13 +14,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   /* background: url("./Components/Assets/OIP.jpeg");  */
   background-size:cover;
   background-position: center;
   /* background-color: rgb(161, 220, 245); */
-  /* background-color: white; */
-  
+  /* background-color: ; */
+  font-family: "Katibeh", serif;
 }
 
 
@@ -188,7 +187,22 @@ code {
     position: relative;
 
 }
+.HomeLogo img{
+  width: 500px;
+  height: 300px;
+  position: relative;
+  top: 150px;
+  left: 650px;
+  padding: 10px;
+}
+
+
 /* Home Button */
+.Home-Button{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 40px;
+}
 .SignUp-button{
   font-family: "Katibeh", serif;
   background: #83d0fc;
@@ -200,7 +214,7 @@ code {
   cursor: pointer;
   font-size: 25px;
   border-radius:15px;
-  margin: 20px;
+  margin: 5px;
   
 }
 .LogSgn-btn{
@@ -244,19 +258,316 @@ code {
 
 button[type="submit-btn"] {
   background-color: white;
-  color: #83D0FC;
-  width: 100%;
+  color: black;
+  width: 30%;
+  height: 50px;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(88, 87, 87, 0.123);
+}
+button[type="submit-btn"]:hover {
+  background-color: black;
+  color: white;
+  width: 30%;
   justify-content: center;
     align-items: center;
     border: 2px solid black;
 }
-button[type="submit-btn"]:hover {
-  background-color: #83D0FC;
-  color: white;
-  width: 100%;
-  justify-content: center;
+.SubmitLGN{
+  display: flex;
+  margin: 0;
+  position: absolute;
+  top: 400px;
+  left:200px; 
+  font-size:20px;
+  cursor: pointer;
+  transform: translateY(-50%)
+}
+
+
+
+     /*HOME PAGE SCREEN SIZES*/
+             
+/* Mobile devices */
+@media screen and (min-width: 320px) and (max-width: 428px) {
+  /* Your styles here */
+  .HomeLogo img{
+    width: 200px;
+    height: 100px;
     align-items: center;
-    border: 2px solid black;
+    top: 50px;
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+  }
+  .HomeHeader-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .HomeHeader-home h1 {
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 80px;
+    font-size: 35px;
+  }
+
+  .HomeHeader-home br{
+    display: none;
+  }
+  
+  .HomeHeader-home p {
+    /* fill up the screen size */
+    position: relative;
+    bottom: 80px;
+    font-size: 30px;
+  }
+  
+  
+  .LogSgn-btn {
+    width: 100%; /* fill up the screen size */
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 60px;
+    position: relative;
+    bottom: 120px;
+    font-size: 100px;
+  }
+  .LogIn-button{
+    font-size: 30px;
+    margin-right: 10px;
+   }
+  .SignUp-button{
+    font-size: 30px;
+    margin-left: 10px;
+   }
+}
+
+@media screen and (min-width: 429px ) and (max-width: 480px){
+  .HomeLogo img{
+    width: 200px;
+    height: 100px;
+    align-items: center;
+    top: 50px;
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+  }
+  .HomeHeader-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .HomeHeader-home h1 {
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 80px;
+  }
+
+  .HomeHeader-home br{
+    display: none;
+  }
+  
+  .HomeHeader-home p {
+    /* fill up the screen size */
+    position: relative;
+    bottom: 80px;
+    font-size: 30px;
+  }
+  
+  
+  .LogSgn-btn {
+    width: 100%; /* fill up the screen size */
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 60px;
+    position: relative;
+    bottom: 120px;
+    font-size: 100px;
+  }
+  .LogIn-button{
+    font-size: 30px;
+    margin-right: 10px;
+   }
+  .SignUp-button{
+    font-size: 30px;
+    margin-left: 10px;
+   }
+}
+
+/* iPads and tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Your styles here */
+  .HomeLogo img{
+    width: 400px;
+    height: 200px;
+    align-items: center;
+    top: 90px;
+    left: 390px;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+   
+  }
+  .HomeHeader-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .HomeHeader-home h1 {
+    font-size: 50px;
+    padding: 10px;
+    margin-bottom: 90px;
+    margin-top: 90px;
+  }
+
+  .HomeHeader-home br{
+    display: none;
+  }
+  
+  .HomeHeader-home p {
+    /* fill up the screen size */
+    position: relative;
+    bottom: 80px;
+    font-size: 40px;
+  }
+  
+  
+  .LogSgn-btn {
+    width: 100%; /* fill up the screen size */
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 60px;
+    position: relative;
+    bottom: 120px;
+  }
+  .LogIn-button{
+    font-size: 40px;
+    margin-right: 10px;
+   }
+  .SignUp-button{
+    font-size: 40px;
+    margin-left: 10px;
+   }
+
+}
+
+/* Small screens and laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Your styles here */
+  .HomeLogo img{
+    width: 200px;
+    height: 100px;
+    align-items: center;
+    top: 50px;
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+   
+  }
+  .HomeHeader-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .HomeHeader-home h1 {
+    font-size: 50px;
+    padding: 10px;
+    margin-bottom: 90px;
+    margin-top: 90px;
+  }
+
+  .HomeHeader-home br{
+    display: none;
+  }
+  
+  .HomeHeader-home p {
+    /* fill up the screen size */
+    position: relative;
+    bottom: 80px;
+    font-size: 55px;
+  }
+  
+  
+  .LogSgn-btn {
+    width: 100%; /* fill up the screen size */
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 60px;
+    position: relative;
+    bottom: 120px;
+  }
+  .LogIn-button{
+    font-size: 40px;
+    margin-right: 10px;
+   }
+  .SignUp-button{
+    font-size: 40px;
+    margin-left: 10px;
+   }
+  
+
+}
+
+/* Desktops and large screens */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Your styles here */
+  .LogIn-button{
+    font-size: 30px;
+    margin-right: 10px;
+   }
+  .SignUp-button{
+    font-size: 30px;
+    margin-left: 10px;
+   }
+   .LogSgn-btn {
+    width: 50%; /* fill up the screen size */
+    display: flex;
+    margin-bottom: 40px;
+    margin-top: 10px;
+  }
+  .HomeLogo img{
+    width: 500px;
+  height: 300px;
+  position: relative;
+  top: 150px;
+  left: 600px;
+  padding: 10px;
+   
+  }
+
+}
+
+/* Extra-large screens and TVs */
+@media screen and (min-width: 1201px) {
+  /* Your styles here */
+  .LogIn-button{
+    font-size: 30px;
+    margin-right: 10px;
+   }
+  .SignUp-button{
+    font-size: 30px;
+    margin-left: 10px;
+   }
+   .LogSgn-btn {
+    width: 50%; /* fill up the screen size */
+    display: flex;
+    margin-bottom: 40px;
+    margin-top: 10px;
+  }
 }
 
 
@@ -270,7 +581,14 @@ button[type="submit-btn"]:hover {
   top: 15px;
   box-shadow:10px 14px 10px 15px #83D0FC;
 }
-
+.HomeLogoLGN img{
+  width: 100px;
+   height: 100px;
+   position: absolute;
+   top:10px;
+   left:10px;
+   padding:10px;  
+}
 .login-form-container input#fullName{
   width: 80%;
   position: relative;
@@ -337,11 +655,390 @@ select.my-select-class{
   cursor: pointer;
 }
 
+     /*LOG IN SCREEN SIZES*/
+             
+/* Mobile devices */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /* Your styles here */
+  .Rectangle{
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    background-color: #83D0FC;
+    margin: auto;
+    top: 15px;
+    box-shadow:10px 14px 10px 15px #83D0FC;
+  }
+  .HomeHeader span{
+    display: none;
+  }
+  .HomeLogoLGN img{
+        width: 100px;
+         height: 100px;
+         position: absolute;
+         top:10px;
+         left:10px;
+         padding:10px;  
+  }
+  
+button[type="submit-btn"] {
+  background-color: white;
+  color: black;
+  width: 30%;
+  height: 50px;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(88, 87, 87, 0.123);
+}
+button[type="submit-btn"]:hover {
+  background-color: black;
+  color: white;
+  width: 30%;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+.SubmitLGN{
+  display: flex;
+  margin: 0px;
+  position: absolute;
+  top: 445px;
+  left:130px; 
+  font-size:20px;
+  cursor: pointer;
+  transform: translateY(-50%)
+} 
+}
+
+/* iPads and tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Your styles here */
+  .Rectangle{
+    height: 85vh;
+    width: 100%;
+    position: relative;
+    background-color: #83D0FC;
+    margin: auto;
+    bottom: 100px;
+    box-shadow:10px 14px 10px 15px #83D0FC;
+  }
+  .HomeHeader span{
+    display: none;
+  }
+  .HomeHeader{
+    font-size: 35px;
+  }
+ 
+  .HomeLogoLGN img{
+        width: 100px;
+         height: 100px;
+         position: absolute;
+         top:10px;
+         left:10px;
+         padding:10px;  
+  }
+  
+button[type="submit-btn"] {
+  background-color: white;
+  color: black;
+  width: 30%;
+  height: 50px;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(88, 87, 87, 0.123);
+}
+button[type="submit-btn"]:hover {
+  background-color: black;
+  color: white;
+  width: 30%;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+.SubmitLGN{
+  display: flex;
+  margin: 0px;
+  position: absolute;
+  top: 740px;
+  left: 260px; 
+  font-size:30px;
+  cursor: pointer;
+  transform: translateY(-50%)
+}
+.login-form-label {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-family: "Katibeh", serif;
+  font-size: 45px;
+  padding: 15px;
+}
+.login-form-container input#fullName{
+  width: 80%;
+  height: 50px;
+  position: relative;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+.login-form-container input#matricnumber{
+  width: 80%;
+  height: 50px;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+.login-form-container input#password{
+    width: 80%;
+    height: 50px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 40px;
+}
+.login-form-container input#email{
+    width: 80%;
+    height: 50px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 40px;
+}
+select.my-select-class{
+  width: 80%;
+  height: 70px;
+  position: relative;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+}
+
+/* Small screens and laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Your styles here */
+  .Rectangle{
+    height: 85vh;
+    width: 100%;
+    position: relative;
+    background-color: #83D0FC;
+    margin: auto;
+    bottom: 100px;
+    box-shadow:10px 14px 10px 15px #83D0FC;
+  }
+
+  .HomeHeader span{
+    display: none;
+  }
+  .HomeHeader{
+    font-size: 45px;
+  }
+ 
+  .HomeLogoLGN img{
+        width: 100px;
+         height: 100px;
+         position: absolute;
+         top:10px;
+         left:10px;
+         padding:10px;  
+  }
+  
+button[type="submit-btn"] {
+  background-color: white;
+  color: black;
+  width: 30%;
+  height: 50px;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(88, 87, 87, 0.123);
+}
+button[type="submit-btn"]:hover {
+  background-color: black;
+  color: white;
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+.SubmitLGN{
+  display: flex;
+  margin: 0px;
+  position: absolute;
+  top: 790px;
+  left: 300px; 
+  font-size:30px;
+  cursor: pointer;
+  transform: translateY(-50%)
+}
+.login-form-label {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-family: "Katibeh", serif;
+  font-size: 45px;
+  padding: 15px;
+}
+.login-form-container input#fullName{
+  width: 80%;
+  height: 50px;
+  position: relative;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+.login-form-container input#matricnumber{
+  width: 80%;
+  height: 50px;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+.login-form-container input#password{
+    width: 80%;
+    height: 50px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 40px;
+}
+.login-form-container input#email{
+    width: 80%;
+    height: 50px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 40px;
+}
+select.my-select-class{
+  width: 80%;
+  height: 70px;
+  position: relative;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+}
+
+/* Desktops and large screens */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Your styles here */
+  .Rectangle{
+    height:125vh;
+    width: 100%;
+    position: relative;
+    background-color: #83D0FC;
+    margin: auto;
+    bottom: 100px;
+    box-shadow:10px 14px 10px 15px #83D0FC;
+  }
+  .HomeHeader span{
+    display: none;
+  }
+  .HomeHeader{
+    font-size: 25px;
+  }
+ 
+  .HomeLogoLGN img{
+        width: 100px;
+         height: 100px;
+         position: absolute;
+         top:10px;
+         left:10px;
+         padding:10px;  
+  }
+  
+button[type="submit-btn"] {
+  background-color: white;
+  color: black;
+  width: 30%;
+  height: 50px;
+  justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(88, 87, 87, 0.123);
+}
+button[type="submit-btn"]:hover {
+  background-color: black;
+  color: white;
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+.SubmitLGN{
+  display: flex;
+  margin: 0px;
+  position: absolute;
+  top: 790px;
+  left: 390px; 
+  font-size:30px;
+  cursor: pointer;
+  transform: translateY(-50%)
+}
+.login-form-label {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-family: "Katibeh", serif;
+  font-size: 45px;
+  padding: 15px;
+}
+.login-form-container input#fullName{
+  width: 80%;
+  height: 50px;
+  position: relative;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+.login-form-container input#matricnumber{
+  width: 80%;
+  height: 50px;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+.login-form-container input#password{
+    width: 80%;
+    height: 50px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 40px;
+}
+.login-form-container input#email{
+    width: 80%;
+    height: 50px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 40px;
+}
+select.my-select-class{
+  width: 80%;
+  height: 70px;
+  position: relative;
+  margin-left: 50px;
+  font-family: "Katibeh", serif;
+  font-size: 40px;
+}
+}
+
+/* Extra-large screens and TVs */
+@media screen and (min-width: 1201px) {
+  /* Your styles here */
+  .SubmitLGN{
+    display: flex;
+    margin: 0px;
+    position: absolute;
+    top: 420px;
+    left: 210px; 
+    font-size:20px;
+    cursor: pointer;
+    transform: translateY(-50%)
+  }
+}
+
+  
+             /*SIGN UP SCREEN SIZES*/
                 /* SIGN-UP PAGE */
 
 .wrapper{
-  height: 400px;
-  width: 500px;
+  height: 72vh;
+  width: 550px;
   position: relative;
   background-color: white;
   margin: auto;
@@ -353,7 +1050,6 @@ select.my-select-class{
   font-weight: bold;
   font-size: 28px;
 }
-
 .smallBox::placeholder{
   text-align: center;
 }
@@ -372,6 +1068,9 @@ select.my-select-class{
 }
 
 .smallBox5::placeholder{
+  text-align: center;
+}
+.smallBox6::placeholder{
   text-align: center;
 }
 
@@ -395,7 +1094,7 @@ select.my-select-class{
   font-family: "Katibeh", serif;
   position: relative;
   top: 80px;
-  right: 60px;
+  right: 50px;
   border-radius: 6%;
 }
 
@@ -407,7 +1106,7 @@ select.my-select-class{
   font-family: "Katibeh", serif;
   position: relative;
   top: 90px;
-  right: 40px;
+  right: 10px;
   border-radius: 6%;
 }
 
@@ -430,7 +1129,7 @@ select.my-select-class{
   font-family: "Katibeh", serif;
   position: relative;
   top: 170px;
-  right:40px;
+  right:10px;
   border-radius: 6%;
 }
 .smallBox7{
@@ -457,15 +1156,596 @@ select.my-select-class{
   text-align: right;
   font-family: "Katibeh", serif;
   top: 19px;
-  right: 30px;
 }
 
 .wrapper input[type="text"] {
   padding: 10px;
 }
+button.submitSGN{
+  display: flex;
+  margin: 0px;
+  position: absolute;
+  top: 400px;
+  left: 42%;
+  font-size: 15px;
+  transform: translateY(-50%);
+  padding: 10px;
+  color: white;
+  background-color: #469ae8;
+  border: 2px solid gray;
+}
+
+.HomeLogoSGN img{
+  width: 100px;
+   height: 100px;
+   position: absolute;
+   top:0px;
+   left:0px;        
+   padding:10px       
+} 
+.HomeHeader h1{
+  font-size: 30px;
+}
+
+/*Mobile Screen Size*/
+@media screen and (min-width: 320px) and (max-width: 428px){
+  .HomeLogoSGN img{
+       width: 100px;
+        height: 100px;
+        position: absolute;
+        top:0px;
+        left:0px;            
+    } 
+ 
+  .HomeHeader{
+    text-align: center;
+    font-family: "Katibeh", serif;
+  }
+  .HomeHeader h1{
+    font-size: 40px;
+  }
+
+  .wrapper{
+  height: 500px;
+  width: 95%;
+  position: relative;
+  background-color: white;
+  margin: auto;
+  top: 15px;
+  box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
+}
+
+.wrapper input{
+  font-weight: bold;
+  font-size: 28px;
+}
+.smallBox{
+  height: 60px;
+  width: 300px;
+  font-family: "Katibeh", serif;
+  background-color: #83D0FC;
+  position:relative;
+  border: none;
+  top: 60px;
+  left: 40px;
+  border-radius: 6%;
+}
+
+.smallBox4{
+  height: 60px;
+  border: none;
+  width: 300px;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 80px;
+  left: 40px;
+  border-radius: 6%;
+}
+.smallBox5{
+  height: 60px;
+  border: none;
+  width: 300px;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 100px;
+  left: 40px;
+  border-radius: 6%;
+}
+.smallBox6{
+  height: 60px;
+  border: none;
+  width: 300px;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 120px;
+  left: 40px;
+  border-radius: 6%;
+}
+.smallBox7{
+  height: 60px;
+  border: none;
+  width: 300px;
+  background-color: #83D0FC;
+  font-family: "Katibeh", serif;
+  position: relative;
+  top: 140px;
+  left: 40px;
+  border-radius: 6%;
+}
+button.submitSGN{
+  display: flex;
+  margin: 0px;
+  position: absolute;
+  top: 471px;
+  left: 33%;
+  font-size: 20px;
+  transform: translateY(-50%);
+  background-color: #83D0FC;
+  color: rgb(115, 109, 109);
+  padding: 10px;
+  border: 2px solid gray;
+}
+.LogText{
+  margin-top: 10px;
+  width: 100%;
+}
+    }
+
+@media screen and (min-width: 429px) and (max-width: 480px){
+  .HomeLogoSGN img{
+    width: 100px;
+     height: 100px;
+     position: absolute;
+     top:0px;
+     left:0px;        
+     padding:10px       
+ } 
+
+.HomeHeader{
+ text-align: center;
+ font-family: "Katibeh", serif;
+ font-weight: 400;
+ font-style: normal;
+}
+  .HomeHeader h1{
+    font-size: 40px;
+  }
+
+.wrapper{
+height: 500px;
+width: 95%;
+position: relative;
+background-color: white;
+margin: auto;
+top: 15px;
+box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
+}
+
+.wrapper input{
+font-weight: bold;
+font-size: 28px;
+}
+.smallBox{
+height: 60px;
+width: 300px;
+font-family: "Katibeh", serif;
+background-color: #83D0FC;
+position:relative;
+border: none;
+top: 60px;
+left: 20px;
+border-radius: 6%;
+}
+
+.smallBox4{
+height: 60px;
+border: none;
+width: 300px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 80px;
+left: 20px;
+border-radius: 6%;
+}
+.smallBox5 {
+height: 60px;
+border: none;
+width: 300px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 100px;
+left: 20px;
+border-radius: 6%;
+}
+.smallBox6{
+height: 60px;
+border: none;
+width: 300px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 120px;
+left: 20px;
+border-radius: 6%;
+}
+.smallBox7{
+height: 60px;
+border: none;
+width: 300px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 140px;
+left: 20px;
+border-radius: 6%;
+}
+button.submitSGN{
+display: flex;
+margin: 0px;
+position: absolute;
+top: 480px;
+left: 39%;
+font-size: 20px;
+transform: translateY(-50%);
+}
+.LogText h1{
+font-size: 25px;
+width: 100%;
+}
+    }
+@media screen and (min-width: 481px) and (max-width: 768px ) {
+  .HomeLogoSGN img{
+    width: 100px;
+     height: 100px;
+     position: absolute;
+     top:0px;
+     left:0px;        
+     padding:10px       
+ } 
+
+.HomeHeader{
+ text-align: center;
+ font-family: "Katibeh", serif;
+ font-weight: 400;
+ font-style: normal;
+}
+.HomeHeader h1{
+  font-size: 40px;
+}
+
+.wrapper{
+height: 700px;
+width: 95%;
+position: relative;
+background-color: white;
+margin: auto;
+top: 15px;
+box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
+}
+
+.wrapper input{
+font-weight: bold;
+font-size: 28px;
+}
+.smallBox{
+height: 100px;
+width: 340px;
+font-family: "Katibeh", serif;
+background-color: #83D0FC;
+position:relative;
+border: none;
+top: 60px;
+left: 20px;
+border-radius: 6%;
+}
+
+.smallBox4{
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 170px;
+
+border-radius: 6%;
+}
+.smallBox5 {
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 180px;
+left: 20px;
+border-radius: 6%;
+}
+.smallBox6{
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 290px;
+border-radius: 6%;
+}
+.smallBox7{
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 300px;
+left: 20px;
+border-radius: 6%;
+}
+button.submitSGN{
+display: flex;
+margin: 0px;
+position: absolute;
+top: 650px;
+left: 39%;
+font-size: 20px;
+transform: translateY(-50%);
+padding: 20px;
+color: white;
+background-color: #469ae8;
+}
+.LogText h1{
+font-size: 39px;
+padding: 20px;
+width: 100%;
+}
+}
+  /* Small screens and laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Your styles here */
+ 
+.HomeLogoSGN img{
+    width: 100px;
+     height: 100px;
+     position: absolute;
+     top:0px;
+     left:0px;        
+     padding:10px       
+ } 
+
+.HomeHeader {
+ text-align: center;
+ font-family: "Katibeh", serif;
+ font-weight: 400;
+ font-style: normal;
+}
+.HomeHeader h1{
+  font-size: 40px;
+}
+
+.wrapper{
+height: 750px;
+width: 95%;
+position: relative;
+background-color: white;
+margin: auto;
+top: 15px;
+box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
+}
+
+.wrapper input{
+font-weight: bold;
+font-size: 28px;
+}
+.smallBox{
+height: 100px;
+width: 340px;
+font-family: "Katibeh", serif;
+background-color: #83D0FC;
+position:relative;
+border: none;
+top: 60px;
+left: 20px;
+border-radius: 6%;
+}
+
+.smallBox4{
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 170px;
+left: 20px;
+
+border-radius: 6%;
+}
+.smallBox5 {
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 190px;
+left: 40px;
+border-radius: 6%;
+
+}
+.smallBox6{
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 300px;
+left: 20px;
+border-radius: 6%;
+}
+.smallBox7{
+height: 100px;
+border: none;
+width: 340px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 300px;
+left: 20px;
+border-radius: 6%;
+}
+button.submitSGN{
+display: flex;
+margin: 0px;
+position: absolute;
+top: 700px;
+left: 39%;
+font-size: 20px;
+transform: translateY(-50%);
+padding: 20px;
+color: white;
+background-color: #469ae8;
+}
+.LogText h1{
+font-size: 39px;
+padding: 20px;
+width: 100%;
+} 
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px){
+  .HomeLogoSGN img{
+    width: 100px;
+     height: 100px;
+     position: absolute;
+     top:0px;
+     left:0px;        
+     padding:10px       
+ } 
+
+.HomeHeader {
+ text-align: center;
+ font-family: "Katibeh", serif;
+ font-weight: 400;
+ font-style: normal;
+}
+.HomeHeader h1{
+  font-size: 40px;
+}
+
+.wrapper{
+width: 95%;
+height: 120vh;
+position: relative;
+background-color: white;
+margin: auto;
+top: 15px;
+box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
+}
+
+.wrapper input{
+font-weight: bold;
+font-size: 28px;
+}
+.smallBox{
+height: 100px;
+width: 1000px;
+font-family: "Katibeh", serif;
+background-color: #83D0FC;
+position:relative;
+border: none;
+top: 60px;
+left: 20px;
+border-radius: 6%;
+}
+
+.smallBox4{
+height: 100px;
+width: 1000px;
+border: none;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 90px;
+left: 20px;
+border-radius: 6%;
+}
+.smallBox5 {
+height: 100px;
+width: 1000px;
+border: none;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 120px;
+left: 20px;
+border-radius: 6%;
+}
+
+.smallBox6{
+height: 100px;
+border: none;
+width: 1000px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 140px;
+left: 20px;
+border-radius: 6%;
+}
+.smallBox7{
+height: 100px;
+border: none;
+width: 1000px;
+background-color: #83D0FC;
+font-family: "Katibeh", serif;
+position: relative;
+top: 160px;
+left: 20px;
+border-radius: 6%;
+}
+
+button.submitSGN{
+display: flex;
+margin: 0px;
+position: absolute;
+top: 750px;
+left: 42%;
+font-size: 25px;
+transform: translateY(-50%);
+padding: 20px;
+color: white;
+background-color: #469ae8;
+}
+
+.LogText h1{
+font-size: 39px;
+padding: 20px;
+width: 100%;
+} 
+
+}
+
+ 
+
 
 
                 /* Student Body */
+.HomeHeader-Studentbody{
+  font-size: 35px;
+  text-align: center;
+  padding: 10px;
+  font-family: "Katibeh", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 .block-elements{
   display: flex;
@@ -517,6 +1797,7 @@ border-radius: 4%;
 
 } */
 
+
 /* Student-Faculty */
 .faculty-wrapper{
   position: relative;
@@ -552,7 +1833,7 @@ border-radius: 4%;
 }
 .faculty-wrapper-details-1{
   position : relative;
-  background-color: red;
+  background-color: #f97777;
   color: black;
   font-family: "Katibeh", serif;
   font-size: 30px;
@@ -583,26 +1864,26 @@ border-radius: 4%;
 
 .faculty-button{
   font-family: "Katibeh", serif;
-  background: red;
+  background: #f97777;
   border: none;
   cursor: pointer;
-  box-shadow:10px 10px 5px red;
-  padding: 16px 32px;
+  box-shadow:10px 10px 5px #f97777;
+  padding: 16px 40px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Smooth transition */
-  font-size: 29px;
+  transition: background-color 0.25s ease-out; /* Smooth transition */
+  font-size: 32px;
   border-radius:15px;
-
 }
+
 .faculty-button-1{
   font-family: "Katibeh", serif;
   background: #83D0FC;
   border: none;
   cursor: pointer;
   box-shadow:10px 10px 5px #83D0FC;
-  padding: 16px 32px;
+  padding: 16px 40px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
@@ -614,7 +1895,7 @@ border-radius: 4%;
 .faculty-button:hover {
   transform: scale(1.50);
   background-color: white; /* Change to your desired color */
-  color:red ;
+  color:#f97777 ;
   border: 1px solid black;
   box-shadow: 5px 5px 5px black;
 }
@@ -626,6 +1907,133 @@ border-radius: 4%;
   box-shadow: 5px 5px 5px black;
   
 }
+.HomeLogoSB img{
+  width: 100px;
+   height: 100px;
+   position: absolute;
+   top:0px;
+   left:0px;
+   padding:10px;  
+}
+.HomeLogo400 img{
+  width: 100px;
+   height: 100px;
+   position: absolute;
+   top:0px;
+   left:0px;        
+   padding:10px       
+}
+ 
+
+
+/*STUDENT BODY SCREEN SIZES*/
+             
+/* Mobile devices */
+@media screen and (min-width: 320px) and (max-width: 428px) {
+  /* Your styles here */
+.HomeHeader-Studentbody{
+    align-content: center;
+    margin-top: 50px;
+}
+  .faculty{
+    margin-top: 20px;
+    align-content: center;
+  }
+  .faculty-container{
+    margin: 0 auto;
+    height: 10px;
+    display: block;
+    margin: 30px;
+  }
+  .faculty-button{
+    margin-bottom: 40px;
+  }
+  .faculty-button:hover {
+    transform: scale(1.10);
+    background-color: white; /* Change to your desired color */
+    color:#f97777 ;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+  }
+  .faculty-button-1:hover {
+    transform: scale(1.10);
+    background-color: white; /* Change to your desired color */
+    color: #83D0FC;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+}
+
+}
+@media screen and (min-width: 429px) and ( max-width: 480px){
+  /* Your styles here */
+.HomeHeader-Studentbody{
+  align-content: center;
+  margin-top: 50px;
+}
+  .faculty{
+    margin-top: 190px;
+    align-content: center;
+  }
+  .faculty-container{
+    margin: 0 auto;
+    height: 10px;
+    display: block;
+    margin: 30px;
+  }
+  .faculty-button{
+    margin-bottom: 40px;
+  }
+  .faculty-button:hover {
+    transform: scale(1.10);
+    background-color: white; /* Change to your desired color */
+    color:#f97777 ;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+  }
+  .faculty-button-1:hover {
+    transform: scale(1.10);
+    background-color: white; /* Change to your desired color */
+    color: #83D0FC;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+    
+} 
+}
+/* iPads and tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Your styles here */
+  .faculty-button:hover {
+    transform: scale(1.10);
+    background-color: white; /* Change to your desired color */
+    color:#f97777 ;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+  }
+  .faculty-button-1:hover {
+    transform: scale(1.10);
+    background-color: white; /* Change to your desired color */
+    color: #83D0FC;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
+    
+}
+}
+
+/* Small screens and laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Your styles here */
+}
+
+/* Desktops and large screens */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Your styles here */
+}
+
+/* Extra-large screens and TVs */
+@media screen and (min-width: 1201px) {
+  /* Your styles here */
+}
+
 
                               /* FBMAS */
 .HomeHeader-1{
@@ -635,7 +2043,6 @@ border-radius: 4%;
   font-family: "Katibeh", serif;
   font-weight: 400;
   font-style: normal;
-
 }
 
 
@@ -692,7 +2099,7 @@ border-radius: 4%;
 .project-card{
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 0, 0);
+  background-color: #f97777;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 25px;
@@ -761,117 +2168,231 @@ border-radius: 4%;
   cursor: pointer; 
 }
 
+  .HomeLogoFaculty img{
+    width: 100px;
+     height: 100px;
+     position: absolute;
+     top:0px;
+     left:0px;
+     padding:10px;  
+}
+
+            /* Screen Sizes */
+@media screen and (max-width: 600px) {
+  .HomeLogoFaculty img{
+    width: 100px;
+     height: 100px;
+     position: absolute;
+     top:10px;
+     left:10px;
+     padding:10px;  
+}
+  .search-box-container {
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+}   
+  .year-box{
+    display: none;
+  }
+  .filtered-projects{
+    display: inline-block;
+    width: 100%;
+    height: 400px;
+  }
+  .project-card, .project-card-1{
+    margin-bottom: 15px;
+  }
+  .project-card h2{
+    font-size: 30px;
+  }
+  .project-card h3{
+    font-size: 20px;
+  }
+  .faculty-wrapper-details-1, .faculty-wrapper-details{
+    width: 100%;
+  }
+  .project-card-1 h2{
+    font-size: 30px;
+  }
+  .project-card-1 h3{
+    font-size: 20px;
+  }
+}
+
                       /* Attach Project */
-                 .Rectangle-attach {
-                       border-radius: 5px;
-                         background-color: #f2f2f2;
-                         padding: 5px;
-                       
-                       }
+.Rectangle-attach {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 5px;                      
+}
                      
-                    .input-box-attach {
-                         width: 70%;
-                        margin: auto;
-                        left: 200px;
-                         padding: 12px;
-                         border: 1px solid #ccc;
-                         border-radius: 4px;
-                         resize: vertical;
-                       }
+.input-box-attach {
+  width: 70%;
+  margin: auto;
+  left: 200px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+ }
+            
+label.address {
+ padding: 12px 12px 12px 0;
+ display: inline-block;
+ }
                      
-                       label.address {
-                         padding: 12px 12px 12px 0;
-                         display: inline-block;
-                       }
-                     
-                       input[type="topic"], select, textarea {
-                         width: 70%;
-                         padding: 12px;
-                         border: 1px solid #ccc;
-                         border-radius: 4px;
-                         resize: vertical;
-                       }
-                       .uploadBtn-Famss{
-                        background-color: #83D0FC;
-                        border: 1px solid grey;
-                        border-radius: 5px;
-                        padding: 2px;
-                        cursor: pointer; 
-                      }
-                      .upload{
-                        background-color: red;
-                        color: white;
-                        padding: 12px 20px;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        float: right;
-                        transition: background-color 0.25s ease-out; 
-                      }
+ input[type="topic"], select, textarea {
+  width: 70%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+ }
+.uploadBtn-Famss{
+  background-color: #83D0FC;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 2px;
+  cursor: pointer; 
+  width: 100px;
+  height: 40px; 
+  position: absolute;
+  top: 90px; 
+  right: 50px; 
+  padding: 10px; 
+ }
+.upload{
+ background-color: #f97777;
+ color: black;
+ padding: 5px 15px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+ float: right;
+ transition: background-color 0.25s ease-out; 
+ width: 100px;
+ height: 40px; 
+ position: absolute;
+ top: 90px; 
+ right: 50px; 
+ padding: 10px; 
+ }
+
+ .upload:hover{
+  transform: scale(1.50);
+  background-color: white;
+  color:#f97777;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
+ }
+ .uploadBtn-Famss:hover{
+  transform: scale(1.50);
+  background-color: white;
+  color: #83D0FC;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
+ }
                       
-                      .fbmas-upload{
-                         background-color: red;
-                         color: black;
-                         padding: 12px 20px;
-                         border: none;
-                         border-radius: 4px;
-                         cursor: pointer;
-                         float: right;
-                         transition: background-color 0.25s ease-out; 
-                       }
+.fbmas-upload{
+  background-color: #f97777;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  transition: background-color 0.25s ease-out; 
+ }
   
-                       .fbmas-upload:hover{
-                        transform: scale(1.50);
-                        background-color: white;
-                        color:red;
-                        border: 1px solid black;
-                        box-shadow: 1px 1px 1px black;
-                       }
+.fbmas-upload:hover{
+  transform: scale(1.50);
+  background-color: white;
+  color:#f97777;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
+ }
 
-                      .upload-btn{
-                         background-color: #83D0FC;
-                         color: black;
-                         padding: 12px 20px;
-                         border: none;
-                         border-radius: 4px;
-                         cursor: pointer;
-                         float: right;
-                         transition: background-color 0.25s ease-out; 
-                       }
+.upload-btn{
+  background-color: #83D0FC;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  transition: background-color 0.25s ease-out; 
+ }
+                   
+.upload-btn:hover {
+  transform: scale(1.50);
+  background-color: white; 
+  color: #83D0FC;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}      
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+                    
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
                      
-                       .upload-btn:hover {
-                        transform: scale(1.50);
-                        background-color: white; 
-                        color: #83D0FC;
-                        border: 1px solid black;
-                        box-shadow: 1px 1px 1px black;
-                       }
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+.col-25,.col-75, input[type="submit"] {
+ width: 100%;
+ margin-top: 0;
+ }
+}
 
+/* 400FBMAS, 400FAMSS */
+@media screen and (max-width: 600px){
+  .uploadBtn-Famss{
+    width: 70%;
+    display: flex;
+     align-items: center; 
+     justify-content: center;
+     top: 240px;
+  }
+  .upload{
+    width: 70%;
+    display: flex;
+     align-items: center; 
+     justify-content: center;
+     top: 240px;
+  }
+  .search-box-container{
+    margin-top: 40px;
+  }
+  .HomeHeader-1 h5{
+    font-size: 35px
+  }
+  
+ .upload:hover{
+  transform: scale(1.10);
+  background-color: white;
+  color:#f97777;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
+ }
+ .uploadBtn-Famss:hover{
+  transform: scale(1.10);
+  background-color: white;
+  color: #83D0FC;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
+ }
 
-                     
-                      .col-25 {
-                         float: left;
-                         width: 25%;
-                         margin-top: 6px;
-                       }
-                     
-                      .col-75 {
-                         float: left;
-                         width: 75%;
-                         margin-top: 6px;
-                       }
-                     
-                       /* Clear floats after the columns */
-                      .row::after {
-                         content: "";
-                         display: table;
-                         clear: both;
-                       }
-                     
-                       /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-                       @media screen and (max-width: 600px) {
-                        .col-25,.col-75, input[type="submit"] {
-                           width: 100%;
-                           margin-top: 0;
-                         }
-                    }
+}

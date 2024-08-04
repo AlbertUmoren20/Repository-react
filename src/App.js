@@ -29,7 +29,6 @@ function App() {
        <Route path='/AttachProject' element= {<AttachProject/>}/>
        <Route path='/AttachProjectFamss' element={<AttachProjectFamss/>}/>
         <Route path='/StudentBody400Level' element= {<StudentBody400/>}/>
-      
       </Routes>
     </BrowserRouter>
   )

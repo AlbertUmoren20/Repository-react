@@ -165,7 +165,7 @@ const handleSubmit = async (event) => {
       alert("New Student Added");
       // Update UI or display success message to user
     } else {
-      console.error("Error adding student:", await response.text());
+      console.error("Error adding student:", await response.text(), 1500);
       // Handle potential errors during student addition (e.g., display error message to user)
     }
   } catch (error) {
@@ -314,17 +314,10 @@ const handleChange = (event)=>{
 
 }}> 
  <div className="HomeHeader">
- TRINITY UNIVERSITY E-REPOSITORY <br/> SIGN UP
+<span> TRINITY UNIVERSITY E-REPOSITORY </span> <br/> <h1>SIGN UP</h1>
   </div>
-  <div className="HomeLogo">
-  <img src={logo} style={
-     {   width: "100px",
-         height: "100px",
-         position: "absolute",
-         top:"0px",
-         left:"0px",
-         padding:"10px"       
-     }} 
+  <div className="HomeLogoSGN">
+  <img src={logo} 
      alt="">
 </img>
 </div>
@@ -374,6 +367,7 @@ className="smallBox6"
 name="email"
 placeholder="Email..."
 value={email}
+pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
 onChange={(e) => setEmail(e.target.value)}
 required
 />
@@ -391,21 +385,16 @@ required>
 <option value="400">400</option>
 </select>
 
-
-<button type="submit" style={{display:"flex",   margin: "0",
-position: "absolute",
-top: "380px",
-left:"46%",
-fontSize:"20px",
-cursor:"pointer",
-transform: "translateY(-50%)"}}>Submit</button>
+<button type="submitSGN" 
+className="submitSGN"
+>Submit</button>
 
 </form>
 </div>
 <div className="LogText">
 <h1>
-Already have an account?
-Click <span style={{ color: "red" }} className="Login-button1" onClick={handleButtonClick}>Log In</span>
+Already have an account? Click <span style={{ color: "red" }}  className="Login-button1" onClick={handleButtonClick}>Log In</span> 
+
 </h1>
 </div>
 </div>

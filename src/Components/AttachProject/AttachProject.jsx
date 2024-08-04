@@ -110,6 +110,8 @@ const AttachProject = () => {
                 <option value="Information Science">Information Science</option>
                 <option value="Microbiology">Microbiology</option>
                 <option value="BioChemistry">BioChemistry</option>
+                <option value="Medical lab.">Medical Lab.</option>
+                <option value="Biotech">Biotech</option>
               </select>
             </div>
           </div>

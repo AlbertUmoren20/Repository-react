@@ -17,13 +17,6 @@ const UploadProjectFamss = () => {
   const navigate = useNavigate();
 
 
-  const filterProjects = (projects, searchQuery, year, department) => {
-    return projects.filter(project => {
-      return project.title.toLowerCase().includes(searchQuery) &&
-        (year === "" || project.year === year) &&
-        (department === "" || project.department.toLowerCase().includes(department));
-    });
-  }
   useEffect(() => {
     fetchProjects();
   }, []); // Empty array means it will run only once on mount
@@ -45,6 +38,16 @@ const UploadProjectFamss = () => {
       setIsLoading(false);
     }
   };
+
+  const filterProjects = (projects, searchQuery, year, department) => {
+    const parsedYear = year ? parseInt(year, 10) : null
+    return projects.filter(project => {
+      return project.title.toLowerCase().includes(searchQuery) &&
+        (!parsedYear || project.year === parsedYear) &&
+        (!department || project.department.toLowerCase() === department.toLowerCase());
+    }
+   );
+  }
 
   const uploadClick = (event) => {
     setClicked(true);
@@ -78,10 +81,8 @@ const UploadProjectFamss = () => {
     setSelectedDepartment(selectedDepartment);
   }
 
-  
-
-  const years = ["2020", "2021", "2022", "2023", "2024"];
-  const departments = ["Computer Science & Information sciences", "Nursing", "Biotech", "Microbiology"];
+  const years = [2022, 2023, 2024, 2025, 2026];
+  const departments = ["Mass Communication", "Economics", "Business Admin", "Accounting"];
 
   return (
     <div className='faculty-wrapper'>
@@ -90,6 +91,7 @@ const UploadProjectFamss = () => {
           <div className='faculty-wrapper-details' onClick={onRemovedesc}>
           <p>Title: {selectedProject.title}</p>
           <p>By: {selectedProject.projectBy}</p>
+          <p>Department: {selectedProject.department}</p>
           <p>Year: {selectedProject.year}</p>
           <p>Supervisor: {selectedProject.supervisor}</p>
 
@@ -109,18 +111,11 @@ const UploadProjectFamss = () => {
         <span style={{ fontSize: "60px", textDecoration: "underline #83D0FC 10px" }}>FAMSS<br />E-REPOSITORY<br /></span>
         <h5>Faculty of Art Management and Social Sciences</h5>
       </div>
-      <div className="HomeLogo">
-        <img src={logo} style={{
-          width: "100px",
-          height: "100px",
-          position: "absolute",
-          top: "0px",
-          left: "0px",
-          padding: "10px"
-        }}
+      <div className="HomeLogoFaculty">
+        <img src={logo} 
           alt="" />
       </div>
-      <div className='uploadBtn-Famss' style={{ width: "100px", height: "40px", position: "absolute", top: "50px", right: "50px", padding: "10px" }} onClick={uploadClick}>+ UPLOAD</div>
+      <div className='uploadBtn-Famss' onClick={uploadClick}>+ UPLOAD</div>
 
       <div className='search-box-container'>
         <input
@@ -131,7 +126,6 @@ const UploadProjectFamss = () => {
         />
         <select
           className='department-box-container'
-          value={selectedDepartment}
           onChange={onDepartmentChange}
         >
           <option value="">Departments</option>
@@ -150,11 +144,14 @@ const UploadProjectFamss = () => {
           ))}
         </select>
       </div>
-
+      {filteredProjects.length === 0 && <p style={{
+        fontSize:"40px",
+        textAlign:"center"
+      }}>Nothing found!!</p>}
       <div className="filtered-projects">
         {filteredProjects.map((project) => (
           <div key={project.id} className="project-card-1" onClick={() => onProjectClicked(project)}>
-            <h2 style={{ fontSize: "15px" }}>{project.title.slice(0,20)}.... </h2>
+            <h2>{project.title.slice(0,20)}.... </h2>
             <h3> {project.projectBy}</h3>
             <p> {project.department}</p>
             <p> {project.supervisor}</p>

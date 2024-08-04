@@ -17,13 +17,7 @@ const FbmasStudent = () => {
   const navigate = useNavigate();
 
 
-  const filterProjects = (projects, searchQuery, year, department) => {
-    return projects.filter(project => {
-      return project.title.toLowerCase().includes(searchQuery) &&
-        (year === "" || project.year === year) &&
-        (department === "" || project.department.toLowerCase().includes(department));
-    });
-  }
+ 
   useEffect(() => {
     fetchProjects();
   }, []); // Empty array means it will run only once on mount
@@ -45,6 +39,15 @@ const FbmasStudent = () => {
       setIsLoading(false);
     }
   };
+  const filterProjects = (projects, searchQuery, year, department) => {
+    const parsedYear = year ? parseInt(year, 10) : null
+    return projects.filter(project => {
+      return project.title.toLowerCase().includes(searchQuery) &&
+        (!parsedYear || project.year === parsedYear) &&
+        (!department || project.department.toLowerCase() === department.toLowerCase());
+    }
+  );
+  }
 
   const uploadClick = (event) => {
     setClicked(true);
@@ -80,8 +83,8 @@ const FbmasStudent = () => {
 
   
 
-  const years = ["2020", "2021", "2022", "2023", "2024"];
-  const departments = ["Computer Science & Information sciences", "Nursing", "Biotech", "Microbiology"];
+  const years =  [2022, 2023, 2024, 2025, 2026];
+  const departments = ["Computer Science", "Information science", "Biotech", "Microbiology", "Medical lab.", "BioChemistry"];
 
   return (
     <div className='faculty-wrapper'>
@@ -90,6 +93,7 @@ const FbmasStudent = () => {
           <div className='faculty-wrapper-details-1' onClick={onRemovedesc}>
             <p>Title: {selectedProject.title}</p>
             <p>By: {selectedProject.projectBy}</p>
+            <p>Department: {selectedProject.department}</p>
             <p>Year: {selectedProject.year}</p>
             <p>Supervisor: {selectedProject.supervisor}</p>
 
@@ -106,18 +110,11 @@ const FbmasStudent = () => {
         ) : null}
       </div>
       <div className="HomeHeader-1">
-        <span style={{ fontSize: "60px", textDecoration: "underline red 10px" }}>FBMAS<br />E-REPOSITORY<br /></span>
+        <span style={{ fontSize: "60px", textDecoration: "underline #f97777 10px" }}>FBMAS<br />E-REPOSITORY<br /></span>
         <h5>Faculty of Basic Medical and Applied Sciences</h5>
       </div>
-      <div className="HomeLogo">
-        <img src={logo} style={{
-          width: "100px",
-          height: "100px",
-          position: "absolute",
-          top: "0px",
-          left: "0px",
-          padding: "10px"
-        }}
+      <div className="HomeLogoFaculty">
+        <img src={logo} 
           alt="" />
       </div>
 
@@ -131,7 +128,6 @@ const FbmasStudent = () => {
         />
         <select
           className='department-box-container'
-          value={selectedDepartment}
           onChange={onDepartmentChange}
         >
           <option value="">Departments</option>
@@ -141,7 +137,6 @@ const FbmasStudent = () => {
         </select>
         <select
           className='year-box'
-          value={selectedYear}
           onChange={handleYearChange}
         >
           <option value="">All Years</option>
@@ -150,11 +145,14 @@ const FbmasStudent = () => {
           ))}
         </select>
       </div>
-
+      {filteredProjects.length === 0 && <p style={{
+        fontSize:"40px",
+        textAlign:"center"
+      }}>Nothing found!!</p>}
       <div className="filtered-projects">
         {filteredProjects.map((project) => (
           <div key={project.id} className="project-card" onClick={() => onProjectClicked(project)}>
-            <h2 style={{ fontSize: "15px" }}>{project.title.slice(0,30)}....</h2>
+            <h2 style={{ }}>{project.title.slice(0,30)}....</h2>
             <h3> {project.projectBy}</h3>
             <p> {project.department}</p>
             <p> {project.supervisor}</p>

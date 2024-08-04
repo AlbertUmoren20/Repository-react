@@ -28,15 +28,15 @@ const HomePage = () => {
     <div className="HomePage" >
 
     <div className="parent-element">
+    <div className="HomeLogo">
+    <img src={logo}  
+       alt="">
+</img>
+</div>
         <div className="HomeHeader-home">
-             <h1>TRINITY UNIVERSITY<br/> E-REPOSITORY</h1>
-             <p>As the education sector grows, it must be utilized to the fullest extent possible. In order to enable students to access materials posted by faculty that will be easily accessible to classes that will graduate in the future</p>
+             <h1><span>TRINITY UNIVERSITY</span><br/> REPOSITORY</h1>
+             <p>As the education sector grows, it must be utilized to the fullest extent possible. In order to enable students to access materials uploaded by final year students that will be easily accessible to classes that will graduate in the future</p>
 
-             <div className="Home-Button" style={{
-                display:"flex",
-                justifyContent: "space-evenly",
-                 padding:"40px"
-            }}>
             <div className="LogSgn-btn">
             <Link to="/Login" className="LogIn-button" onClick={handleButtonClick}>Log In</Link>
             <Routes>
@@ -47,24 +47,11 @@ const HomePage = () => {
             <Route exact path="/SignUp" element={<SignUp/>} />
             </Routes>
             </div>
-           
-    </div>
+          
+ 
     </div>
 
     </div>
-        <div className="HomeLogo">
-             <img src={logo} style={
-                {   width: "500px",
-                    height: "300px",
-                    position: "absolute",
-                    top:"100px",
-                    right:"100px",
-                    padding:"10px",
-                    color: "transparent"    
-                }} 
-                alt="">
-        </img>
-        </div>
 
     
 

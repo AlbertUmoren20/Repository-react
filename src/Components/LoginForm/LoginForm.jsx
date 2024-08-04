@@ -53,18 +53,21 @@ const LoginForm = () => {
           }
           else if (response.ok) {
             const students = await response.json();
+            alert("Student Retrieved");
             navigate(`/StudentBody?fullName=${fullname}`);
             console.log("Students retrieved:", students);
-            alert("Student Retrieved");
+           
             // Use the retrieved students data here (e.g., display in UI)
           } else {
-            console.error("Error retrieving students:", await response.text());
             alert("Error Retrieving Student")
+            console.error("Error retrieving students:", await response.text());
+           
             // Handle potential errors during student retrieval
           }
         } catch (error) {
-          console.error("Error retrieving students:", error);
           alert("Error Retrieving Student")
+          console.error("Error retrieving students:", error);
+          
           // Handle unexpected errors (e.g., network issues)
         }
       
@@ -221,17 +224,12 @@ const LoginForm = () => {
 
 }}> 
   <div className="HomeHeader">
-  TRINITY UNIVERSITY E-REPOSITORY <br/> LOG IN
+  <span>TRINITY UNIVERSITY E-REPOSITORY</span> <br/> LOG IN
    </div>
-   <div className="HomeLogo">
-   <img src={logo} style={
-      {   width: "100px",
-          height: "100px",
-          position: "absolute",
-          top:"0px",
-          left:"0px",
-          padding:"10px"       
-      }} 
+   <div className="HomeLogoLGN">
+   <img src={logo} style={{
+   
+   }}
       alt="">
 </img>
 </div>
@@ -299,15 +297,7 @@ const LoginForm = () => {
        <option value="400">400</option>
       </select>
 
-  <button type="submit-btn" style={{display:"flex",   margin: "0",
-  position: "absolute",
-  top: "100%",
-  left:"42%",
-  fontSize:"20px",
-  cursor:"pointer",
-  height:"40px",
-  width:"80px",
-  transform: "translateY(-50%)"}}>Submit</button>
+  <button type="submit-btn" className = "SubmitLGN"style={{}}>Submit</button>
 
 </form>
 </div>

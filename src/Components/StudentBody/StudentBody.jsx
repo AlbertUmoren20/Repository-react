@@ -11,6 +11,7 @@ const StudentBody = () => {
   const navigate = useNavigate();
 
   const [clicked, setClicked] = useState(false);
+
   const handleButtOnClick = ()=>{
        setClicked(true);
        navigate("/Fbmas");
@@ -22,18 +23,13 @@ const StudentBody = () => {
     return (
 
         <div>
-        <div className="HomeHeader">
+        <div className="HomeHeader-Studentbody">
   Welcome, <br/> <span style={{fontSize:"60px", textDecoration: "underline #83D0FC 10px"}}> - {fullName} -</span>
    </div>
 
-   <div className="HomeLogo">
+   <div className="HomeLogoSB">
    <img src={logo} style={
-      {   width: "100px",
-          height: "100px",
-          position: "absolute",
-          top:"0px",
-          left:"0px",
-          padding:"10px"       
+      {       
       }} 
       alt="">
     </img>

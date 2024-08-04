@@ -19,19 +19,12 @@ const StudentBody400 = () => {
       return (
   
           <div>
-          <div className="HomeHeader">
+          <div className="HomeHeader-Studentbody">
     Welcome, <br/> <span style={{fontSize:"60px", textDecoration: "underline #83D0FC 10px"}}> - {fullName} -</span>
      </div>
   
-     <div className="HomeLogo">
-     <img src={logo} style={
-        {   width: "100px",
-            height: "100px",
-            position: "absolute",
-            top:"0px",
-            left:"0px",
-            padding:"10px"       
-        }} 
+     <div className="HomeLogo400">
+     <img src={logo}
         alt="">
       </img>
           </div>
@@ -42,7 +35,7 @@ const StudentBody400 = () => {
           <div className='faculty-container'>
             <button class='faculty-button' onClick={handleButtOnClick}>
               <h2>FBMAS</h2>
-              <p>Faculty of Basic Medical <br/> and Applied Sciences</p>
+              <p>Faculty of Basic Medicallll <br/> and Applied Sciences</p>
         </button>
            <button class='faculty-button-1' onClick={handleButtonOnClick}>
               <h2>FAMSS</h2>
