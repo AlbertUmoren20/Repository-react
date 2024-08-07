@@ -48,7 +48,7 @@ const LoginForm = () => {
             body: JSON.stringify(student),
             headers: { "Content-Type": "application/json" }, // Not strictly necessary for GET, but can be included
           });
-            if(student.level === 400){
+            if(student.level === "400"){
             navigate(`/StudentBody400Level?fullName=${fullname}`);
           }
           else if (response.ok) {
