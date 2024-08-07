@@ -148,6 +148,7 @@ const UploadProjectFbmas = () => {
         fontSize:"40px",
         textAlign:"center"
       }}>Nothing found!!</p>}
+      
       <div className="filtered-projects">
         {filteredProjects.map((project) => (
           <div key={project.id} className="project-card" onClick={() => onProjectClicked(project)}>

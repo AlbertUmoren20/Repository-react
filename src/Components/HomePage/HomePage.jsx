@@ -34,8 +34,8 @@ const HomePage = () => {
 </img>
 </div>
         <div className="HomeHeader-home">
-             <h1><span>TRINITY UNIVERSITY</span><br/> REPOSITORY</h1>
-             <p>As the education sector grows, it must be utilized to the fullest extent possible. In order to enable students to access materials uploaded by final year students that will be easily accessible to classes that will graduate in the future</p>
+             <h1>Trinity University<br/> Repository</h1>
+             <p>As the education sector grows, it must be utilized to the fullest extent possible. In order to enable students to access materials uploaded by final year students accessible to classes whom will graduate in the future</p>
 
             <div className="LogSgn-btn">
             <Link to="/Login" className="LogIn-button" onClick={handleButtonClick}>Log In</Link>

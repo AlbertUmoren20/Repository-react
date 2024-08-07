@@ -48,7 +48,7 @@ const LoginForm = () => {
             body: JSON.stringify(student),
             headers: { "Content-Type": "application/json" }, // Not strictly necessary for GET, but can be included
           });
-            if(student.level === "400"){
+            if(student.level === 400){
             navigate(`/StudentBody400Level?fullName=${fullname}`);
           }
           else if (response.ok) {
@@ -294,10 +294,10 @@ const LoginForm = () => {
        <option value="100">100</option>
        <option value="200">200</option>
        <option value="300">300</option>
-       <option value="400">400</option>
+       <option value= "400">400</option>
       </select>
 
-  <button type="submit-btn" className = "SubmitLGN"style={{}}>Submit</button>
+  <button type="submit-btn" className = "SubmitLGN">Submit</button>
 
 </form>
 </div>

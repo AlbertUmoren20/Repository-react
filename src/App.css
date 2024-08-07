@@ -85,8 +85,6 @@ code {
     font-size: 20px;
 }
 
-
-
 .container .remember-forgot{
     display: flex;
     justify-content: space-between;
@@ -295,7 +293,7 @@ button[type="submit-btn"]:hover {
     width: 200px;
     height: 100px;
     align-items: center;
-    top: 50px;
+    top: 0px;
     position: absolute;
     margin: 0 auto;
     left: 50%;
@@ -307,24 +305,23 @@ button[type="submit-btn"]:hover {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    position: unset;
   }
   
   .HomeHeader-home h1 {
-    font-size: 30px;
-    padding: 10px;
-    margin-bottom: 80px;
-    font-size: 35px;
-  }
-
-  .HomeHeader-home br{
-    display: none;
+      text-align: center;
+      width: 100%;
+      margin-top: 100px;
+      color: #4f3db3;
+      font-size: 50px;
   }
   
   .HomeHeader-home p {
     /* fill up the screen size */
-    position: relative;
-    bottom: 80px;
-    font-size: 30px;
+   text-align: auto;
+   color: rgb(4, 7, 69);
+   font-size: 32px;
+   
   }
   
   
@@ -332,9 +329,8 @@ button[type="submit-btn"]:hover {
     width: 100%; /* fill up the screen size */
     display: flex;
     margin-bottom: 50px;
-    margin-top: 60px;
-    position: relative;
-    bottom: 120px;
+    margin-top: 20px;
+    position: unset;
     font-size: 100px;
   }
   .LogIn-button{
@@ -658,1079 +654,187 @@ select.my-select-class{
      /*LOG IN SCREEN SIZES*/
              
 /* Mobile devices */
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  /* Your styles here */
-  .Rectangle{
-    height: 80vh;
-    width: 100%;
+@media screen and (max-width: 600px) {
+  .HomeHeader span{
+    display: none;
+  }
+  .Rectangle {
+    height: auto; /* Make height auto to adjust based on content */
+    width: 100%; /* Use 100% width for responsiveness */
+    max-width: 600px; /* Max width to control the width */
     position: relative;
     background-color: #83D0FC;
     margin: auto;
     top: 15px;
-    box-shadow:10px 14px 10px 15px #83D0FC;
-  }
-  .HomeHeader span{
-    display: none;
-  }
-  .HomeLogoLGN img{
-        width: 100px;
-         height: 100px;
-         position: absolute;
-         top:10px;
-         left:10px;
-         padding:10px;  
+    box-shadow: 10px 14px 10px 15px #83D0FC;
+    padding: 20px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
   }
   
-button[type="submit-btn"] {
-  background-color: white;
-  color: black;
-  width: 30%;
-  height: 50px;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(88, 87, 87, 0.123);
-}
-button[type="submit-btn"]:hover {
-  background-color: black;
-  color: white;
-  width: 30%;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-}
-.SubmitLGN{
-  display: flex;
-  margin: 0px;
-  position: absolute;
-  top: 445px;
-  left:130px; 
-  font-size:20px;
-  cursor: pointer;
-  transform: translateY(-50%)
-} 
-}
-
-/* iPads and tablets */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  /* Your styles here */
-  .Rectangle{
-    height: 85vh;
-    width: 100%;
-    position: relative;
-    background-color: #83D0FC;
-    margin: auto;
-    bottom: 100px;
-    box-shadow:10px 14px 10px 15px #83D0FC;
-  }
-  .HomeHeader span{
-    display: none;
-  }
-  .HomeHeader{
-    font-size: 35px;
-  }
- 
-  .HomeLogoLGN img{
-        width: 100px;
-         height: 100px;
-         position: absolute;
-         top:10px;
-         left:10px;
-         padding:10px;  
+  .login-form-container input,
+  select.my-select-class {
+    width: calc(100% - 100px); /* Adjust width to account for the margin */
+    height: 30px;
+    margin-left: 50px;
+    font-family: "Katibeh", serif;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 15px; /* Add margin for spacing between inputs */
   }
   
-button[type="submit-btn"] {
-  background-color: white;
-  color: black;
-  width: 30%;
-  height: 50px;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(88, 87, 87, 0.123);
-}
-button[type="submit-btn"]:hover {
-  background-color: black;
-  color: white;
-  width: 30%;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-}
-.SubmitLGN{
-  display: flex;
-  margin: 0px;
-  position: absolute;
-  top: 740px;
-  left: 260px; 
-  font-size:30px;
-  cursor: pointer;
-  transform: translateY(-50%)
-}
-.login-form-label {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-family: "Katibeh", serif;
-  font-size: 45px;
-  padding: 15px;
-}
-.login-form-container input#fullName{
-  width: 80%;
-  height: 50px;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-.login-form-container input#matricnumber{
-  width: 80%;
-  height: 50px;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-.login-form-container input#password{
+  select.my-select-class {
+    height: 50px; /* Keep the height for the select */
     width: 80%;
-    height: 50px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 40px;
-}
-.login-form-container input#email{
-    width: 80%;
-    height: 50px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 40px;
-}
-select.my-select-class{
-  width: 80%;
-  height: 70px;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-}
-
-/* Small screens and laptops */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  /* Your styles here */
-  .Rectangle{
-    height: 85vh;
-    width: 100%;
-    position: relative;
-    background-color: #83D0FC;
-    margin: auto;
-    bottom: 100px;
-    box-shadow:10px 14px 10px 15px #83D0FC;
-  }
-
-  .HomeHeader span{
-    display: none;
-  }
-  .HomeHeader{
-    font-size: 45px;
-  }
- 
-  .HomeLogoLGN img{
-        width: 100px;
-         height: 100px;
-         position: absolute;
-         top:10px;
-         left:10px;
-         padding:10px;  
   }
   
-button[type="submit-btn"] {
-  background-color: white;
-  color: black;
-  width: 30%;
-  height: 50px;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(88, 87, 87, 0.123);
-}
-button[type="submit-btn"]:hover {
-  background-color: black;
-  color: white;
-  width: 30%;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-}
-.SubmitLGN{
-  display: flex;
-  margin: 0px;
-  position: absolute;
-  top: 790px;
-  left: 300px; 
-  font-size:30px;
-  cursor: pointer;
-  transform: translateY(-50%)
-}
-.login-form-label {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-family: "Katibeh", serif;
-  font-size: 45px;
-  padding: 15px;
-}
-.login-form-container input#fullName{
-  width: 80%;
-  height: 50px;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-.login-form-container input#matricnumber{
-  width: 80%;
-  height: 50px;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-.login-form-container input#password{
-    width: 80%;
-    height: 50px;
-    margin-left: 50px;
+  .login-form-label {
+    display: block; /* Change to block for better alignment */
+    text-align: center;
+    font-weight: bold;
     font-family: "Katibeh", serif;
-    font-size: 40px;
-}
-.login-form-container input#email{
-    width: 80%;
-    height: 50px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 40px;
-}
-select.my-select-class{
-  width: 80%;
-  height: 70px;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-}
-
-/* Desktops and large screens */
-@media screen and (min-width: 1025px) and (max-width: 1200px) {
-  /* Your styles here */
-  .Rectangle{
-    height:125vh;
-    width: 100%;
-    position: relative;
-    background-color: #83D0FC;
-    margin: auto;
-    bottom: 100px;
-    box-shadow:10px 14px 10px 15px #83D0FC;
-  }
-  .HomeHeader span{
-    display: none;
-  }
-  .HomeHeader{
     font-size: 25px;
-  }
- 
-  .HomeLogoLGN img{
-        width: 100px;
-         height: 100px;
-         position: absolute;
-         top:10px;
-         left:10px;
-         padding:10px;  
+    margin-bottom: 10px; /* Add margin for spacing */
   }
   
-button[type="submit-btn"] {
-  background-color: white;
-  color: black;
-  width: 30%;
-  height: 50px;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(88, 87, 87, 0.123);
-}
-button[type="submit-btn"]:hover {
-  background-color: black;
-  color: white;
-  width: 30%;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-}
-.SubmitLGN{
-  display: flex;
-  margin: 0px;
-  position: absolute;
-  top: 790px;
-  left: 390px; 
-  font-size:30px;
-  cursor: pointer;
-  transform: translateY(-50%)
-}
-.login-form-label {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-family: "Katibeh", serif;
-  font-size: 45px;
-  padding: 15px;
-}
-.login-form-container input#fullName{
-  width: 80%;
-  height: 50px;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-.login-form-container input#matricnumber{
-  width: 80%;
-  height: 50px;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-.login-form-container input#password{
-    width: 80%;
-    height: 50px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 40px;
-}
-.login-form-container input#email{
-    width: 80%;
-    height: 50px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 40px;
-}
-select.my-select-class{
-  width: 80%;
-  height: 70px;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 40px;
-}
-}
-
-/* Extra-large screens and TVs */
-@media screen and (min-width: 1201px) {
-  /* Your styles here */
-  .SubmitLGN{
-    display: flex;
-    margin: 0px;
-    position: absolute;
-    top: 420px;
-    left: 210px; 
-    font-size:20px;
-    cursor: pointer;
-    transform: translateY(-50%)
+  .Body-text {
+    text-align: right;
   }
+  
+  .Body-text h1 {
+    font-size: 35px;
+    font-family: "Katibeh", serif;
+    margin: 15px; /* Adjust margin for better spacing */
+  }
+  
+  .SignUp-button1 {
+    cursor: pointer;
+  }
+  .SubmitLGN {
+    width: calc(100% - 100px); /* Adjust width to account for margin */
+    height: 40px; /* Define height */
+    /* Margin to center the button with other inputs */
+    color: white; /* Text color */
+    font-family: "Katibeh", serif;
+    font-size: 20px;
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: block; /* Ensure it’s a block element */
+     /* Add margin on top for spacing */
+    margin: 0 auto;
+    position: unset;
+    margin-top: 45px;
+  }
+  
+
+  
 }
 
   
              /*SIGN UP SCREEN SIZES*/
                 /* SIGN-UP PAGE */
 
-.wrapper{
-  height: 72vh;
-  width: 550px;
-  position: relative;
+/* General Styles */
+.wrapper {
+  height: auto; /* Allow height to adjust based on content */
+  width: 100%; /* Full width for responsiveness */
+  max-width: 550px; /* Limit max width */
   background-color: white;
   margin: auto;
   top: 15px;
-  box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
-  
-}
-.wrapper input{
-  font-weight: bold;
-  font-size: 28px;
-}
-.smallBox::placeholder{
-  text-align: center;
-}
-.smallBox1::placeholder{
-  text-align: center;
-}
-.smallBox2::placeholder{
-  text-align: center;
-}
-.smallBox3::placeholder{
-  text-align: center;
+  box-shadow: 5px 5px 15px 5px rgb(6, 6, 124);
+  padding: 20px; /* Add padding for spacing */
+  box-sizing: border-box; /* Include padding in element's total width */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center contents horizontally */
 }
 
-.smallBox4::placeholder{
-  text-align: center;
-}
-
-.smallBox5::placeholder{
-  text-align: center;
-}
-.smallBox6::placeholder{
-  text-align: center;
-}
-
-.smallBox{
+/* Form Inputs */
+.wrapper input,
+select.smallBox7 {
+  width: 100%; /* Adjust width to fit container */
   height: 60px;
-  width: 240px;
-  font-family: "Katibeh", serif;
   background-color: #83D0FC;
-  position:relative;
+  font-family: "Katibeh", serif;
   border: none;
-  top: 10px;
-  left: 40px;
   border-radius: 6%;
+  margin: 10px 0; /* Space between inputs */
+  font-size: 20px; /* Adjust font size for better fit */
 }
 
-.smallBox1{
-  height: 60px;
-  border: none;
-  width: 240px;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 80px;
-  right: 50px;
-  border-radius: 6%;
+.wrapper input::placeholder {
+  text-align: center; /* Center placeholder text */
 }
 
-.smallBox4{
-  height: 60px;
-  width: 240px;
-  border: none;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 90px;
-  right: 10px;
-  border-radius: 6%;
+.wrapper select.smallBox7 {
+  font-size: 25px; /* Adjust font size for select box */
 }
 
-.smallBox5{
+/* Button */
+button.submitSGN {
+  width: 100%; /* Full width */
   height: 60px;
-  width: 240px;
-  border: none;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 100px;
-  left:40px;
-  border-radius: 6%
-}
-.smallBox6{
-  height: 60px;
-  width: 240px;
-  border: none;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 170px;
-  right:10px;
+  font-size: 20px; /* Adjust font size */
+  background-color: #469ae8;
+  color: white;
+  border: 2px solid gray;
   border-radius: 6%;
-}
-.smallBox7{
-  height: 60px;
-  width: 240px;
-  border: none;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 180px;
-  left:40px;
-  border-radius: 6%;
-  font-size: 25px;
-}
-
-.wrapper form{
-  width: 100%;
-}
-.Login-button1{
+  margin: 20px 0; /* Space above and below button */
   cursor: pointer;
 }
-.LogText{
-  position: relative;
-  text-align: right;
-  font-family: "Katibeh", serif;
-  top: 19px;
-}
 
-.wrapper input[type="text"] {
-  padding: 10px;
-}
-button.submitSGN{
-  display: flex;
-  margin: 0px;
-  position: absolute;
-  top: 400px;
-  left: 42%;
-  font-size: 15px;
-  transform: translateY(-50%);
-  padding: 10px;
-  color: white;
-  background-color: #469ae8;
-  border: 2px solid gray;
-}
-
-.HomeLogoSGN img{
+/* Logo Styles */
+.HomeLogoSGN img {
   width: 100px;
-   height: 100px;
-   position: absolute;
-   top:0px;
-   left:0px;        
-   padding:10px       
-} 
-.HomeHeader h1{
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+/* Header */
+.HomeHeader {
+  text-align: center;
+}
+
+.HomeHeader h1 {
   font-size: 30px;
 }
 
+/* Log Text */
+.LogText {
+  text-align: center;
+  font-family: "Katibeh", serif;
+  margin-top: 20px; /* Space above text */
+}
+
+/* Media Query for Responsive Layout */
+@media screen and (max-width: 600px) {
+  .wrapper {
+    width: 90%; /* Reduce width for smaller screens */
+    box-shadow: none; /* Remove shadow for smaller screens */
+    padding: 10px; /* Reduce padding */
+  }
+
+  button.submitSGN {
+    width: 100%; /* Full width button */
+    max-width: none; /* Remove max-width constraint */
+  }
+
+  .HomeLogoSGN img {
+    width: 80px; /* Reduce logo size */
+    height: 80px;
+  }
+
+  .HomeHeader h1 {
+    font-size: 24px; /* Reduce header font size */
+  }
+}
+
 /*Mobile Screen Size*/
-@media screen and (min-width: 320px) and (max-width: 428px){
-  .HomeLogoSGN img{
-       width: 100px;
-        height: 100px;
-        position: absolute;
-        top:0px;
-        left:0px;            
-    } 
- 
-  .HomeHeader{
-    text-align: center;
-    font-family: "Katibeh", serif;
-  }
-  .HomeHeader h1{
-    font-size: 40px;
-  }
 
-  .wrapper{
-  height: 500px;
-  width: 95%;
-  position: relative;
-  background-color: white;
-  margin: auto;
-  top: 15px;
-  box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
-}
 
-.wrapper input{
-  font-weight: bold;
-  font-size: 28px;
-}
-.smallBox{
-  height: 60px;
-  width: 300px;
-  font-family: "Katibeh", serif;
-  background-color: #83D0FC;
-  position:relative;
-  border: none;
-  top: 60px;
-  left: 40px;
-  border-radius: 6%;
-}
-
-.smallBox4{
-  height: 60px;
-  border: none;
-  width: 300px;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 80px;
-  left: 40px;
-  border-radius: 6%;
-}
-.smallBox5{
-  height: 60px;
-  border: none;
-  width: 300px;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 100px;
-  left: 40px;
-  border-radius: 6%;
-}
-.smallBox6{
-  height: 60px;
-  border: none;
-  width: 300px;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 120px;
-  left: 40px;
-  border-radius: 6%;
-}
-.smallBox7{
-  height: 60px;
-  border: none;
-  width: 300px;
-  background-color: #83D0FC;
-  font-family: "Katibeh", serif;
-  position: relative;
-  top: 140px;
-  left: 40px;
-  border-radius: 6%;
-}
-button.submitSGN{
-  display: flex;
-  margin: 0px;
-  position: absolute;
-  top: 471px;
-  left: 33%;
-  font-size: 20px;
-  transform: translateY(-50%);
-  background-color: #83D0FC;
-  color: rgb(115, 109, 109);
-  padding: 10px;
-  border: 2px solid gray;
-}
-.LogText{
-  margin-top: 10px;
-  width: 100%;
-}
-    }
-
-@media screen and (min-width: 429px) and (max-width: 480px){
-  .HomeLogoSGN img{
-    width: 100px;
-     height: 100px;
-     position: absolute;
-     top:0px;
-     left:0px;        
-     padding:10px       
- } 
-
-.HomeHeader{
- text-align: center;
- font-family: "Katibeh", serif;
- font-weight: 400;
- font-style: normal;
-}
-  .HomeHeader h1{
-    font-size: 40px;
-  }
-
-.wrapper{
-height: 500px;
-width: 95%;
-position: relative;
-background-color: white;
-margin: auto;
-top: 15px;
-box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
-}
-
-.wrapper input{
-font-weight: bold;
-font-size: 28px;
-}
-.smallBox{
-height: 60px;
-width: 300px;
-font-family: "Katibeh", serif;
-background-color: #83D0FC;
-position:relative;
-border: none;
-top: 60px;
-left: 20px;
-border-radius: 6%;
-}
-
-.smallBox4{
-height: 60px;
-border: none;
-width: 300px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 80px;
-left: 20px;
-border-radius: 6%;
-}
-.smallBox5 {
-height: 60px;
-border: none;
-width: 300px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 100px;
-left: 20px;
-border-radius: 6%;
-}
-.smallBox6{
-height: 60px;
-border: none;
-width: 300px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 120px;
-left: 20px;
-border-radius: 6%;
-}
-.smallBox7{
-height: 60px;
-border: none;
-width: 300px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 140px;
-left: 20px;
-border-radius: 6%;
-}
-button.submitSGN{
-display: flex;
-margin: 0px;
-position: absolute;
-top: 480px;
-left: 39%;
-font-size: 20px;
-transform: translateY(-50%);
-}
-.LogText h1{
-font-size: 25px;
-width: 100%;
-}
-    }
-@media screen and (min-width: 481px) and (max-width: 768px ) {
-  .HomeLogoSGN img{
-    width: 100px;
-     height: 100px;
-     position: absolute;
-     top:0px;
-     left:0px;        
-     padding:10px       
- } 
-
-.HomeHeader{
- text-align: center;
- font-family: "Katibeh", serif;
- font-weight: 400;
- font-style: normal;
-}
-.HomeHeader h1{
-  font-size: 40px;
-}
-
-.wrapper{
-height: 700px;
-width: 95%;
-position: relative;
-background-color: white;
-margin: auto;
-top: 15px;
-box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
-}
-
-.wrapper input{
-font-weight: bold;
-font-size: 28px;
-}
-.smallBox{
-height: 100px;
-width: 340px;
-font-family: "Katibeh", serif;
-background-color: #83D0FC;
-position:relative;
-border: none;
-top: 60px;
-left: 20px;
-border-radius: 6%;
-}
-
-.smallBox4{
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 170px;
-
-border-radius: 6%;
-}
-.smallBox5 {
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 180px;
-left: 20px;
-border-radius: 6%;
-}
-.smallBox6{
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 290px;
-border-radius: 6%;
-}
-.smallBox7{
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 300px;
-left: 20px;
-border-radius: 6%;
-}
-button.submitSGN{
-display: flex;
-margin: 0px;
-position: absolute;
-top: 650px;
-left: 39%;
-font-size: 20px;
-transform: translateY(-50%);
-padding: 20px;
-color: white;
-background-color: #469ae8;
-}
-.LogText h1{
-font-size: 39px;
-padding: 20px;
-width: 100%;
-}
-}
-  /* Small screens and laptops */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  /* Your styles here */
- 
-.HomeLogoSGN img{
-    width: 100px;
-     height: 100px;
-     position: absolute;
-     top:0px;
-     left:0px;        
-     padding:10px       
- } 
-
-.HomeHeader {
- text-align: center;
- font-family: "Katibeh", serif;
- font-weight: 400;
- font-style: normal;
-}
-.HomeHeader h1{
-  font-size: 40px;
-}
-
-.wrapper{
-height: 750px;
-width: 95%;
-position: relative;
-background-color: white;
-margin: auto;
-top: 15px;
-box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
-}
-
-.wrapper input{
-font-weight: bold;
-font-size: 28px;
-}
-.smallBox{
-height: 100px;
-width: 340px;
-font-family: "Katibeh", serif;
-background-color: #83D0FC;
-position:relative;
-border: none;
-top: 60px;
-left: 20px;
-border-radius: 6%;
-}
-
-.smallBox4{
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 170px;
-left: 20px;
-
-border-radius: 6%;
-}
-.smallBox5 {
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 190px;
-left: 40px;
-border-radius: 6%;
-
-}
-.smallBox6{
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 300px;
-left: 20px;
-border-radius: 6%;
-}
-.smallBox7{
-height: 100px;
-border: none;
-width: 340px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 300px;
-left: 20px;
-border-radius: 6%;
-}
-button.submitSGN{
-display: flex;
-margin: 0px;
-position: absolute;
-top: 700px;
-left: 39%;
-font-size: 20px;
-transform: translateY(-50%);
-padding: 20px;
-color: white;
-background-color: #469ae8;
-}
-.LogText h1{
-font-size: 39px;
-padding: 20px;
-width: 100%;
-} 
-}
-
-@media screen and (min-width: 1025px) and (max-width: 1200px){
-  .HomeLogoSGN img{
-    width: 100px;
-     height: 100px;
-     position: absolute;
-     top:0px;
-     left:0px;        
-     padding:10px       
- } 
-
-.HomeHeader {
- text-align: center;
- font-family: "Katibeh", serif;
- font-weight: 400;
- font-style: normal;
-}
-.HomeHeader h1{
-  font-size: 40px;
-}
-
-.wrapper{
-width: 95%;
-height: 120vh;
-position: relative;
-background-color: white;
-margin: auto;
-top: 15px;
-box-shadow:5px 5px 15px 5px rgb(6, 6, 124);
-}
-
-.wrapper input{
-font-weight: bold;
-font-size: 28px;
-}
-.smallBox{
-height: 100px;
-width: 1000px;
-font-family: "Katibeh", serif;
-background-color: #83D0FC;
-position:relative;
-border: none;
-top: 60px;
-left: 20px;
-border-radius: 6%;
-}
-
-.smallBox4{
-height: 100px;
-width: 1000px;
-border: none;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 90px;
-left: 20px;
-border-radius: 6%;
-}
-.smallBox5 {
-height: 100px;
-width: 1000px;
-border: none;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 120px;
-left: 20px;
-border-radius: 6%;
-}
-
-.smallBox6{
-height: 100px;
-border: none;
-width: 1000px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 140px;
-left: 20px;
-border-radius: 6%;
-}
-.smallBox7{
-height: 100px;
-border: none;
-width: 1000px;
-background-color: #83D0FC;
-font-family: "Katibeh", serif;
-position: relative;
-top: 160px;
-left: 20px;
-border-radius: 6%;
-}
-
-button.submitSGN{
-display: flex;
-margin: 0px;
-position: absolute;
-top: 750px;
-left: 42%;
-font-size: 25px;
-transform: translateY(-50%);
-padding: 20px;
-color: white;
-background-color: #469ae8;
-}
-
-.LogText h1{
-font-size: 39px;
-padding: 20px;
-width: 100%;
-} 
-
-}
 
  
 
