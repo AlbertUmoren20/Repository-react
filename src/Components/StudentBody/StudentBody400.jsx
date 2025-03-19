@@ -24,7 +24,7 @@ const StudentBody400 = () => {
      </div>
   
      <div className="HomeLogo400">
-     <img src={logo}
+     <img src={logo}     
         alt="">
       </img>
           </div>
@@ -35,7 +35,7 @@ const StudentBody400 = () => {
           <div className='faculty-container'>
             <button class='faculty-button' onClick={handleButtOnClick}>
               <h2>FBMAS</h2>
-              <p>Faculty of Basic Medicallll <br/> and Applied Sciences</p>
+              <p>Faculty of Basic Medical <br/> and Applied Sciences</p>
         </button>
            <button class='faculty-button-1' onClick={handleButtonOnClick}>
               <h2>FAMSS</h2>

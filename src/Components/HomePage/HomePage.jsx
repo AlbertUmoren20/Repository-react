@@ -13,6 +13,7 @@ import logo9 from "../Assets/icons8-document-48 2.png"
 import logo10 from "../Assets/Rectangle 30 (1).png"
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Register from "../Register/Register"
 import LoginForm from "../LoginForm/LoginForm";
 import SignUp from "../SignUp/SignUp";
 import bodyimage from "../Assets/eB0MfDXYTWFrQ7m1N.png"
@@ -38,13 +39,19 @@ const HomePage = () => {
              <p>As the education sector grows, it must be utilized to the fullest extent possible. In order to enable students to access materials uploaded by final year students accessible to classes whom will graduate in the future</p>
 
             <div className="LogSgn-btn">
-            <Link to="/Login" className="LogIn-button" onClick={handleButtonClick}>Log In</Link>
+            {/*<Link to="/Login" className="LogIn-button" onClick={handleButtonClick}>Log In</Link>
             <Routes>
             <Route exact path="/Login" element={<LoginForm/>} />
-            </Routes>
-            <Link to="/SignUp" className="SignUp-button" onClick={handleButtonClick}>Sign Up</Link>
+            </Routes> */}
+
+            {/*<Link to="/SignUp" className="SignUp-button" onClick={handleButtonClick}>Sign Up</Link>
+             <Routes>
+             <Route exact path="/SignUp" element={<SignUp/>} />
+             </Routes>*/} 
+
+            <Link to="/Register" className="SignUp-button" onClick={handleButtonClick}>Register</Link>
             <Routes>
-            <Route exact path="/SignUp" element={<SignUp/>} />
+            <Route exact path="/Register" element={<Register/>} />
             </Routes>
             </div>
           
