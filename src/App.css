@@ -1596,13 +1596,13 @@ form{width: 100%;}
 .btn{
     width: 70%;
     height: 48px;
-    background: #7494ec;
+    background: #83D0FC;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border: none;
     cursor: pointer;
     font-size: 16px;
-    color: #fff;
+    color: black;
     font-weight: 600;
   }
 
@@ -1631,7 +1631,7 @@ form{width: 100%;}
   left: -250%;
   width: 300%;
   height: 100%;
-  background: #7494ec;
+  background: #83D0FC;
   /* border: 2px solid red; */
   border-radius: 150px;
   z-index: 2;
@@ -1644,7 +1644,7 @@ form{width: 100%;}
   width: 50%;
   height: 100%;
   /* background: seagreen; */
-  color: #fff;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1678,7 +1678,7 @@ form{width: 100%;}
   width: 160px;
   height: 46px;
   background: transparent;
-  border: 2px solid #fff;
+  border: 2px solid black;
   box-shadow: none;
 }
 .toggle-panel-register h1{

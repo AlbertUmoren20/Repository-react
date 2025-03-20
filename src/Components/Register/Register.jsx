@@ -15,6 +15,7 @@ import {
 
 const App = () => {
   const [isLoginVisible, setIsLoginVisible] = useState(true);
+  const [clicked, setClicked] = useState(false);
      const [fullname, setfullname] = useState('');
       const [matricnumber, setmatricnumber] = useState('');
       const [password, setpassword] = useState('');
@@ -71,6 +72,40 @@ const App = () => {
     // Code to handle form data storage or other actions (optional)
     // ...
   };
+
+  const handleRegister = async (event) =>{
+    event.preventDefault();
+    const student = { fullname, matricnumber, password, email, level};
+  
+    // This is for adding a new student into the database
+    try {
+      const response = await fetch("http://localhost:8080/student/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(student),
+      });
+  
+      if (response.ok) {
+        console.log("New Student Added");
+        navigate('/Login');
+        alert("New Student Added");
+        // Update UI or display success message to user
+      } else {
+        console.error("Error adding student:", await response.text(), 1500);
+        // Handle potential errors during student addition (e.g., display error message to user)
+      }
+    } catch (error) {
+      console.error("Error adding student:", error);
+      // Handle unexpected errors (e.g., network issues)
+    } finally {
+      // Code to be executed regardless of success or failure (e.g., reset form)
+    }
+  }
+
+ const handleButtonClick = ()=>{
+   setClicked(true);
+   navigate('/Login');
+ }
  
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -112,7 +147,13 @@ const App = () => {
           setlevel={setlevel}
         />
       ) : (
-        <RegisterForm handleSubmit={handleSubmit} />
+        <RegisterForm handleSubmit={handleSubmit} fullname={fullname}
+        setfullname={setfullname}
+        password={password}
+        handleChange={handleChange}
+        email={email}
+        level={level}
+        setlevel={setlevel} />
        )}
       </div>
 
@@ -217,21 +258,26 @@ const LoginForm = (
 };
 
 const RegisterForm = ({
- handleSubmit
+  handleRegister,
+  fullname,
+  setfullname,
+   email,
+    password
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleRegister}>
       <h1>Registration</h1>
       <div className="input-box-register">
-        <input type="text" placeholder="Username" required />
+        <input type="text" placeholder="Fullname" value={fullname}
+        onChange={(e) => setfullname(e.target.value)} required />
         <i className="bx bxs-user"></i>
       </div>
       <div className="input-box-register">
-        <input type="email" placeholder="Email" required />
+        <input type="email" placeholder="Email" value={email} required />
         <i className="bx bxs-envelope"></i>
       </div>
       <div className="input-box-register">
-        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Password" value={password} required />
         <i className="bx bxs-lock-alt"></i>
       </div>
       <button type="submit" className="btn">
