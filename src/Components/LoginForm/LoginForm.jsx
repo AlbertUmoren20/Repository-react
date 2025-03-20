@@ -34,7 +34,6 @@ const LoginForm = () => {
       })
 
       const navigate = useNavigate()
-      
    
       const handleSubmit = async (event) => {
         event.preventDefault();
