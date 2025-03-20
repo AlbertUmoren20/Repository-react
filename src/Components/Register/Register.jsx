@@ -260,6 +260,7 @@ const LoginForm = (
 const RegisterForm = ({
   handleRegister,
   fullname,
+  handleChange,
   setfullname,
    email,
     password
@@ -273,11 +274,11 @@ const RegisterForm = ({
         <i className="bx bxs-user"></i>
       </div>
       <div className="input-box-register">
-        <input type="email" name="email" placeholder="Email" value={email} required />
+        <input type="email" name="email" placeholder="Email" value={email}   onChange={handleChange}required />
         <i className="bx bxs-envelope"></i>
       </div>
       <div className="input-box-register">
-        <input type="password" name="password" placeholder="Password" value={password} required />
+        <input type="password" name="password" placeholder="Password" value={password}   onChange={handleChange} required />
         <i className="bx bxs-lock-alt"></i>
       </div>
       <button type="submit" className="btn">
