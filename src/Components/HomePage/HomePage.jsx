@@ -36,7 +36,7 @@ const HomePage = () => {
 </div>
         <div className="HomeHeader-home">
              <h1>Trinity University<br/> Repository</h1>
-             <p>As the education sector grows, it must be utilized to the fullest extent possible. In order to enable students to access materials uploaded by final year students accessible to classes whom will graduate in the future</p>
+             <p>As the education sector grows, so does the need to make learning resources more accessible and secure. This e-repository is your go-to platform for exploring and preserving final year projects Think of it as a digital library built by students, for students. Whether you're looking for inspiration, reference materials, or a way to ensure your hard work lasts for future generations, this platform is here to help. Let's build a legacy of knowledge together!</p>
 
             <div className="LogSgn-btn">
             {/*<Link to="/Login" className="LogIn-button" onClick={handleButtonClick}>Log In</Link>

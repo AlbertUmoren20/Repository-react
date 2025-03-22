@@ -49,13 +49,14 @@ const App = () => {
         if(student.level === "400"){
         navigate(`/StudentBody400Level?fullName=${fullname}`);
       }
+        // Use the retrieved students data here (e.g., display in UI)
       else if (response.ok) {
         const students = await response.json();
         alert("Student Retrieved");
         navigate(`/StudentBody?fullName=${fullname}`);
         console.log("Students retrieved:", students);
        
-        // Use the retrieved students data here (e.g., display in UI)
+      
       } else {
         alert("Error Retrieving Student")
         console.error("Error retrieving students:", await response.text());
@@ -75,7 +76,7 @@ const App = () => {
 
   const handleRegister = async (event) =>{
     event.preventDefault();
-    const student = { fullname, matricnumber, password, email, level};
+    const student = { fullname, matricnumber, password, email, level, };
   
     // This is for adding a new student into the database
     try {
@@ -153,7 +154,9 @@ const App = () => {
         handleChange={handleChange}
         email={email}
         level={level}
-        setlevel={setlevel} />
+        setlevel={setlevel}
+        matricnumber={matricnumber} 
+        setMatricnumber={setmatricnumber}/>
        )}
       </div>
 
@@ -213,7 +216,7 @@ const LoginForm = (
         value={email}
         onChange={handleChange}
         required />
-        <i className="bx bxs-lock-alt"></i>
+        <i className="bx bxs-envelope"></i>
       </div>
 
       <label className="input-box-register" ></label>
@@ -263,7 +266,9 @@ const RegisterForm = ({
   handleChange,
   setfullname,
    email,
-    password
+    password,
+    level, setlevel, 
+    matricnumber, setMatricnumber
 }) => {
   return (
     <form onSubmit={handleRegister}>
@@ -281,6 +286,26 @@ const RegisterForm = ({
         <input type="password" name="password" placeholder="Password" value={password}   onChange={handleChange} required />
         <i className="bx bxs-lock-alt"></i>
       </div>
+      <div className="input-box-register">
+        <input type="matricnumber" placeholder="Matricnumber" value={matricnumber}
+        onChange={(e) => setMatricnumber(e.target.value)} required />
+        <i className="bx bxs-user"></i>
+      </div>
+  
+      <label className="input-box-register" ></label>
+      <select 
+       className="level-register"
+       value={level} 
+       onChange={(e) => setlevel(e.target.value)}
+       required>
+       <option value="">Pick Level</option>
+       <option value="100">100</option>
+       <option value="200">200</option>
+       <option value="300">300</option>
+       <option value= "400">400</option>
+       <i className="bx bxs-lock-alt"></i>
+      </select>
+
       <button type="submit" className="btn">
         Register
       </button>

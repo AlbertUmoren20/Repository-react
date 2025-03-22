@@ -50,7 +50,7 @@ const AttachProject = () => {
 
   return (
     <div>
-    <div className="HomeHeader" style={{ fontSize: "30px", textDecoration: "underline red 10px" }}>
+    <div className="HomeHeader" style={{ fontSize: "30px", textDecoration: "underline #f97777 10px" }}>
     UPLOAD FBMAS <br/> PROJECT
      </div>
 

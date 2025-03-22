@@ -171,7 +171,7 @@ code {
  margin-bottom: 20px;
 }
 .HomeHeader-home p{
-  font-size: 30px;
+  font-size: 25px;
   display: inline-block;
 }
 
@@ -210,18 +210,16 @@ code {
   cursor: pointer;
   padding: 20px 20px;
   text-decoration: none;
-  margin: 4px 2px;
   cursor: pointer;
   font-size: 25px;
   border-radius:15px;
-  margin: 5px;
-  
+  margin: 5px;  
 }
 .LogSgn-btn{
   position: absolute;
   left: 10px;
 }
-.LogIn-button{
+/* .LogIn-button{
   font-family: "Katibeh", serif;
   background: #83D0FC;
   border: none;
@@ -231,9 +229,9 @@ code {
   margin: 4px 2px;
   cursor: pointer;
   transition: background-color 0.3s; /* Smooth transition */
-  font-size: 25px;
-  border-radius:15px;
-}
+  /* font-size: 25px; */
+  /* border-radius:15px; */
+/* } */ 
 
 .LogIn-button:hover {
   /* Hover style */
@@ -292,14 +290,13 @@ button[type="submit-btn"]:hover {
 @media screen and (min-width: 320px) and (max-width: 428px) {
   /* Your styles here */
   .HomeLogo img{
-    width: 200px;
-    height: 100px;
-    align-items: center;
+    width: 40%;
+    height: auto;
+    transform: none;
     top: 0px;
-    position: absolute;
+    position: relative;
     margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     padding: 10px;
   }
   .HomeHeader-home {
@@ -307,22 +304,24 @@ button[type="submit-btn"]:hover {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    position: unset;
+    position: relative;
+    margin-top: -160px;
   }
   
   .HomeHeader-home h1 {
       text-align: center;
       width: 100%;
-      margin-top: 100px;
+      margin-top: 20px;
       color: #4f3db3;
-      font-size: 50px;
+      font-size: 2rem;
   }
   
   .HomeHeader-home p {
     /* fill up the screen size */
-   text-align: auto;
+   text-align: center;
    color: rgb(4, 7, 69);
-   font-size: 32px;
+   font-size: 1.2rem;
+   margin: 10px 20px;
    
   }
   
@@ -330,18 +329,16 @@ button[type="submit-btn"]:hover {
   .LogSgn-btn {
     width: 100%; /* fill up the screen size */
     display: flex;
-    margin-bottom: 50px;
+    justify-content: center;
+    margin-bottom: 20px;
     margin-top: 20px;
-    position: unset;
     font-size: 100px;
   }
-  .LogIn-button{
-    font-size: 30px;
-    margin-right: 10px;
-   }
   .SignUp-button{
     font-size: 30px;
     margin-left: 10px;
+    position: relative;
+    top: 365px;
    }
 }
 
@@ -396,8 +393,10 @@ button[type="submit-btn"]:hover {
     margin-right: 10px;
    }
   .SignUp-button{
-    font-size: 30px;
-    margin-left: 10px;
+    font-size: 1.2rem;
+    padding: 1px 20px;
+    position: relative;
+    top: 365px;
    }
 }
 
@@ -1388,7 +1387,7 @@ label.address {
  }
 
  .upload:hover{
-  transform: scale(1.50);
+  transform: scale(1.00);
   background-color: white;
   color:#f97777;
   border: 1px solid black;
@@ -1414,7 +1413,7 @@ label.address {
  }
   
 .fbmas-upload:hover{
-  transform: scale(1.50);
+  transform: scale(1.00);
   background-color: white;
   color:#f97777;
   border: 1px solid black;
@@ -1433,7 +1432,7 @@ label.address {
  }
                    
 .upload-btn:hover {
-  transform: scale(1.50);
+  transform: scale(1.00);
   background-color: white; 
   color: #83D0FC;
   border: 1px solid black;
@@ -1489,7 +1488,7 @@ label.address {
   }
   
  .upload:hover{
-  transform: scale(1.10);
+  transform: scale(1.00);
   background-color: white;
   color:#f97777;
   border: 1px solid black;
@@ -1552,7 +1551,7 @@ form{width: 100%;}
 }
 .input-box-register input{
   width: 100%;
-  padding: 13px 50px 13px 20px;
+  padding: 8px 50px 13px 20px;
   background: #eee;
   border-radius: 8px;
   border: none;
@@ -1591,6 +1590,8 @@ form{width: 100%;}
     .forgot-link-register a{
         font-size: 25px;
         color: #333;
+        position: relative;
+        top: 15px;
     }
 
 .btn{
@@ -1604,6 +1605,8 @@ form{width: 100%;}
     font-size: 16px;
     color: black;
     font-weight: 600;
+    position: relative;
+    top: 10px;
   }
 
   .social-icons-register{
