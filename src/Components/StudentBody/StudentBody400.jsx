@@ -41,6 +41,10 @@ const StudentBody400 = () => {
               <h2>FAMSS</h2>
               <p>Faculty of Art Management <br/> and Social Sciences</p>
         </button>
+           <button class='faculty-button-2' onClick={handleButtonOnClick}>
+              <h2>FAMSS</h2>
+              <p>Faculty of Nursing  </p>
+        </button>
         </div>
         </div>
         </div>

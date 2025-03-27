@@ -203,17 +203,20 @@ code {
   justify-content: space-evenly;
   padding: 40px;
 }
-.SignUp-button{
+.SignUp-button {
+  position: fixed;
+  bottom: 70px;
+  left: 9px;
   font-family: "Katibeh", serif;
   background: #83d0fc;
   border: none;
-  cursor: pointer;
-  padding: 20px 20px;
+  padding: 16px 32px;
+  font-size: 1.4rem;
+  border-radius: 15px;
   text-decoration: none;
-  cursor: pointer;
-  font-size: 25px;
-  border-radius:15px;
-  margin: 5px;  
+  color: black;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .LogSgn-btn{
   position: absolute;
@@ -287,7 +290,7 @@ button[type="submit-btn"]:hover {
      /*HOME PAGE SCREEN SIZES*/
              
 /* Mobile devices */
-@media screen and (min-width: 320px) and (max-width: 428px) {
+@media screen and (max-width: 480px){
   /* Your styles here */
   .HomeLogo img{
     width: 40%;
@@ -320,38 +323,39 @@ button[type="submit-btn"]:hover {
     /* fill up the screen size */
    text-align: center;
    color: rgb(4, 7, 69);
-   font-size: 1.2rem;
+   font-size: 1.0rem;
    margin: 10px 20px;
    
   }
   
   
   .LogSgn-btn {
-    width: 100%; /* fill up the screen size */
+    width: 100%;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
     margin-top: 20px;
     font-size: 100px;
   }
-  .SignUp-button{
-    font-size: 30px;
-    margin-left: 10px;
-    position: relative;
-    top: 365px;
-   }
+  .SignUp-button {
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Perfect centering */
+    width: 80%; /* Better mobile button width */
+    max-width: 200px; /* Prevent over-stretching */
+    text-align: center;
+  }
+
 }
 
-@media screen and (min-width: 429px ) and (max-width: 480px){
+@media screen and (max-width: 576px){
   .HomeLogo img{
-    width: 200px;
-    height: 100px;
-    align-items: center;
-    top: 50px;
-    position: absolute;
+    width: 40%;
+    height: auto;
+    transform: none;
+    top: 0px;
+    position: relative;
     margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     padding: 10px;
   }
   .HomeHeader-home {
@@ -359,214 +363,158 @@ button[type="submit-btn"]:hover {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    position: relative;
+    margin-top: -160px;
   }
   
   .HomeHeader-home h1 {
-    font-size: 30px;
-    padding: 10px;
-    margin-bottom: 80px;
-  }
-
-  .HomeHeader-home br{
-    display: none;
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+      color: #4f3db3;
+      font-size: 2rem;
   }
   
   .HomeHeader-home p {
     /* fill up the screen size */
-    position: relative;
-    bottom: 80px;
-    font-size: 30px;
+   text-align: center;
+   color: rgb(4, 7, 69);
+   font-size: 1.3rem;
+   margin: 10px 20px;
+   
   }
   
   
   .LogSgn-btn {
-    width: 100%; /* fill up the screen size */
+    width: 100%;
     display: flex;
-    margin-bottom: 50px;
-    margin-top: 60px;
-    position: relative;
-    bottom: 120px;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
     font-size: 100px;
   }
-  .LogIn-button{
-    font-size: 30px;
-    margin-right: 10px;
-   }
-  .SignUp-button{
-    font-size: 1.2rem;
-    padding: 1px 20px;
-    position: relative;
-    top: 365px;
-   }
-}
-
-/* iPads and tablets */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  /* Your styles here */
-  .HomeLogo img{
-    width: 400px;
-    height: 200px;
-    align-items: center;
-    top: 90px;
-    left: 390px;
-    transform: translate(-50%, -50%);
-    padding: 30px;
-   
+  .SignUp-button {
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Perfect centering */
+    width: 80%; /* Better mobile button width */
+    max-width: 200px; /* Prevent over-stretching */
+    text-align: center;
   }
-  .HomeHeader-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .HomeHeader-home h1 {
-    font-size: 50px;
-    padding: 10px;
-    margin-bottom: 90px;
-    margin-top: 90px;
-  }
-
-  .HomeHeader-home br{
-    display: none;
-  }
-  
-  .HomeHeader-home p {
-    /* fill up the screen size */
-    position: relative;
-    bottom: 80px;
-    font-size: 40px;
-  }
-  
-  
-  .LogSgn-btn {
-    width: 100%; /* fill up the screen size */
-    display: flex;
-    margin-bottom: 50px;
-    margin-top: 60px;
-    position: relative;
-    bottom: 120px;
-  }
-  .LogIn-button{
-    font-size: 40px;
-    margin-right: 10px;
-   }
-  .SignUp-button{
-    font-size: 40px;
-    margin-left: 10px;
-   }
 
 }
-
 /* Small screens and laptops */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 577px) and (max-width: 768px) {
   /* Your styles here */
   .HomeLogo img{
-    width: 200px;
-    height: 100px;
-    align-items: center;
-    top: 50px;
-    position: absolute;
+    width: 40%;
+    height: auto;
+    transform: none;
+    top: 0px;
+    position: relative;
     margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     padding: 10px;
-   
   }
   .HomeHeader-home {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    position: relative;
+    margin-top: -160px;
   }
   
   .HomeHeader-home h1 {
-    font-size: 50px;
-    padding: 10px;
-    margin-bottom: 90px;
-    margin-top: 90px;
-  }
-
-  .HomeHeader-home br{
-    display: none;
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+      color: #4f3db3;
+      font-size: 2rem;
   }
   
   .HomeHeader-home p {
     /* fill up the screen size */
-    position: relative;
-    bottom: 80px;
-    font-size: 55px;
+   text-align: center;
+   color: rgb(4, 7, 69);
+   font-size: 1.5rem;
+   margin: 10px 20px;
+   
   }
   
   
   .LogSgn-btn {
-    width: 100%; /* fill up the screen size */
+    width: 100%;
     display: flex;
-    margin-bottom: 50px;
-    margin-top: 60px;
-    position: relative;
-    bottom: 120px;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 100px;
   }
-  .LogIn-button{
-    font-size: 40px;
-    margin-right: 10px;
-   }
-  .SignUp-button{
-    font-size: 40px;
-    margin-left: 10px;
-   }
+  .SignUp-button {
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Perfect centering */
+    width: 80%; /* Better mobile button width */
+    max-width: 200px; /* Prevent over-stretching */
+    text-align: center;
+  }
+
   
-
 }
-
-/* Desktops and large screens */
-@media screen and (min-width: 1025px) and (max-width: 1200px) {
-  /* Your styles here */
-  .LogIn-button{
-    font-size: 30px;
-    margin-right: 10px;
-   }
-  .SignUp-button{
-    font-size: 30px;
-    margin-left: 10px;
-   }
-   .LogSgn-btn {
-    width: 50%; /* fill up the screen size */
-    display: flex;
-    margin-bottom: 40px;
-    margin-top: 10px;
-  }
+@media screen and (min-width: 769px) and (max-width: 992px) {
   .HomeLogo img{
-    width: 500px;
-  height: 300px;
-  position: relative;
-  top: 150px;
-  left: 600px;
-  padding: 10px;
+    width: 40%;
+    height: auto;
+    transform: none;
+    top: 0px;
+    position: relative;
+    margin: 0 auto;
+    left: 0;
+    padding: 10px;
+  }
+  .HomeHeader-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin-top: -160px;
+  }
+  
+  .HomeHeader-home h1 {
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+      color: #4f3db3;
+      font-size: 2rem;
+  }
+  
+  .HomeHeader-home p {
+    /* fill up the screen size */
+   text-align: center;
+   color: rgb(4, 7, 69);
+   font-size: 1.5rem;
+   margin: 10px 20px;
    
   }
-
-}
-
-/* Extra-large screens and TVs */
-@media screen and (min-width: 1201px) {
-  /* Your styles here */
-  .LogIn-button{
-    font-size: 30px;
-    margin-right: 10px;
-   }
-  .SignUp-button{
-    font-size: 30px;
-    margin-left: 10px;
-   }
-   .LogSgn-btn {
-    width: 50%; /* fill up the screen size */
+  
+  
+  .LogSgn-btn {
+    width: 100%;
     display: flex;
-    margin-bottom: 40px;
-    margin-top: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 100px;
   }
-}
+  .SignUp-button {
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Perfect centering */
+    width: 80%; /* Better mobile button width */
+    max-width: 200px; /* Prevent over-stretching */
+    text-align: center;
+  }
 
+}
 
                     /* Log In FORM */
 .Rectangle{
@@ -998,21 +946,41 @@ border-radius: 4%;
   font-size: 29px;
   border-radius:15px;
 }
+.faculty-button-2{
+  font-family: "Katibeh", serif;
+  background: #cd39ff;
+  border: none;
+  cursor: pointer;
+  box-shadow:10px 10px 5px #cd39ff;
+  padding: 16px 40px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 0.25s ease-out; /* Smooth transition */
+  font-size: 29px;
+  border-radius:15px;
+}
 
 .faculty-button:hover {
-  transform: scale(1.50);
+  transform: scale(1.00);
   background-color: white; /* Change to your desired color */
   color:#f97777 ;
   border: 1px solid black;
   box-shadow: 5px 5px 5px black;
 }
 .faculty-button-1:hover {
-  transform: scale(1.50);
+  transform: scale(1.00);
   background-color: white; /* Change to your desired color */
   color: #83D0FC;
   border: 1px solid black;
   box-shadow: 5px 5px 5px black;
-  
+}
+.faculty-button-2:hover {
+  transform: scale(1.00);
+  background-color: white; /* Change to your desired color */
+  color:#cd39ff ;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px black;
 }
 .HomeLogoSB img{
   width: 100px;
