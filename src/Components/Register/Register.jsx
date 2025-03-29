@@ -162,7 +162,7 @@ const App = () => {
 
       <div className="toggle-box-register">
         <div className={`toggle-panel-register toggle-left ${!isLoginVisible ? "active" : ""}`}>
-          <h1 >Hello, Welcome! </h1>
+          <h1>Hello, Welcome! </h1>
           <p>Don't have an account?</p>
           <button className="btn register-btn" onClick={toggleForm}>
             Register
@@ -274,7 +274,7 @@ const RegisterForm = ({
     <form onSubmit={handleRegister}>
       <h1>Registration</h1>
       <div className="input-box-register">
-        <input type="text" placeholder="Fullname" value={fullname}
+        <input type="text" placeholder="Full Name" value={fullname}
         onChange={(e) => setfullname(e.target.value)} required />
         <i className="bx bxs-user"></i>
       </div>

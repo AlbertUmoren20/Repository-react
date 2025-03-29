@@ -47,7 +47,10 @@ const StudentBody = () => {
             <h2>FAMSS</h2>
             <p>Faculty of Art Management <br/> and Social Sciences</p>
       </button>
+        
+     
       </div>
+
       </div>
       </div>
     );
