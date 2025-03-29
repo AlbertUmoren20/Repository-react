@@ -107,7 +107,7 @@ const FamssStudent = () => {
         ) : null}
       </div>
       <div className="HomeHeader-1">
-        <span style={{ fontSize: "60px", textDecoration: "underline #83D0FC 10px" }}>FAMSS<br />E-REPOSITORY<br /></span>
+        <span style={{ fontSize: "55px", textDecoration: "underline #83D0FC 10px" }}>FAMSS<br />E-REPOSITORY<br /></span>
         <h5>Faculty of Art Management and Social Sciences</h5>
       </div>
 
