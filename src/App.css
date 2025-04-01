@@ -290,66 +290,9 @@ button[type="submit-btn"]:hover {
      /*HOME PAGE SCREEN SIZES*/
              
 /* Mobile devices */
-@media screen and (max-width: 480px){
-  /* Your styles here */
-  .HomeLogo img{
-    width: 40%;
-    height: auto;
-    transform: none;
-    top: 0px;
-    position: relative;
-    margin: 0 auto;
-    left: 0;
-    padding: 10px;
-  }
-  .HomeHeader-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    margin-top: -160px;
-  }
-  
-  .HomeHeader-home h1 {
-      text-align: center;
-      width: 100%;
-      margin-top: 20px;
-      color: #4f3db3;
-      font-size: 2rem;
-  }
-  
-  .HomeHeader-home p {
-    /* fill up the screen size */
-   text-align: center;
-   color: rgb(4, 7, 69);
-   font-size: 1.0rem;
-   margin: 10px 20px;
-   
-  }
-  
-  
-  .LogSgn-btn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    font-size: 100px;
-  }
-  .SignUp-button {
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Perfect centering */
-    width: 80%; /* Better mobile button width */
-    max-width: 200px; /* Prevent over-stretching */
-    text-align: center;
-  }
-
-}
-
 @media screen and (max-width: 576px){
   .HomeLogo img{
-    width: 40%;
+    width: 25%;
     height: auto;
     transform: none;
     top: 0px;
@@ -379,7 +322,7 @@ button[type="submit-btn"]:hover {
     /* fill up the screen size */
    text-align: center;
    color: rgb(4, 7, 69);
-   font-size: 1.3rem;
+   font-size: 1.2rem;
    margin: 10px 20px;
    
   }
@@ -399,6 +342,8 @@ button[type="submit-btn"]:hover {
     width: 80%; /* Better mobile button width */
     max-width: 200px; /* Prevent over-stretching */
     text-align: center;
+    bottom: 15px;
+    
   }
 
 }
@@ -406,7 +351,7 @@ button[type="submit-btn"]:hover {
 @media screen and (min-width: 577px) and (max-width: 768px) {
   /* Your styles here */
   .HomeLogo img{
-    width: 40%;
+    width: 25%;
     height: auto;
     transform: none;
     top: 0px;
@@ -436,7 +381,7 @@ button[type="submit-btn"]:hover {
     /* fill up the screen size */
    text-align: center;
    color: rgb(4, 7, 69);
-   font-size: 1.5rem;
+   font-size: 1.2rem;
    margin: 10px 20px;
    
   }
@@ -462,7 +407,7 @@ button[type="submit-btn"]:hover {
 }
 @media screen and (min-width: 769px) and (max-width: 992px) {
   .HomeLogo img{
-    width: 40%;
+    width: 25%;
     height: auto;
     transform: none;
     top: 0px;
@@ -1690,11 +1635,126 @@ form{width: 100%;}
   font-size: 30px;
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (min-width: 993px)and (max-width: 1200px){
 
   .container-register{
     height: calc(143vh - 40px);
-    width: calc(86vw - 40px);
+    width: calc(98%);
+    top: 20px;
+    padding: 0;
+    transform: translate(-50%);
+    left: 50%;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+
+  }
+
+  .form-box-register{
+      bottom: 0;
+      width: 100%;
+      height: 75%;
+  }
+
+      .container-register.active .form-box-register{
+          right: 0;
+          bottom: 30%;
+      }
+
+  .toggle-box-register::before{
+      left: 0;
+      top: -270%;
+      width: 100%;
+      height: 300%;
+      border-radius: 20vw;
+  }
+
+      .container-register.active .toggle-box-register::before{
+          left: 0;
+          top: 70%;
+      }
+
+      .container-register.active .toggle-panel-register.toggle-left{
+          left: 0;
+          top: -30%;
+      }
+
+  .toggle-panel-register{ 
+      width: 100%;
+      height: 30%;
+  }
+      .toggle-panel-register.toggle-left{ top: 0; }
+      .toggle-panel-register.toggle-right{
+          right: 0;
+          bottom: -30%;
+      }
+
+          .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
+}
+
+@media screen and(min-width:769px) and (max-width: 992px){
+  .container-register{
+    height: calc(143vh - 40px);
+    width: calc(98%);
+    padding: 0;
+    transform: translate(-50%);
+    left: 50%;
+    top: 20px;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+
+  }
+
+  .form-box-register{
+      bottom: 0;
+      width: 100%;
+      height: 75%;
+  }
+
+      .container-register.active .form-box-register{
+          right: 0;
+          bottom: 30%;
+      }
+
+  .toggle-box-register::before{
+      left: 0;
+      top: -270%;
+      width: 100%;
+      height: 300%;
+      border-radius: 20vw;
+  }
+
+      .container-register.active .toggle-box-register::before{
+          left: 0;
+          top: 70%;
+      }
+
+      .container-register.active .toggle-panel-register.toggle-left{
+          left: 0;
+          top: -30%;
+      }
+
+  .toggle-panel-register{ 
+      width: 100%;
+      height: 30%;
+  }
+      .toggle-panel-register.toggle-left{ top: 0; }
+      .toggle-panel-register.toggle-right{
+          right: 0;
+          bottom: -30%;
+      }
+
+          .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
+}
+@media screen and(min-width:651px) and (max-width: 768px){
+  .container-register{
+    height: calc(143vh - 40px);
+    width: calc(98%);
+    transform: translate(-50%);
+    left: 50%;
     top: 20px;
     padding: 0;
     margin: 0;
@@ -1746,122 +1806,13 @@ form{width: 100%;}
           .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
 }
 
-@media screen and (max-width: 992px){
+@media screen and (min-width: 401px) and (max-width: 650px){
   .container-register{
     height: calc(143vh - 40px);
-    width: calc(86vw - 40px);
-    padding: 0;
+    width: calc(98%);
     top: 20px;
-    margin: 0;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
-    overflow: hidden;
-
-  }
-
-  .form-box-register{
-      bottom: 0;
-      width: 100%;
-      height: 75%;
-  }
-
-      .container-register.active .form-box-register{
-          right: 0;
-          bottom: 30%;
-      }
-
-  .toggle-box-register::before{
-      left: 0;
-      top: -270%;
-      width: 100%;
-      height: 300%;
-      border-radius: 20vw;
-  }
-
-      .container-register.active .toggle-box-register::before{
-          left: 0;
-          top: 70%;
-      }
-
-      .container-register.active .toggle-panel-register.toggle-left{
-          left: 0;
-          top: -30%;
-      }
-
-  .toggle-panel-register{ 
-      width: 100%;
-      height: 30%;
-  }
-      .toggle-panel-register.toggle-left{ top: 0; }
-      .toggle-panel-register.toggle-right{
-          right: 0;
-          bottom: -30%;
-      }
-
-          .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
-}
-@media screen and (max-width: 768px){
-  .container-register{
-    height: calc(143vh - 40px);
-    width: calc(86vw - 40px);
-   
-    top: 20px;
-    padding: 0;
-    margin: 0;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
-    overflow: hidden;
-
-  }
-
-  .form-box-register{
-      bottom: 0;
-      width: 100%;
-      height: 75%;
-  }
-
-      .container-register.active .form-box-register{
-          right: 0;
-          bottom: 30%;
-      }
-
-  .toggle-box-register::before{
-      left: 0;
-      top: -270%;
-      width: 100%;
-      height: 300%;
-      border-radius: 20vw;
-  }
-
-      .container-register.active .toggle-box-register::before{
-          left: 0;
-          top: 70%;
-      }
-
-      .container-register.active .toggle-panel-register.toggle-left{
-          left: 0;
-          top: -30%;
-      }
-
-  .toggle-panel-register{ 
-      width: 100%;
-      height: 30%;
-  }
-      .toggle-panel-register.toggle-left{ top: 0; }
-      .toggle-panel-register.toggle-right{
-          right: 0;
-          bottom: -30%;
-      }
-
-          .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
-}
-
-@media screen and (max-width: 650px){
-  .container-register{
-    height: calc(143vh - 40px);
-    width: calc(86vw - 40px);
-    
-    top: 20px;
+    transform: translate(-50%);
+    left: 50%;
     padding: 0;
     margin: 0;
     border-radius: 20px;
@@ -1914,6 +1865,62 @@ form{width: 100%;}
 
 @media screen and (max-width: 400px){
   .form-box-register { padding: 20px; }
-
   .toggle-panel-register h1{font-size: 30px; }
+
+  .container-register{
+    height: calc(130vh - 40px);
+    width: calc(100%);
+    top: 20px;
+    position: absolute;
+    z-index: 1000; 
+    transform: translate(-50%);
+    left: 50%;
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+
+  }
+
+  .form-box-register{
+      bottom: 0;
+      width: 100%;
+      height: 75%;
+  }
+
+      .container-register.active .form-box-register{
+          right: 0;
+          bottom: 30%;
+      }
+
+  .toggle-box-register::before{
+      left: 0;
+      top: -270%;
+      width: 100%;
+      height: 300%;
+      border-radius: 20vw;
+  }
+
+      .container-register.active .toggle-box-register::before{
+          left: 0;
+          top: 70%;
+      }
+
+      .container-register.active .toggle-panel-register.toggle-left{
+          left: 0;
+          top: -30%;
+      }
+
+  .toggle-panel-register{ 
+      width: 100%;
+      height: 30%;
+  }
+      .toggle-panel-register.toggle-left{ top: 0; }
+      .toggle-panel-register.toggle-right{
+          right: 0;
+          bottom: -30%;
+      }
+
+          .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
 }
