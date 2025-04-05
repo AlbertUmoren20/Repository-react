@@ -216,34 +216,9 @@ code {
   border-radius: 15px;
   text-decoration: none;
   color: black;
-  z-index: 100;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-.LogSgn-btn{
-  position: absolute;
-  left: 10px;
-}
-/* .LogIn-button{
-  font-family: "Katibeh", serif;
-  background: #83D0FC;
-  border: none;
-  cursor: pointer;
-  padding: 20px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Smooth transition */
-  /* font-size: 25px; */
-  /* border-radius:15px; */
-/* } */ 
 
-.LogIn-button:hover {
-  /* Hover style */
-  background-color: white; /* Change to your desired color */
-  color:#83D0FC ;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px black;
-}
 .SignUp-button:hover {
   /* Hover style */
   background-color: white; /* Change to your desired color */
@@ -256,35 +231,6 @@ code {
   background: white;
   color: #83D0FC;
 } */
-
-
-button[type="submit-btn"] {
-  background-color: white;
-  color: black;
-  width: 30%;
-  height: 50px;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(88, 87, 87, 0.123);
-}
-button[type="submit-btn"]:hover {
-  background-color: black;
-  color: white;
-  width: 30%;
-  justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-}
-.SubmitLGN{
-  display: flex;
-  margin: 0;
-  position: absolute;
-  top: 400px;
-  left:200px; 
-  font-size:20px;
-  cursor: pointer;
-  transform: translateY(-50%)
-}
 
 
 
@@ -307,14 +253,14 @@ button[type="submit-btn"]:hover {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    position: relative;
-    margin-top: -160px;
+   
+
   }
   
   .HomeHeader-home h1 {
       text-align: center;
       width: 100%;
-      margin-top: 20px;
+     
       color: #4f3db3;
       font-size: 2rem;
   }
@@ -336,7 +282,7 @@ button[type="submit-btn"]:hover {
     width: 80%; /* Better mobile button width */
     max-width: 200px; /* Prevent over-stretching */
     text-align: center;
-    bottom: 15px;
+  
     
   }
 }
