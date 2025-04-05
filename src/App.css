@@ -205,9 +205,8 @@ code {
   padding: 40px;
 }
 .SignUp-button {
-  position: fixed;
-  bottom: 70px;
-  left: 9px;
+  position: relative;
+  top: 20px;
   font-family: "Katibeh", serif;
   background: #83d0fc;
   border: none;
@@ -253,23 +252,22 @@ code {
     flex-direction: column;
     align-items: center;
     width: 100%;
-   
-
+    position: relative;
   }
   
   .HomeHeader-home h1 {
       text-align: center;
       width: 100%;
-     
       color: #4f3db3;
-      font-size: 2rem;
+      font-size: 2.5rem;
   }
   
   .HomeHeader-home p {
     /* fill up the screen size */
    text-align: center;
    color: rgb(4, 7, 69);
-   font-size: 1.2rem;
+   font-size: 1.5rem;
+   font-weight: 200;
    width: 100%;
    
   }
@@ -277,10 +275,11 @@ code {
   
 
   .SignUp-button {
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Perfect centering */
+    position: relative;
+    left: 100px;
+    transform: translateX(-50%);
     width: 80%; /* Better mobile button width */
-    max-width: 200px; /* Prevent over-stretching */
+    max-width: 200px;
     text-align: center;
   
     
@@ -292,7 +291,7 @@ code {
 
 
 /* Small screens and laptops */
-@media screen and (min-width: 391px) and (max-width: 768px) {
+@media screen and (min-width: 391px) and (max-width: 600px) {
   .HomeLogo img{
     width: 25%;
     height: auto;
@@ -309,13 +308,13 @@ code {
     align-items: center;
     width: 100%;
     position: relative;
-    margin-top: -160px;
+    
   }
   .HomeHeader-home p {
     /* fill up the screen size */
    text-align: center;
    color: rgb(4, 7, 69);
-   font-size: 1.4rem;
+   font-size: 1.5rem;
    width: 100%;
   }
     
@@ -324,22 +323,68 @@ code {
     width: 100%;
     margin-top: 20px;
     color: #4f3db3;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .SignUp-button {
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Perfect centering */
-  width: 80%; /* Better mobile button width */
-  max-width: 200px; /* Prevent over-stretching */
-  text-align: center;
-  bottom: 15px;
+  position: relative;
+    left: 100px;
+    transform: translateX(-50%);
+    width: 80%; /* Better mobile button width */
+    max-width: 200px;
+    text-align: center;
+    font-size: 35px;
+  
   
 } 
   /* Your styles here */
 }
 
+@media screen and (min-width:601px) and (max-width: 768px){ 
+  .HomeLogo img{
+    width: 25%;
+    height: auto;
+    transform: none;
+    top: 0px;
+    position: relative;
+    margin: 0 auto;
+    left: 0;
+    padding: 10px;
+  }
+  .HomeHeader-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    
+  }
+  .HomeHeader-home p {
+    /* fill up the screen size */
+   text-align: center;
+   color: rgb(4, 7, 69);
+   font-size: 2.2rem;
+   width: 100%;
+   
+  }
+  .HomeHeader-home h1 {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    color: #4f3db3;
+    font-size: 3rem;
+}
 
+.SignUp-button {
+  position: relative;
+  left: 100px; /* Center horizontally */
+  transform: translateX(-50%); /* Perfect centering */
+  width: 80%; /* Better mobile button width */
+  max-width: 200px; /* Prevent over-stretching */
+  text-align: center;
+  font-size: 35px;
+} 
+}
 
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
@@ -349,7 +394,7 @@ code {
     transform: none;
     top: 0px;
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto; 
     left: 0;
     padding: 10px;
   }
@@ -359,7 +404,7 @@ code {
     align-items: center;
     width: 100%;
     position: relative;
-    margin-top: -160px;
+   
   }
   
   .HomeHeader-home h1 {
@@ -367,29 +412,179 @@ code {
       width: 100%;
       margin-top: 20px;
       color: #4f3db3;
-      font-size: 2.5rem;
+      font-size: 3rem;
   }
   
   .HomeHeader-home p {
     /* fill up the screen size */
    text-align: center;
    color: rgb(4, 7, 69);
-   font-size: 1.5rem;
-   margin: 10px 20px;
+   font-size: 2rem;
    
   }
   
   .SignUp-button {
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Perfect centering */
-    width: 80%; /* Better mobile button width */
-    max-width: 200px; /* Prevent over-stretching */
+    position: relative;
+    left: 100px; /* Center horizontally */
+    transform: translateX(-50%); 
+    width: 80%; 
+    max-width: 200px; 
     text-align: center;
-    bottom: 15px;
+    font-size: 35px;
+    
   }
 
 }
+@media screen and (min-width: 993px) and (max-width: 1024px){
+  .HomeLogo img{
+    width: 600px;
+    height: 500px;
+    position: relative;
+    top: 150px;
+    left: 700px;
+    padding: 10px;
+  }
+  .HomeHeader-home h1{
+ font-size: 50px;
+ margin-bottom: 20px;
+}
+.HomeHeader-home p{
+  font-size: 30px;
+  display: inline-block;
+}
+.SignUp-button {
+  position: relative;
+  top: 20px;
+  font-family: "Katibeh", serif;
+  background: #83d0fc;
+  border: none;
+  padding: 16px 32px;
+  font-size: 2.2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+}
 
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .HomeHeader-home{
+    font-size:30px;
+    padding: 10px;
+    font-family: "Katibeh", serif;
+    font-weight: 400;
+    font-style: normal;
+    float: right; 
+    position: absolute;
+    top: 187px;
+    text-align: Left;
+    display: block;
+    /* color: white; */
+    margin: 0 auto;
+    word-wrap: break-word; 
+    width: 600px;
+    padding: 20px;
+  }
+  .Home-Button{
+    font-family: "Katibeh", serif;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+
+}
+  .HomeLogo img{
+    width: 650px;
+    height: 500px;
+    position: relative;
+    top: 160px;
+    left: 850px;
+    padding: 10px;
+  }
+  .HomeHeader-home p{
+    font-size: 2.2rem;
+    width: 140%;
+  }
+  .HomeHeader-home h1{
+    font-size: 50px;
+    margin-bottom: 20px;
+   }
+   .SignUp-button {
+    position: relative;
+    top: 20px;
+    font-family: "Katibeh", serif;
+    background: #83d0fc;
+    border: none;
+    padding: 16px 32px;
+    font-size: 2.2rem;
+    border-radius: 15px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+}
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+  .HomeHeader-home{
+    font-size:30px;
+    padding: 10px;
+    font-family: "Katibeh", serif;
+    font-weight: 400;
+    font-style: normal;
+    float: right; 
+    position: absolute;
+    top: 187px;
+    text-align: Left;
+    display: block;
+    /* color: white; */
+    margin: 0 auto;
+    word-wrap: break-word; 
+    width: 600px;
+    padding: 20px;
+  }
+  
+  .Home-Button{
+    font-family: "Katibeh", serif;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+
+}
+  .HomeLogo img{
+    width: 650px;
+    height: 500px;
+    position: relative;
+    top: 160px;
+    left: 850px;
+    padding: 10px;
+    float: left;
+  }
+  .HomeHeader-home p{
+    font-size: 2.2rem;
+    display: inline-block;
+    width: 140%;
+    
+  }
+  .HomeHeader-home h1{
+    font-size: 50px;
+    margin-bottom: 20px;
+   }
+   .SignUp-button {
+    position: relative;
+    top: 20px;
+    font-family: "Katibeh", serif;
+    background: #83d0fc;
+    border: none;
+    padding: 16px 32px;
+    font-size: 2.2rem;
+    border-radius: 15px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+}
                     /* Log In FORM */
 .Rectangle{
   height: 410px;
@@ -1563,12 +1758,27 @@ form{width: 100%;}
 .toggle-panel-register p{
   font-size: 30px;
 }
+@media screen and (min-width: 1201px)and (max-width: 1440px){
+  .container-register{
+    height: calc(100vh - 40px);
+    width: calc(90%);
+    top: 20px;
+    padding: 0;
+    transform: translate(-50%);
+    left: 50%;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
 
+  }
+
+}
 @media screen and (min-width: 993px)and (max-width: 1200px){
 
   .container-register{
-    height: calc(143vh - 40px);
-    width: calc(98%);
+    height: calc(100vh - 40px);
+    width: calc(90%);
     top: 20px;
     padding: 0;
     transform: translate(-50%);
@@ -1622,14 +1832,16 @@ form{width: 100%;}
           .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
 }
 
-@media screen and(min-width:769px) and (max-width: 992px){
+@media screen and (min-width:769px) and (max-width: 992px){
+  .form-box-register { padding: 20px; }
+  .toggle-panel-register h1{font-size: 50px; } .toggle-box-register p{ font-size: 35px;}
   .container-register{
-    height: calc(143vh - 40px);
-    width: calc(98%);
-    padding: 0;
+    height: calc(100vh - 40px);
+    width: calc(90%);
+    top: 20px;
     transform: translate(-50%);
     left: 50%;
-    top: 20px;
+    padding: 0;
     margin: 0;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);
@@ -1678,13 +1890,16 @@ form{width: 100%;}
 
           .container-register.active .toggle-panel-register.toggle-right{ bottom: 0; }
 }
-@media screen and(min-width:651px) and (max-width: 768px){
+
+@media screen and (min-width:651px) and (max-width: 768px){
+  .form-box-register { padding: 20px; }
+  .toggle-panel-register h1{font-size: 50px; } .toggle-box-register p{ font-size: 35px;}
   .container-register{
-    height: calc(143vh - 40px);
-    width: calc(98%);
+    height: calc(100vh - 40px);
+    width: calc(90%);
+    top: 20px;
     transform: translate(-50%);
     left: 50%;
-    top: 20px;
     padding: 0;
     margin: 0;
     border-radius: 20px;
@@ -1736,9 +1951,11 @@ form{width: 100%;}
 }
 
 @media screen and (min-width: 401px) and (max-width: 650px){
+  .form-box-register { padding: 20px; }
+  .toggle-panel-register h1{font-size:40px; }
   .container-register{
-    height: calc(143vh - 40px);
-    width: calc(98%);
+    height: calc(100vh - 40px);
+    width: calc(90%);
     top: 20px;
     transform: translate(-50%);
     left: 50%;
@@ -1794,11 +2011,11 @@ form{width: 100%;}
 
 @media screen and (max-width: 400px){
   .form-box-register { padding: 20px; }
-  .toggle-panel-register h1{font-size: 30px; }
+  .toggle-panel-register h1{font-size: 40px; }
 
   .container-register{
-    height: calc(130vh - 40px);
-    width: calc(100%);
+    height: calc(100vh - 40px);
+    width: calc(90%);
     top: 20px;
     position: absolute;
     z-index: 1000; 
