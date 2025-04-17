@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Katibeh&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -136,78 +136,58 @@ code {
 
 /* HOMEPAGE.CSS */
 
-.HomePage{
-    color: black;
-  }
 
-.HomeHeader{
-  font-size: 35px;
-  text-align: center;
-  padding: 10px;
-  font-family: "Katibeh", serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
-.HomeHeader-home{
-  font-size:30px;
-  padding: 10px;
-  font-family: "Katibeh", serif;
-  font-weight: 400;
-  font-style: normal;
-  float: right; 
+
+/* .content_description h1 {
   position: absolute;
-  top: 100px;
-  text-align: Left;
-  display: block;
-  /* color: white; */
-  margin: 0 auto;
-  word-wrap: break-word; 
-  width: 600px;
-  padding: 20px;
-}
+  left: 0;
+  width: 100%;
+  color: #4f3db3;
+  font-size: 2.5rem;
+  margin: 10px;
+} */
 
-.HomeHeader-home h1{
- font-size: larger;
- margin-bottom: 20px;
-}
-.HomeHeader-home p{
-  font-size: 25px;
-  display: inline-block;
-}
+/* .content_description p{
+  text-align: center;
+  color: rgb(4, 7, 69);
+  font-size: 1.5rem;
+  font-weight: 200;
+  width: 100%;
+} */ 
 
 
-.HomeBody{
-    margin: 20px;
+.content_description{
+  width: 1200px;
+  margin: auto;
+  height: auto;
+  position: relative;
 }
-.Home-Button{
-    font-family: "Katibeh", serif;
-    font-size: 10px;
-    font-weight: 400;
-    font-style: normal;
+.content_description img{
+    width: 500px;
     position: relative;
-
+    top: 120px;
+    right: 0px;
 }
-.HomeLogo img{
-  width: 500px;
-  height: 300px;
-  position: relative;
-  top: 150px;
-  left: 650px;
-  padding: 10px;
+.content_description p{
+  padding-left: 20px;
+  padding-bottom: 25px;
+  font-size: 25px;
+  line-height: 30px;
+  width: 50%;
+  margin-top: 10px;
 }
 
-
-/* Home Button */
-.Home-Button{
-  display: flex;
-  justify-content: space-evenly;
-  padding: 40px;
+.content_description h1{
+  font-size: 50px;
+  padding-left: 20px;
+  margin-top: 9%;
+  letter-spacing: 2%;
+  color: #085195;
 }
-.SignUp-button {
-  position: relative;
-  top: 20px;
-  font-family: "Katibeh", serif;
+.content_description .registration{
+  width: 160px;
+  height:40px;
   background: #83d0fc;
   border: none;
   padding: 16px 32px;
@@ -216,537 +196,30 @@ code {
   text-decoration: none;
   color: black;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 
-.SignUp-button:hover {
-  /* Hover style */
-  background-color: white; /* Change to your desired color */
-  color:#83D0FC ;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px black;
+.registration:hover { 
+  /* Hover style  */
+background-color: white;  
+color:#59a9d7 ;
+ border: 1px solid black;
+ box-shadow: 2px 2px 2px black;
+} 
+
+.Homelogo{
+  width: 500px;
+  height: auto;
+  position: absolute;
+  bottom: 140px;
+  left: 670px;
+  padding: 20px;
 }
-/* 
-.gray{
-  background: white;
-  color: #83D0FC;
-} */
-
-
-
      /*HOME PAGE SCREEN SIZES*/
              
 /* Mobile devices */
-  @media (max-width:390px){
-  .HomeLogo img{
-    width: 25%;
-    height: auto;
-    transform: none;
-    top: 0px;
-    position: relative;
-    margin: 0 auto;
-    left: 0;
-    padding: 10px;
-  }
-  .HomeHeader-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
-  }
-  
-  .HomeHeader-home h1 {
-      text-align: center;
-      width: 100%;
-      color: #4f3db3;
-      font-size: 2.5rem;
-  }
-  
-  .HomeHeader-home p {
-    /* fill up the screen size */
-   text-align: center;
-   color: rgb(4, 7, 69);
-   font-size: 1.5rem;
-   font-weight: 200;
-   width: 100%;
-   
-  }
-  
-  
-
-  .SignUp-button {
-    position: relative;
-    left: 100px;
-    transform: translateX(-50%);
-    width: 80%; /* Better mobile button width */
-    max-width: 200px;
-    text-align: center;
-  
-    
-  }
-}
-
-
-
-
-
-/* Small screens and laptops */
-@media screen and (min-width: 391px) and (max-width: 600px) {
-  .HomeLogo img{
-    width: 25%;
-    height: auto;
-    transform: none;
-    top: 0px;
-    position: relative;
-    margin: 0 auto;
-    left: 0;
-    padding: 10px;
-  }
-  .HomeHeader-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    
-  }
-  .HomeHeader-home p {
-    /* fill up the screen size */
-   text-align: center;
-   color: rgb(4, 7, 69);
-   font-size: 1.5rem;
-   width: 100%;
-  }
-    
-  .HomeHeader-home h1 {
-    text-align: center;
-    width: 100%;
-    margin-top: 20px;
-    color: #4f3db3;
-    font-size: 2.5rem;
-}
-
-.SignUp-button {
-  position: relative;
-    left: 100px;
-    transform: translateX(-50%);
-    width: 80%; /* Better mobile button width */
-    max-width: 200px;
-    text-align: center;
-    font-size: 35px;
-  
-  
-} 
-  /* Your styles here */
-}
-
-@media screen and (min-width:601px) and (max-width: 768px){ 
-  .HomeLogo img{
-    width: 25%;
-    height: auto;
-    transform: none;
-    top: 0px;
-    position: relative;
-    margin: 0 auto;
-    left: 0;
-    padding: 10px;
-  }
-  .HomeHeader-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    
-  }
-  .HomeHeader-home p {
-    /* fill up the screen size */
-   text-align: center;
-   color: rgb(4, 7, 69);
-   font-size: 2.2rem;
-   width: 100%;
-   
-  }
-  .HomeHeader-home h1 {
-    text-align: center;
-    width: 100%;
-    margin-top: 20px;
-    color: #4f3db3;
-    font-size: 3rem;
-}
-
-.SignUp-button {
-  position: relative;
-  left: 100px; /* Center horizontally */
-  transform: translateX(-50%); /* Perfect centering */
-  width: 80%; /* Better mobile button width */
-  max-width: 200px; /* Prevent over-stretching */
-  text-align: center;
-  font-size: 35px;
-} 
-}
-
-
-@media screen and (min-width: 769px) and (max-width: 992px) {
-  .HomeLogo img{
-    width: 25%;
-    height: auto;
-    transform: none;
-    top: 0px;
-    position: relative;
-    margin: 0 auto; 
-    left: 0;
-    padding: 10px;
-  }
-  .HomeHeader-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
-   
-  }
-  
-  .HomeHeader-home h1 {
-      text-align: center;
-      width: 100%;
-      margin-top: 20px;
-      color: #4f3db3;
-      font-size: 3rem;
-  }
-  
-  .HomeHeader-home p {
-    /* fill up the screen size */
-   text-align: center;
-   color: rgb(4, 7, 69);
-   font-size: 2rem;
-   
-  }
-  
-  .SignUp-button {
-    position: relative;
-    left: 100px; /* Center horizontally */
-    transform: translateX(-50%); 
-    width: 80%; 
-    max-width: 200px; 
-    text-align: center;
-    font-size: 35px;
-    
-  }
-
-}
-@media screen and (min-width: 993px) and (max-width: 1024px){
-  .HomeLogo img{
-    width: 600px;
-    height: 500px;
-    position: relative;
-    top: 150px;
-    left: 700px;
-    padding: 10px;
-  }
-  .HomeHeader-home h1{
- font-size: 50px;
- margin-bottom: 20px;
-}
-.HomeHeader-home p{
-  font-size: 30px;
-  display: inline-block;
-}
-.SignUp-button {
-  position: relative;
-  top: 20px;
-  font-family: "Katibeh", serif;
-  background: #83d0fc;
-  border: none;
-  padding: 16px 32px;
-  font-size: 2.2rem;
-  border-radius: 15px;
-  text-decoration: none;
-  color: black;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-}
-
-@media screen and (min-width: 1025px) and (max-width: 1280px) {
-  .HomeHeader-home{
-    font-size:30px;
-    padding: 10px;
-    font-family: "Katibeh", serif;
-    font-weight: 400;
-    font-style: normal;
-    float: right; 
-    position: absolute;
-    top: 187px;
-    text-align: Left;
-    display: block;
-    /* color: white; */
-    margin: 0 auto;
-    word-wrap: break-word; 
-    width: 600px;
-    padding: 20px;
-  }
-  .Home-Button{
-    font-family: "Katibeh", serif;
-    font-size: 10px;
-    font-weight: 400;
-    font-style: normal;
-    position: relative;
-
-}
-  .HomeLogo img{
-    width: 650px;
-    height: 500px;
-    position: relative;
-    top: 160px;
-    left: 850px;
-    padding: 10px;
-  }
-  .HomeHeader-home p{
-    font-size: 2.2rem;
-    width: 140%;
-  }
-  .HomeHeader-home h1{
-    font-size: 50px;
-    margin-bottom: 20px;
-   }
-   .SignUp-button {
-    position: relative;
-    top: 20px;
-    font-family: "Katibeh", serif;
-    background: #83d0fc;
-    border: none;
-    padding: 16px 32px;
-    font-size: 2.2rem;
-    border-radius: 15px;
-    text-decoration: none;
-    color: black;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
-  
-}
-@media screen and (min-width: 1281px) and (max-width: 1440px) {
-  .HomeHeader-home{
-    font-size:30px;
-    padding: 10px;
-    font-family: "Katibeh", serif;
-    font-weight: 400;
-    font-style: normal;
-    float: right; 
-    position: absolute;
-    top: 187px;
-    text-align: Left;
-    display: block;
-    /* color: white; */
-    margin: 0 auto;
-    word-wrap: break-word; 
-    width: 600px;
-    padding: 20px;
-  }
-  
-  .Home-Button{
-    font-family: "Katibeh", serif;
-    font-size: 10px;
-    font-weight: 400;
-    font-style: normal;
-    position: relative;
-
-}
-  .HomeLogo img{
-    width: 650px;
-    height: 500px;
-    position: relative;
-    top: 160px;
-    left: 850px;
-    padding: 10px;
-    float: left;
-  }
-  .HomeHeader-home p{
-    font-size: 2.2rem;
-    display: inline-block;
-    width: 140%;
-    
-  }
-  .HomeHeader-home h1{
-    font-size: 50px;
-    margin-bottom: 20px;
-   }
-   .SignUp-button {
-    position: relative;
-    top: 20px;
-    font-family: "Katibeh", serif;
-    background: #83d0fc;
-    border: none;
-    padding: 16px 32px;
-    font-size: 2.2rem;
-    border-radius: 15px;
-    text-decoration: none;
-    color: black;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
-  
-}
-                    /* Log In FORM */
-.Rectangle{
-  height: 410px;
-  width: 600px;
-  position: relative;
-  background-color: #83D0FC;
-  margin: auto;
-  top: 15px;
-  box-shadow:10px 14px 10px 15px #83D0FC;
-}
-.HomeLogoLGN img{
-  width: 100px;
-   height: 100px;
-   position: absolute;
-   top:10px;
-   left:10px;
-   padding:10px;  
-}
-.login-form-container input#fullName{
-  width: 80%;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 20px;
-}
-
-
-.login-form-container input#matricnumber{
-  width: 80%;
-  height: 30px;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 20px;
-}
-.login-form-container input#password{
-    width: 80%;
-    height: 30px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 20px;
-}
-.login-form-container input#email{
-    width: 80%;
-    height: 30px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 20px;
-}
-select.my-select-class{
-  width: 80%;
-  height: 50px;
-  position: relative;
-  margin-left: 50px;
-  font-family: "Katibeh", serif;
-  font-size: 20px;
-}
-
-
-.login-form-label {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  font-family: "Katibeh", serif;
-  font-size: 25px;
-  padding: 6px;
-}
-
-.Body-text{
-  position: relative;
-  text-align: right;
-}
-.Body-text h1{
-  bottom: 190px;
-  text-align: right;
-  margin-right: 15px;
-  position: relative;
-  font-size: 35px;
-  font-family: "Katibeh", serif;
-}
-
-.SignUp-button1{
-  cursor: pointer;
-}
-
-     /*LOG IN SCREEN SIZES*/
-             
-/* Mobile devices */
-@media screen and (max-width: 600px) {
-  .HomeHeader span{
-    display: none;
-  }
-  .Rectangle {
-    height: auto; /* Make height auto to adjust based on content */
-    width: 100%; /* Use 100% width for responsiveness */
-    max-width: 600px; /* Max width to control the width */
-    position: relative;
-    background-color: #83D0FC;
-    margin: auto;
-    top: 15px;
-    box-shadow: 10px 14px 10px 15px #83D0FC;
-    padding: 20px; /* Add padding for better spacing */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
-  }
-  
-  .login-form-container input,
-  select.my-select-class {
-    width: calc(100% - 100px); /* Adjust width to account for the margin */
-    height: 30px;
-    margin-left: 50px;
-    font-family: "Katibeh", serif;
-    font-size: 20px;
-    display: block;
-    margin-bottom: 15px; /* Add margin for spacing between inputs */
-  }
-  
-  select.my-select-class {
-    height: 50px; /* Keep the height for the select */
-    width: 80%;
-  }
-  
-  .login-form-label {
-    display: block; /* Change to block for better alignment */
-    text-align: center;
-    font-weight: bold;
-    font-family: "Katibeh", serif;
-    font-size: 25px;
-    margin-bottom: 10px; /* Add margin for spacing */
-  }
-  
-  .Body-text {
-    text-align: right;
-  }
-  
-  .Body-text h1 {
-    font-size: 35px;
-    font-family: "Katibeh", serif;
-    margin: 15px; /* Adjust margin for better spacing */
-  }
-  
-  .SignUp-button1 {
-    cursor: pointer;
-  }
-  .SubmitLGN {
-    width: calc(100% - 100px); /* Adjust width to account for margin */
-    height: 40px; /* Define height */
-    /* Margin to center the button with other inputs */
-    color: white; /* Text color */
-    font-family: "Katibeh", serif;
-    font-size: 20px;
-    border: none; /* Remove default border */
-    cursor: pointer; /* Pointer cursor on hover */
-    display: block; /* Ensure it’s a block element */
-     /* Add margin on top for spacing */
-    margin: 0 auto;
-    position: unset;
-    margin-top: 45px;
-  }
-  
-
-  
-}
-
+ 
   
              /*SIGN UP SCREEN SIZES*/
                 /* SIGN-UP PAGE */

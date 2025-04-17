@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import React from 'react'
-import logo from "../Assets/Trinity.png"
+import logo from "../Assets/TU-LOGO-1.png"
 import logo1 from "../Assets/icons8-head-50 1.png"
 import logo2 from "../Assets/icons8-curved-arrow-downward-32 2.jpg"
 import logo3 from "../Assets/icons8-folder-24 2.png"
@@ -27,34 +27,27 @@ const HomePage = () => {
 
   return (
     <div className="HomePage" >
-
-    <div className="parent-element">
-    <div className="HomeLogo">
-    <img src={logo}  
-       alt="">
-</img>
-</div>
-        <div className="HomeHeader-home">
-        
-       
-             <h1>Trinity University<br/> Repository!!!!!</h1>
+    
+        <div className="content_description">
+             <h1>Trinity University Repository</h1>
              <p>
              As the education sector grows, so does the need to make learning resources more accessible and secure. This e-repository is your go-to platform for exploring and preserving final year projects.
-             
+             <br></br>
              Think of it as a digital library built by students, for students. Whether you're looking for inspiration, reference materials, or a way to ensure your hard work lasts for future generations, this platform is here to help. Let's build a legacy of knowledge together!</p>
 
-             <Link to="/Register" className="SignUp-button" onClick={handleButtonClick}>Register</Link>
+             <Link to="/Register" className="registration" onClick={handleButtonClick}>Register</Link>
         <Routes>
         <Route exact path="/Register" element={<Register/>} />
         </Routes>
+
+<div className="Homelogo">
+<img src={logo}  
+alt="">
+</img>
+</div>
+  
+</div>
     </div>
-
-    </div>
-
-
-        
-         
-</div>  
 
   )
 }
