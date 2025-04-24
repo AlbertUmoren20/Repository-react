@@ -12,10 +12,15 @@ const StudentBody400 = () => {
          setClicked(true);
          navigate("/400Fbmas");
   }
-    const handleButtonOnClick = ()=>{
+    const handleButtonOnClick1 = ()=>{
          setClicked(true);
          navigate("/400Famss");
   }
+    const handleButtonOnClick2 = ()=>{
+         setClicked(true);
+         navigate("/400Nursing");
+  }
+
       return (
   
           <div>
@@ -37,14 +42,14 @@ const StudentBody400 = () => {
               <h2>FBMAS</h2>
               <p>Faculty of Basic Medical <br/> and Applied Sciences</p>
         </button>
-           <button class='faculty-button-1' onClick={handleButtonOnClick}>
+           <button class='faculty-button-1' onClick={handleButtonOnClick1}>
               <h2>FAMSS</h2>
               <p>Faculty of Art Management <br/> and Social Sciences</p>
         </button>
-           <button class='faculty-button-2' onClick={handleButtonOnClick}>
-              <h2>FAMSS</h2>
-              <p>Faculty of Nursing  </p>
-        </button>
+        <button class='faculty-button-2' onClick={handleButtonOnClick2}>
+          <h2>*****</h2>
+        <p>Faculty of Nursing  </p>
+         </button>
         </div>
         </div>
         </div>

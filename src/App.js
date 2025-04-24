@@ -12,6 +12,8 @@ import UploadProjectFbmas from './Components/UploadProject/UploadProjectFbmas';
 import AttachProject from './Components/AttachProject/AttachProject';
 import AttachProjectFamss from './Components/AttachProject/AttachProjectFamss';
 import StudentBody400 from './Components/StudentBody/StudentBody400';
+import NursingStudent from './Components/NursingStudent/Nursing'
+import UploadProjectNursing from './Components/UploadProject/UploadProjectNursing'
   import {BrowserRouter, Routes,Route} from "react-router-dom"
 // import "./index.css"
 
@@ -26,8 +28,10 @@ function App() {
        <Route path='/StudentBody' element = {<StudentBody/>}/>
        <Route path='/Fbmas' element = {<FbmasStudent/>}/>
        <Route path = '/Famss' element = {<FamssStudent/>}/>
+       <Route path = '/Nursing' element = {<NursingStudent/>}/>
        <Route path = '/400Famss' element = {<UploadProjectFamss/>}/>
        <Route path = '/400Fbmas' element = {<UploadProjectFbmas/>}/>
+       <Route path = '/400Nursing' element = {<UploadProjectNursing/>}/>
        <Route path='/AttachProject' element= {<AttachProject/>}/>
        <Route path='/AttachProjectFamss' element={<AttachProjectFamss/>}/>
         <Route path='/StudentBody400Level' element= {<StudentBody400/>}/>

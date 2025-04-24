@@ -27,10 +27,15 @@ const HomePage = () => {
 
   return (
     <div className="HomePage" >
-    
+    <div className="Homelogo">
+    <img src={logo}  
+    alt="">
+    </img>
+    </div>
         <div className="content_description">
+ 
              <h1>Trinity University Repository</h1>
-             <p>
+            <p>
              As the education sector grows, so does the need to make learning resources more accessible and secure. This e-repository is your go-to platform for exploring and preserving final year projects.
              <br></br>
              Think of it as a digital library built by students, for students. Whether you're looking for inspiration, reference materials, or a way to ensure your hard work lasts for future generations, this platform is here to help. Let's build a legacy of knowledge together!</p>
@@ -40,14 +45,10 @@ const HomePage = () => {
         <Route exact path="/Register" element={<Register/>} />
         </Routes>
 
-<div className="Homelogo">
-<img src={logo}  
-alt="">
-</img>
+
 </div>
   
 </div>
-    </div>
 
   )
 }

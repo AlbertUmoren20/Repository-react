@@ -155,69 +155,51 @@ code {
   font-weight: 200;
   width: 100%;
 } */ 
-
-
-.content_description{
-  width: 1200px;
-  margin: auto;
-  height: auto;
+ .HomePage img{
+  width: 200px;
+  height: 100px;
   position: relative;
+  top: 20px;
+ }
+ 
+.content_description{
+  text-align: center;
+  
 }
-.content_description img{
-    width: 500px;
+
+
+  .content_description h1{
+    font-size: 40px;
+    margin-top: 40px;
+    color: #085195;
+  }
+  .content_description p{
+    font-size: x-large;
+    width: 100vw;
+    height: auto;
+    max-width: 800px;       
+    line-height: 2.0rem;
+    margin: 0 auto;         
+    padding: 0 20px;        
+
+  }
+
+   .registration{
+    background: #83d0fc;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.4rem;
+    border-radius: 15px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     position: relative;
-    top: 120px;
-    right: 0px;
-}
-.content_description p{
-  padding-left: 20px;
-  padding-bottom: 25px;
-  font-size: 25px;
-  line-height: 30px;
-  width: 50%;
-  margin-top: 10px;
-}
+    top: 30px;
+  }
 
-.content_description h1{
-  font-size: 50px;
-  padding-left: 20px;
-  margin-top: 9%;
-  letter-spacing: 2%;
-  color: #085195;
-}
-.content_description .registration{
-  width: 160px;
-  height:40px;
-  background: #83d0fc;
-  border: none;
-  padding: 16px 32px;
-  font-size: 1.4rem;
-  border-radius: 15px;
-  text-decoration: none;
-  color: black;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  margin-bottom: 10px;
-  margin-left: 20px;
-}
 
-.registration:hover { 
-  /* Hover style  */
-background-color: white;  
-color:#59a9d7 ;
- border: 1px solid black;
- box-shadow: 2px 2px 2px black;
-} 
-
-.Homelogo{
-  width: 500px;
-  height: auto;
-  position: absolute;
-  bottom: 140px;
-  left: 670px;
-  padding: 20px;
-}
      /*HOME PAGE SCREEN SIZES*/
-             
+
 /* Mobile devices */
  
   
@@ -398,9 +380,8 @@ border-radius: 4%;
   position: relative;
   height : 100vh;
   overflow: hidden;
-
- 
 }
+
 .faculty-wrapper-continer{
   position: absolute;
   height: 100%;
@@ -490,11 +471,11 @@ border-radius: 4%;
 }
 .faculty-button-2{
   font-family: "Katibeh", serif;
-  background: #cd39ff;
+  background: #e4a6f9;
   border: none;
   cursor: pointer;
-  box-shadow:10px 10px 5px #cd39ff;
-  padding: 16px 40px;
+  box-shadow:10px 10px 5px #e4a6f9;
+  padding: 25px 80px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
@@ -629,6 +610,9 @@ border-radius: 4%;
 /* Small screens and laptops */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   /* Your styles here */
+  .faculty-container {
+   display: flex;
+}
 }
 
 /* Desktops and large screens */
@@ -823,7 +807,6 @@ border-radius: 4%;
     font-size: 20px;
   }
 
-
 }
 @media screen and (max-width: 992px) {
   .HomeLogoFaculty img{
@@ -1006,14 +989,28 @@ label.address {
 }
 
 /* 400FBMAS, 400FAMSS */
+@media screen and (max-width: 350px) and (max-width: 599px){
+
+}
+
+
+
+
 @media screen and (max-width: 600px){
   .uploadBtn-Famss{
-    width: 70%;
+   background: none;
+   color: #062638 ;
+   border: none;
     display: flex;
-     align-items: center; 
-     justify-content: center;
-     top: 240px;
+    font-size: 23px;
+    text-align: left;
+    position: absolute;
+    top: 100px;
+    right: 10px;
   }
+.HomeHeader-1 span {
+  font-size: 40px !important;
+}
   .upload{
     width: 70%;
     display: flex;
