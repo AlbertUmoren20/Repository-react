@@ -113,7 +113,7 @@ const UploadProjectFamss = () => {
       </div>
       <div className="HomeLogoFaculty">
         <img src={logo} 
-          alt="" />
+          alt=""/>
       </div>
       <div className='uploadBtn-Famss' onClick={uploadClick}>+ UPLOAD</div>
 
