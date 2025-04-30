@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from "../Assets/Ellipse 2.png";
+import 'boxicons/css/boxicons.min.css';
 import { nanoid } from 'nanoid';
 import { FaThumbsDown } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -115,7 +116,7 @@ const UploadProjectFbmas = () => {
         <img src={logo}
           alt="" />
       </div>
-      <div className='upload' onClick={uploadClick}> + UPLOAD</div>
+      <div className='upload' onClick={uploadClick}><i class='bx bx-upload'></i>  </div>
 
       <div className='search-box-container'>
         <input

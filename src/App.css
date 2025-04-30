@@ -16,7 +16,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   justify-content: center;
   align-items: center;
-  /* background: url("./Components/Assets/OIP.jpeg");  */
+  /* background: url("./Components/Assets/OIP.jpeg");*/
   background-size:cover;
   background-position: center;
   /* background-color: rgb(161, 220, 245); */
@@ -764,6 +764,9 @@ border-radius: 4%;
   .HomeHeader-1 span {
     font-size: 40px !important;
   }
+  .year-box{
+    display: none;
+  }
 }
 
 
@@ -895,7 +898,7 @@ label.address {
   box-shadow: 1px 1px 1px black;
  }
  .uploadBtn-Famss:hover{
-  transform: scale(1.50);
+  transform: scale(1.00);
   background-color: white;
   color: #83D0FC;
   border: 1px solid black;
@@ -963,7 +966,27 @@ label.address {
  width: 100%;
  margin-top: 0;
  }
-}
+ .uploadBtn-Famss{
+  position: absolute;
+  top:40px;
+  right: -20px;
+  padding:10px;  
+  background: none;
+  border: none;
+  font-size: 30px;
+ }
+ .upload{
+    position: absolute;
+    top:40px;
+    right: -20px;
+    padding:10px;  
+    background: none;
+    border: none;
+    font-size: 30px;
+ }
+ }
+
+
 
 
  /* REGISTER */
@@ -1173,8 +1196,8 @@ form{width: 100%;}
 @media screen and (min-width: 993px)and (max-width: 1200px){
 
   .container-register{
-    height: calc(100vh - 40px);
-    width: calc(90%);
+    height: calc(150vh - 40px);
+    width: calc(100%);
     top: 20px;
     padding: 0;
     transform: translate(-50%);
@@ -1232,8 +1255,8 @@ form{width: 100%;}
   .form-box-register { padding: 20px; }
   .toggle-panel-register h1{font-size: 50px; } .toggle-box-register p{ font-size: 35px;}
   .container-register{
-    height: calc(100vh - 40px);
-    width: calc(90%);
+    height: calc(150vh - 40px);
+    width: calc(100%);
     top: 20px;
     transform: translate(-50%);
     left: 50%;
@@ -1291,8 +1314,8 @@ form{width: 100%;}
   .form-box-register { padding: 20px; }
   .toggle-panel-register h1{font-size: 50px; } .toggle-box-register p{ font-size: 35px;}
   .container-register{
-    height: calc(100vh - 40px);
-    width: calc(90%);
+    height: calc(150vh - 40px);
+    width: calc(100%);
     top: 20px;
     transform: translate(-50%);
     left: 50%;
@@ -1350,8 +1373,8 @@ form{width: 100%;}
   .form-box-register { padding: 20px; }
   .toggle-panel-register h1{font-size:40px; }
   .container-register{
-    height: calc(100vh - 40px);
-    width: calc(90%);
+    height: calc(150vh - 40px);
+    width: calc(100%);
     top: 20px;
     transform: translate(-50%);
     left: 50%;
@@ -1410,9 +1433,9 @@ form{width: 100%;}
   .toggle-panel-register h1{font-size: 40px; }
 
   .container-register{
-    height: calc(100vh - 40px);
-    width: calc(90%);
-    top: 20px;
+    height: calc(150vh - 40px);
+    width: calc(100%);
+    top: 10px;
     position: absolute;
     z-index: 1000; 
     transform: translate(-50%);
