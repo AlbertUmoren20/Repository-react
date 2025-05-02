@@ -760,6 +760,15 @@ border-radius: 4%;
 
             /* Screen Sizes */
             /* 400FBMAS, 400FAMSS */
+@media screen and (max-width: 349px) {
+  .HomeHeader-1 span {
+    font-size: 40px !important;
+  }
+  .year-box{
+    display: none;
+  }
+}
+
 @media screen and (min-width: 350px) and (max-width: 599px){
   .HomeHeader-1 span {
     font-size: 40px !important;
@@ -977,12 +986,12 @@ label.address {
  }
  .upload{
     position: absolute;
-    top:40px;
-    right: -20px;
+    top:60px;
+    right: 0px;
     padding:10px;  
     background: none;
-    border: none;
-    font-size: 30px;
+    border: 1px solid black;
+    font-size: 15px;
  }
  }
 

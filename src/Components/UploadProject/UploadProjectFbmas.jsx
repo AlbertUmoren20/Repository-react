@@ -116,7 +116,7 @@ const UploadProjectFbmas = () => {
         <img src={logo}
           alt="" />
       </div>
-      <div className='upload' onClick={uploadClick}><i class='bx bx-upload'></i>  </div>
+      <div className='upload' onClick={uploadClick}><i class='bx bx-upload'> Upload</i>  </div>
 
       <div className='search-box-container'>
         <input

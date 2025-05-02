@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import 'boxicons/css/boxicons.min.css';
 import { useNavigate } from "react-router-dom";
+import {useFormik} from 'formik'
+import * as Yup from 'yup'
 
 import {
   bxUser,
@@ -28,6 +30,26 @@ const App = () => {
         level: '',
         email: '',
       })
+
+      const formik = useFormik({
+        initialValues:{
+        fullname: '',
+        matricnumber: '',
+        password: '',
+        level: '',
+        email: '',
+        
+      },
+    validationSchema: Yup.object ({
+      fullname: Yup.string("Must fill up").required("Required"),
+      matricnumber: Yup.string().required(),
+      email: Yup.string("put a good email").required(),
+    }),
+onSubmit: values => { 
+  alert(JSON.stringify(values,null,2));
+      }
+})
+
      const navigate = useNavigate();
      const toggleForm = () => {
       console.log("Toggling form. Current state:", isLoginVisible);
