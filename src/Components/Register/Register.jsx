@@ -18,36 +18,39 @@ import {
 const App = () => {
   const [isLoginVisible, setIsLoginVisible] = useState(true);
   const [clicked, setClicked] = useState(false);
-     const [fullname, setfullname] = useState('');
-      const [matricnumber, setmatricnumber] = useState('');
-      const [password, setpassword] = useState('');
-      const [email, setemail] = useState ('')
-      const [level, setlevel] = useState('')
-      const [formData, setFormData ]= useState ({
-        fullname: '',
-        matricnumber: '',
-        password: '',
-        level: '',
-        email: '',
-      })
-
+    //  const [fullname, setfullname] = useState('');
+    //   const [matricnumber, setmatricnumber] = useState('');
+    //   const [password, setpassword] = useState('');
+    //   const [email, setemail] = useState ('')
+    //   const [level, setlevel] = useState('')
+      // const [formData, setFormData,  ]= useState ({
+      //   fullname: '',
+      //   matricnumber: '',
+      //   password: '',
+      //   level: '',
+      //   email: '',
+      // })
       const formik = useFormik({
         initialValues:{
         fullname: '',
         matricnumber: '',
         password: '',
         level: '',
-        email: '',
-        
+        email: ''
       },
+      
     validationSchema: Yup.object ({
       fullname: Yup.string("Must fill up").required("Required"),
-      matricnumber: Yup.string().required(),
-      email: Yup.string("put a good email").required(),
+      matricnumber: Yup.string().required("Matric is Required").matches(/^[A-Za-z0-9]+$/, "Matric number must be alphanumeric"),
+      password: Yup.string().required("Password is Required").min(6, "Password must be less than 6 characters"),
+      email: Yup.string().email("Invalid email address").required(" Email is required "),
+      level: Yup.string().required("Level is required").oneOf([100,200,300,400], "Invalid level")
     }),
-onSubmit: values => { 
-  alert(JSON.stringify(values,null,2));
-      }
+ 
+    onSubmit: values => {
+      console.log("student registered")
+      alert(JSON.stringify(values, null, 2));
+    },
 })
 
      const navigate = useNavigate();
@@ -56,56 +59,15 @@ onSubmit: values => {
       setIsLoginVisible(!isLoginVisible);
     };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault(); 
-    const student = {fullname, matricnumber, password, email, level};
-  
-    // Assuming this is to retrieve all students
-    try {
-     const response= await fetch("http://localhost:8080/student/login", {
-       
-        method: "POST",
-        body: JSON.stringify(student),
-        headers: { "Content-Type": "application/json" }, // Not strictly necessary for GET, but can be included
-      });
-        if(student.level === "400"){
-        navigate(`/StudentBody400Level?fullName=${fullname}`);
-      }
-        // Use the retrieved students data here (e.g., display in UI)
-      else if (response.ok) {
-        const students = await response.json();
-        alert("Student Retrieved");
-        navigate(`/StudentBody?fullName=${fullname}`);
-        console.log("Students retrieved:", students);
-       
-      
-      } else {
-        alert("Error Retrieving Student")
-        console.error("Error retrieving students:", await response.text());
-       
-        // Handle potential errors during student retrieval
-      }
-    } catch (error) {
-      alert("Error Retrieving Student")
-      console.error("Error retrieving students:", error);
-      
-      // Handle unexpected errors (e.g., network issues)
-    }
-  
-    // Code to handle form data storage or other actions (optional)
-    // ...
-  };
+ 
 
-  const handleRegister = async (event) =>{
-    event.preventDefault();
-    const student = { fullname, matricnumber, password, email, level, };
-  
+  const handleRegister = async (values) =>{
     // This is for adding a new student into the database
     try {
       const response = await fetch("http://localhost:8080/student/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(student),
+        body: JSON.stringify(values),
       });
   
       if (response.ok) {
@@ -130,55 +92,38 @@ onSubmit: values => {
    navigate('/Login');
  }
  
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({...prevFormData, [name]: value }));
-    switch (name) {
-      case 'fullName':
-        setfullname(value);
-        break;
-      case 'matricnumber':
-        setmatricnumber(value);
-        break;
-      case 'password':
-        setpassword(value);
-        break;
-      case 'email':
-        setemail(value);
-        break;
-      case 'level':
-        setlevel(value); // <--- Add this line
-        break;
-      default:
-        break;
-    }
-  };
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormData((prevFormData) => ({...prevFormData, [name]: value }));
+  //   switch (name) {
+  //     case 'fullName':
+  //       setfullname(value);
+  //       break;
+  //     case 'matricnumber':
+  //       setmatricnumber(value);
+  //       break;
+  //     case 'password':
+  //       setpassword(value);
+  //       break;
+  //     case 'email':
+  //       setemail(value);
+  //       break;
+  //     case 'level':
+  //       setlevel(value); // <--- Add this line
+  //       break;
+  //     default:
+  //       break;
+    // }
+  
 
   return (
     
     <div className={ `container-register ${isLoginVisible ? "": "active"}`}>
       <div className={`form-box-register ${isLoginVisible ? "login" : "register"}`}>
       {isLoginVisible ? (
-        <LoginForm
-          handleSubmit={handleSubmit}
-          fullname={fullname}
-          setfullname={setfullname}
-          password={password}
-          handleChange={handleChange}
-          email={email}
-          level={level}
-          setlevel={setlevel}
-        />
+        <LoginForm formik = {formik}/>
       ) : (
-        <RegisterForm handleSubmit={handleSubmit} fullname={fullname}
-        setfullname={setfullname}
-        password={password}
-        handleChange={handleChange}
-        email={email}
-        level={level}
-        setlevel={setlevel}
-        matricnumber={matricnumber} 
-        setMatricnumber={setmatricnumber}/>
+        <RegisterForm formik= {formik} />
        )}
       </div>
 
@@ -201,51 +146,59 @@ onSubmit: values => {
       </div>
     </div>
   );
-};
-
-const LoginForm = (
- {
-  handleChange,
-  handleSubmit,
-  fullname,
-  password,
-  email,
-  level,
-  setlevel,
-  setfullname
- }
-) => {
+}
+const LoginForm = ({formik}) => { 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <h1>Login</h1>
+
       <div className="input-box-register">
-        <input type="text" placeholder="Full Name" value={fullname}
-        onChange={(e) => setfullname(e.target.value)}
+        <input type="text" 
+        name="fullname"
+        placeholder="Full Name" 
+        value={formik.values.fullname}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         required />
         <i className="bx bxs-user"></i>
+        {formik.touched.fullname && formik.errors.fullname ? (
+          <div className="error">{formik.errors.fullname}</div>
+        ) : null}
       </div>
       
       <div className="input-box-register">
-        <input type="password" name="password" placeholder="Password" 
-        value={password}
-       onChange={handleChange}
+        <input type="password" 
+        name="password" 
+        placeholder="Password" 
+        value={formik.values.password}
+       onChange={formik.handleChange}
+       onBlur={formik.handleBlur}
         required />
         <i className="bx bxs-lock-alt"></i>
+        {formik.touched.password && formik.errors.password ? (
+          <div className="error">{formik.errors.password}</div>  ) : null}
       </div>
 
       <div className="input-box-register">
-        <input type="email" name="email" placeholder="Email" 
-        value={email}
-        onChange={handleChange}
+        <input type="email" 
+        name="email" 
+        placeholder="Email" 
+        value={formik.values.email}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         required />
         <i className="bx bxs-envelope"></i>
+        {formik.touched.email && formik.errors.email ? (
+          <div className="error">{formik.errors.email}</div>  ) : null}
       </div>
 
       <label className="input-box-register" ></label>
       <select 
        className="level-register"
-       value={level} 
-       onChange={(e) => setlevel(e.target.value)}
+       name="level"
+       value={formik.values.level} 
+       onChange={formik.handleChange}
+       onBlur={formik.handleBlur}
        required>
        <option value="">Pick Level</option>
        <option value="100">100</option>
@@ -253,9 +206,11 @@ const LoginForm = (
        <option value="300">300</option>
        <option value= "400">400</option>
        <i className="bx bxs-lock-alt"></i>
+       {formik.touched.level && formik.errors.level ? (
+        <div className="error">{formik.errors.level}</div>  ) : null}
       </select>
 
-
+       
       <div className="forgot-link-register">
         <a href="#">Forgot Password?</a>
       </div>
@@ -282,43 +237,70 @@ const LoginForm = (
   );
 };
 
-const RegisterForm = ({
-  handleRegister,
-  fullname,
-  handleChange,
-  setfullname,
-   email,
-    password,
-    level, setlevel, 
-    matricnumber, setMatricnumber
-}) => {
+
+const RegisterForm = ({formik}) =>{
   return (
-    <form onSubmit={handleRegister}>
+    <form onSubmit= {formik.handleSubmit}>
       <h1>Registration</h1>
       <div className="input-box-register">
-        <input type="text" placeholder="Full Name" value={fullname}
-        onChange={(e) => setfullname(e.target.value)} required />
+
+        <input type="text" 
+        name="fullname"
+        placeholder="Full Name" 
+        value={formik.values.fullname}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        required />
         <i className="bx bxs-user"></i>
+        {formik.touched.fullname && formik.errors.fullname ? (
+          <div className="error">{formik.errors.fullname}</div>
+        ) : null}
       </div>
       <div className="input-box-register">
-        <input type="email" name="email" placeholder="Email" value={email}   onChange={handleChange}required />
+        <input type="email" 
+        name="email" 
+        placeholder="Email" 
+        value={formik.values.email}   
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        required />
         <i className="bx bxs-envelope"></i>
+        {formik.touched.email && formik.errors.email ? (
+          <div className="error">{formik.errors.email}</div>  ) : null}
       </div>
       <div className="input-box-register">
-        <input type="password" name="password" placeholder="Password" value={password}   onChange={handleChange} required />
+        <input type="password"
+         name="password"
+          placeholder="Password" 
+          value={formik.values.password}   
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         required />
         <i className="bx bxs-lock-alt"></i>
+        {formik.touched.password && formik.errors.password ? (
+          <div className="error">{formik.errors.password}</div>  ) : null}
       </div>
+
       <div className="input-box-register">
-        <input type="matricnumber" placeholder="Matricnumber" value={matricnumber}
-        onChange={(e) => setMatricnumber(e.target.value)} required />
+        <input type="matricnumber"
+        name="matricnumber"
+         placeholder="Matricnumber" 
+         value={formik.values.matricnumber}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+         required />
         <i className="bx bxs-user"></i>
+        {formik.touched.matricnumber && formik.errors.matricnumber ? (
+          <div className="error">{formik.errors.matricnumber}</div>  ) : null}
       </div>
   
       <label className="input-box-register" ></label>
       <select 
        className="level-register"
-       value={level} 
-       onChange={(e) => setlevel(e.target.value)}
+       name="level"
+       value={formik.values.level} 
+       onChange={formik.handleChange}
+       onBlur={formik.handleBlur}
        required>
        <option value="">Pick Level</option>
        <option value="100">100</option>
@@ -326,6 +308,8 @@ const RegisterForm = ({
        <option value="300">300</option>
        <option value= "400">400</option>
        <i className="bx bxs-lock-alt"></i>
+       {formik.touched.level && formik.errors.level ? (
+        <div className="error">{formik.errors.level}</div>  ) : null}
       </select>
 
       <button type="submit" className="btn">
@@ -349,6 +333,7 @@ const RegisterForm = ({
     </form>
   );
 };
+
 
 export default App;
 

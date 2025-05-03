@@ -32,7 +32,11 @@ code {
 
 
 /* LOGINFORM.CSS */
-
+.error {
+  color: red;
+  font-size: 20px;
+  margin-top: 5px;
+}
 .container{
     width: 420px;
     background-color: #83D0FC;
@@ -1032,7 +1036,9 @@ form{width: 100%;}
   text-align: center;
   padding: 40px;
   z-index: 1;
-  transition: .6s ease-in-out 1.2s, visibility 0s 1s;
+  transition: .6s ease-in-out 1.2s, 
+  visibility 0s 1s;
+  overflow: auto;
 }
 
 .container-register.active .form-box-register{ right: 50%; }
