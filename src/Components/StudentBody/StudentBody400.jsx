@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import logo from "../Assets/Ellipse 2.png"
+import logo from "../Assets/Ellipse 2.png";
+import BackButton from "../BackButton/BackButton";
 
 const StudentBody400 = () => {
     const location = useLocation();
@@ -24,8 +25,10 @@ const StudentBody400 = () => {
       return (
   
           <div>
+          <BackButton />
           <div className="HomeHeader-Studentbody">
-    Welcome, <br/> <span style={{fontSize:"60px", textDecoration: "underline #83D0FC 10px"}}> - {fullName} -</span>
+    Welcome, <br/> 
+    <span style={{fontSize:"60px", textDecoration: "underline #83D0FC 10px"}}> - {fullName} -</span>
      </div>
   
      <div className="HomeLogo400">

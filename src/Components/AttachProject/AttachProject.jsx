@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
+import BackButton from "../BackButton/BackButton";
+import { useNavigate } from 'react-router-dom';
 
 const AttachProject = () => {
   const [formData, setFormData] = useState({});
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,15 +44,39 @@ const AttachProject = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      alert('Project uploaded successfully');
+      setTimeout(() => {
+            toast.success("Project uploaded successfully", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+          }, 1000);
+          navigate(`/StudentBody`);
     } catch (error) {
       console.error('There was an error uploading the project!', error);
-      alert('Error uploading project');
+      toast.error("Project upload failed", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
   return (
     <div>
+    <BackButton />
     <div className="HomeHeader" style={{ fontSize: "30px", textDecoration: "underline #f97777 10px" }}>
     UPLOAD FBMAS <br/> PROJECT
      </div>
@@ -140,6 +167,19 @@ const AttachProject = () => {
           </form>
         </div>
       </div>
+         <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce}
+            />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import 'boxicons/css/boxicons.min.css';
 import { nanoid } from 'nanoid';
 import { FaThumbsDown } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
+import BackButton from "../BackButton/BackButton";
 
 const UploadProjectFamss = () => {
   const [searchField, setSearchField] = useState('');
@@ -87,6 +88,7 @@ const UploadProjectFamss = () => {
 
   return (
     <div className='faculty-wrapper'>
+      <BackButton />
       <div className='faculty-wrapper-continer' style={{ display: showDescript ? "flex" : "none" }} onClick={onRemovedesc}>
         {selectedProject ? (
           <div className='faculty-wrapper-details' onClick={onRemovedesc}>

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import SignUp from "../SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import BackButton from "../BackButton/BackButton";
 
 
 const LoginForm = () => {
@@ -47,13 +48,24 @@ const LoginForm = () => {
             body: JSON.stringify(student),
             headers: { "Content-Type": "application/json" }, // Not strictly necessary for GET, but can be included
           });
-            if(student.level === "400"){
-            navigate(`/StudentBody400Level?fullName=${fullname}`);
-          }
-          else if (response.ok) {
+            if (response.ok) {
             const students = await response.json();
-            alert("Student Retrieved");
-            navigate(`/StudentBody?fullName=${fullname}`);
+            
+            // Store user data in localStorage
+            localStorage.setItem("userFullname", fullname);
+            localStorage.setItem("userLevel", level);
+            
+            // Check for admin (auto-detect based on email pattern)
+            const isAdmin = email.toLowerCase().includes("admin") || email.toLowerCase().includes("@admin");
+            if (isAdmin) {
+              localStorage.setItem("userRole", "admin");
+              navigate("/AdminDashboard");
+            } else if (student.level === "400") {
+              navigate(`/StudentBody400Level?fullName=${fullname}`);
+            } else {
+              alert("Student Retrieved");
+              navigate(`/StudentBody?fullName=${fullname}`);
+            }
             console.log("Students retrieved:", students);
            
             // Use the retrieved students data here (e.g., display in UI)
@@ -221,7 +233,8 @@ const LoginForm = () => {
 <div className="LoginHome-Page" style={{
    position:"relative",
 
-}}> 
+}}>
+  <BackButton /> 
   <div className="HomeHeader">
   <span>TRINITY UNIVERSITY E-REPOSITORY</span> <br/> LOG IN
    </div>

@@ -1,9 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { Bounce } from "react-toastify";
+import BackButton from "../BackButton/BackButton";
+import { useNavigate } from 'react-router-dom';
 
 const AttachProjectFamss = () => {
     const [formData, setFormData] = useState({});
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({
@@ -19,7 +24,7 @@ const AttachProjectFamss = () => {
       });
     };
   
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
       e.preventDefault();
       const data = new FormData();
       data.append('title', formData.title);
@@ -34,22 +39,52 @@ const AttachProjectFamss = () => {
       for (const pair of data.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
       }
-  
+
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      };
       try {
-        const response = await axios.post('http://localhost:8080/student/uploadFamss', data, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        alert('Project uploaded successfully');
+       axios.post('http://localhost:8080/student/uploadFamss', data, config )
+      .then(response => {
+       console.log('Project uploaded successfully:', response.data);
+       setTimeout(() => {
+            toast.success("Project uploaded successfully", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+          }, 1000);
+          navigate(`/Faculty/${formData.department}`);
+      });
       } catch (error) {
         console.error('There was an error uploading the project!', error);
-        alert('Error uploading project');
+        setTimeout(() => {
+            toast.error("Project upload failed", {
+              position: "top-left",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+          }, 1000);
       }
     };
   
     return (
       <div>
+      <BackButton />
       <div className="HomeHeader" style={{ fontSize: "30px", textDecoration: "underline #83D0FC 10px" }}>
       UPLOAD FAMSS <br/> PROJECT
        </div>
@@ -139,6 +174,19 @@ const AttachProjectFamss = () => {
             </form>
           </div>
         </div>
+         <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       </div>
     );
 }
