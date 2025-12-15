@@ -14,12 +14,12 @@ export const FacultyProvider = ({ children }) => {
   const [faculties, setFaculties] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
   const fetchFaculties = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:8080/admin/getFaculties");
+      const response = await fetch(`${API_BASE_URL}/admin/getFaculties`);
       if (response.ok) {
         const data = await response.json();
         setFaculties(Array.isArray(data) ? data : []);

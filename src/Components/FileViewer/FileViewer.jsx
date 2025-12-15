@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaTimes, FaDownload, FaSpinner, FaExclamationTriangle } from "react-icons/fa";
 import { Document, Page, pdfjs } from "react-pdf";
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL 
 // import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 // import "react-pdf/dist/esm/Page/TextLayer.css";
 
@@ -97,13 +98,13 @@ const FileViewer = ({ fileUrl, fileName, onClose }) => {
     
     // If it starts with a slash, it's an absolute path on the server
     if (fileUrl.startsWith("/")) {
-      return `http://localhost:8080${fileUrl}`;
+      return `${API_BASE_URL}${fileUrl}`;
     }
     
     // Otherwise, treat as relative path and prepend backend URL
     // Remove any leading slashes to avoid double slashes
     const cleanPath = fileUrl.replace(/^\/+/, "");
-    return `http://localhost:8080/${cleanPath}`;
+    return `${API_BASE_URL}/${cleanPath}`;
   };
 
   const fullUrl = getFullUrl();

@@ -11,6 +11,7 @@ import BackButton from "../BackButton/BackButton";
 const Signup = () => {
   const navigate = useNavigate();
   const [admin, setAdmin] =  useState(false);
+  const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
   const formik = useFormik({
     initialValues: {
       fullname: "",
@@ -36,7 +37,7 @@ const Signup = () => {
     }),
     onSubmit: async (values) => {
       try {
-        const response = await fetch("http://localhost:8080/student/add", {
+        const response = await fetch(`${API_BASE_URL}/student/add`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),

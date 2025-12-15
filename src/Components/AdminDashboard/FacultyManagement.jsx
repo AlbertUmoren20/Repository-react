@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlus, FaTrash, FaSpinner } from "react-icons/fa";
 import { useFaculties } from "../../Contexts/FacultyContext";
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
 
 const FacultyManagement = () => {
   const { faculties, isLoading, fetchFaculties, addFaculty, removeFaculty } = useFaculties();
@@ -17,7 +18,7 @@ const FacultyManagement = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:8080/admin/addFaculty", {
+      const response = await fetch(`${API_BASE_URL}/admin/addFaculty`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -63,7 +64,7 @@ const FacultyManagement = () => {
     if (!window.confirm("Are you sure you want to delete this faculty?")) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/admin/deleteFaculty/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/admin/deleteFaculty/${id}`, {
         method: "DELETE",
       });
 

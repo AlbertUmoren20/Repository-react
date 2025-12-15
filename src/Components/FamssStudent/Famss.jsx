@@ -2,7 +2,7 @@
 import React from "react";
 import ProjectRepo from "../ProjectRepo/ProjectRepo";
 import logo from "../Assets/Ellipse 2.png";
-
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
 export default function FamssStudent() {
   const departments = [
     "Mass Communication",
@@ -18,7 +18,7 @@ export default function FamssStudent() {
     <ProjectRepo
       title="FAMSS E-REPOSITORY"
       subtitle="Faculty of Art Management and Social Sciences"
-      fetchUrl="http://localhost:8080/student/getFamssUpload"
+      fetchUrl={`${API_BASE_URL}/student/getFamssUpload`}
       departments={departments}
       years={years}
       attachPath="/AttachProjectFamss"

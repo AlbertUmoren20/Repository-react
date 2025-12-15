@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaSignOutAlt, FaSpinner, FaSync } from "react-icons/fa";
 import logo from "../Assets/TU-LOGO-1.png";
 import BackButton from "../BackButton/BackButton";
-
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
 /**
  * Modern StudentBody
  * - Responsive grid
@@ -55,7 +55,7 @@ const StudentBody = () => {
   const fetchFaculties = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/admin/getFaculties");
+      const response = await fetch(`${API_BASE_URL}/admin/getFaculties`);
       if (response.ok) {
         const data = await response.json();
         const facultiesList = Array.isArray(data) ? data : [];

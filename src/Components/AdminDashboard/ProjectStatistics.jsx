@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaSpinner, FaChartBar } from "react-icons/fa";
 import { useFaculties } from "../../Contexts/FacultyContext";
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
 
 const ProjectStatistics = () => {
   const { getFacultyAbbreviations } = useFaculties();
@@ -9,6 +10,7 @@ const ProjectStatistics = () => {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedFaculty, setSelectedFaculty] = useState("");
 
+
   useEffect(() => {
     fetchStatistics();
   }, [selectedYear, selectedFaculty]);
@@ -16,7 +18,7 @@ const ProjectStatistics = () => {
   const fetchStatistics = async () => {
     setIsLoading(true);
     try {
-      let url = "http://localhost:8080/admin/getProjectStats";
+      let url = `${API_BASE_URL}/admin/getProjectStats`;
       const params = new URLSearchParams();
       if (selectedYear) params.append("year", selectedYear);
       if (selectedFaculty) params.append("faculty", selectedFaculty);

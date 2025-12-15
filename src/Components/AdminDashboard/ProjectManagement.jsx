@@ -12,7 +12,8 @@ const ProjectManagement = () => {
   const [selectedYear, setSelectedYear] = useState("");
   const [editingProject, setEditingProject] = useState(null);
   const [editFormData, setEditFormData] = useState({});
-
+  const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+   
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -20,7 +21,7 @@ const ProjectManagement = () => {
   const fetchProjects = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/admin/getAllProjects");
+      const response = await fetch(`${API_BASE_URL}/admin/getAllProjects`);
       if (response.ok) {
         const data = await response.json();
         setProjects(Array.isArray(data) ? data : []);
@@ -86,7 +87,7 @@ const ProjectManagement = () => {
 
   const handleUpdate = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/admin/updateProject/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/admin/updateProject/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editFormData),
@@ -119,7 +120,7 @@ const ProjectManagement = () => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/admin/deleteProject/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/admin/deleteProject/${id}`, {
         method: "DELETE",
       });
 

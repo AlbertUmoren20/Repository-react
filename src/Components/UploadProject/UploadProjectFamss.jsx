@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { FaThumbsDown } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
 import BackButton from "../BackButton/BackButton";
-
+const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
 const UploadProjectFamss = () => {
   const [searchField, setSearchField] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
@@ -28,7 +28,7 @@ const UploadProjectFamss = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:8080/student/getFamssUpload');
+      const response = await fetch(`${API_BASE_URL}/student/getFamssUpload`);
       if (!response.ok) {
         throw new Error(`Error fetching projects: ${response.statusText}`);
       }
