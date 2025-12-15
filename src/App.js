@@ -1,6 +1,6 @@
 
 import './App.css';
-import LoginForm from './Components/LoginForm/LoginForm';
+// import LoginForm from './Components/LoginForm/LoginForm';
 import Register from './Components/Register/Register'
 import HomePage from './Components/HomePage/HomePage';
 import SignUp from './Components/SignUp/SignUp';
