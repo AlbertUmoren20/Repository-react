@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { FaThumbsDown } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
 import BackButton from "../BackButton/BackButton";
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const UploadProjectFbmas = () => {
   const [searchField, setSearchField] = useState('');
   const [selectedYear, setSelectedYear] = useState('');

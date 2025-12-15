@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaSignOutAlt, FaSpinner, FaSync } from "react-icons/fa";
 import logo from "../Assets/TU-LOGO-1.png";
 import BackButton from "../BackButton/BackButton";
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 /**
  * Modern StudentBody
  * - Responsive grid

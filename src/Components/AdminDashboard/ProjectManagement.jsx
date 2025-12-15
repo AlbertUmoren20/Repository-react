@@ -12,7 +12,7 @@ const ProjectManagement = () => {
   const [selectedYear, setSelectedYear] = useState("");
   const [editingProject, setEditingProject] = useState(null);
   const [editFormData, setEditFormData] = useState({});
-  const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
    
   useEffect(() => {
     fetchProjects();

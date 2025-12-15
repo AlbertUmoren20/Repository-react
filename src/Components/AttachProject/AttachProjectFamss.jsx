@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Bounce } from "react-toastify";
 import BackButton from "../BackButton/BackButton";
 import { useNavigate } from 'react-router-dom';
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const AttachProjectFamss = () => {
     const [formData, setFormData] = useState({});

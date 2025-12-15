@@ -12,7 +12,7 @@ import BackButton from "../BackButton/BackButton";
 
 const Login = () => {
   const navigate = useNavigate();
-  const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const formik = useFormik({
     initialValues: {
       email: "",

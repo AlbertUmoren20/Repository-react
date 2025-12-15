@@ -8,7 +8,7 @@
 // import { useNavigate } from "react-router-dom";
 // import BackButton from "../BackButton/BackButton";
 
-// // const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+// // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 // const LoginForm = () => {
 //       const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 //       //A user regex, that going to be used to validate name with

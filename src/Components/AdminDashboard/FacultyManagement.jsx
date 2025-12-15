@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlus, FaTrash, FaSpinner } from "react-icons/fa";
 import { useFaculties } from "../../Contexts/FacultyContext";
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const FacultyManagement = () => {
   const { faculties, isLoading, fetchFaculties, addFaculty, removeFaculty } = useFaculties();

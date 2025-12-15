@@ -11,7 +11,7 @@ import BackButton from "../BackButton/BackButton";
 const Signup = () => {
   const navigate = useNavigate();
   const [admin, setAdmin] =  useState(false);
-  const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const formik = useFormik({
     initialValues: {
       fullname: "",

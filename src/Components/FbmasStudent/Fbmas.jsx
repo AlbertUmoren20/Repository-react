@@ -2,7 +2,7 @@
 import React from "react";
 import ProjectRepo from "../ProjectRepo/ProjectRepo";
 import logo from "../Assets/Ellipse 2.png";
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 export default function FbmasStudent() {
   const departments = [
     "Computer Science",

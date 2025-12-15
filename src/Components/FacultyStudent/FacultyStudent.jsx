@@ -3,7 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ProjectRepo from "../ProjectRepo/ProjectRepo";
 import logo from "../Assets/Ellipse 2.png";
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 // Default departments and years - can be customized per faculty or fetched from API
 const defaultDepartments = {
   FBMAS: ["Computer Science", "Information science", "Biotech", "Microbiology", "Medical lab.", "BioChemistry"],

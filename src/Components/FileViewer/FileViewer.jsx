@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaTimes, FaDownload, FaSpinner, FaExclamationTriangle } from "react-icons/fa";
 import { Document, Page, pdfjs } from "react-pdf";
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; 
 // import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 // import "react-pdf/dist/esm/Page/TextLayer.css";
 
