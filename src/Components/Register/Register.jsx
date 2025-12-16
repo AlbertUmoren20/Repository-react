@@ -27,6 +27,13 @@ const Login = () => {
     }),
     onSubmit: async (values) => {
       try {
+        // Check if API_BASE_URL is configured
+        if (!API_BASE_URL) {
+          console.error("API_BASE_URL is not configured. Please set REACT_APP_API_BASE_URL environment variable.");
+          toast.error("Configuration error: API URL not set");
+          return;
+        }
+
         const response = await fetch(`${API_BASE_URL}/student/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -50,17 +57,46 @@ const Login = () => {
             }
           }, 500);
         } else {
-          const error = await response.text();
-          console.error("Login failed:", error);
+          // Handle different HTTP error status codes
+          let errorMessage = "Login Failed";
+          if (response.status === 401) {
+            errorMessage = "Invalid email or password";
+          } else if (response.status === 404) {
+            errorMessage = "Login endpoint not found. Please check API configuration.";
+          } else if (response.status === 500) {
+            errorMessage = "Server error. Please try again later.";
+          }
+          
+          const error = await response.text().catch(() => "");
+          console.error("Login failed:", {
+            status: response.status,
+            statusText: response.statusText,
+            error: error || "No error message"
+          });
+          
           setTimeout(() => {
-            toast.error("Login Failed");
+            toast.error(errorMessage);
           }, 500);
         }
       } catch (error) {
+        // Handle network errors, CORS errors, etc.
+        let errorMessage = "An error occurred. Please try again.";
+        
+        if (error.name === "TypeError" && error.message === "Failed to fetch") {
+          errorMessage = "Cannot connect to server. This may be a CORS or network issue. Please check your backend configuration.";
+          console.error("CORS or Network Error:", {
+            message: error.message,
+            apiUrl: `${API_BASE_URL}/student/login`,
+            frontendOrigin: window.location.origin,
+            note: "Backend must allow CORS requests from this origin"
+          });
+        } else {
+          console.error("Error during login:", error);
+        }
+        
         setTimeout(() => {
-          toast.error("An error occurred.");
+          toast.error(errorMessage);
         }, 500);
-        console.error("Error during login:", error);
       }
     },
   });
