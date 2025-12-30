@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaSignOutAlt, FaSpinner, FaSync } from "react-icons/fa";
 import logo from "../Assets/TU-LOGO-1.png";
 import BackButton from "../BackButton/BackButton";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import API_ENDPOINTS from "../../config/api";
 /**
  * Modern StudentBody
  * - Responsive grid
@@ -43,8 +43,7 @@ const StudentBody = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Try to get fullname from localStorage; fallback to 'Student'
-  const fullName = new URLSearchParams(location?.search).get("fullName");
-  const userLevel = new URLSearchParams(location?.search).get("userLevel");
+  const fullName = new URLSearchParams(location?.search).get("fullName") || localStorage.getItem("userFullname") || "Student";
 
   
   // Fetch faculties from API
@@ -55,7 +54,7 @@ const StudentBody = () => {
   const fetchFaculties = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/getFaculties`);
+      const response = await fetch(API_ENDPOINTS.GET_FACULTIES);
       if (response.ok) {
         const data = await response.json();
         const facultiesList = Array.isArray(data) ? data : [];
@@ -165,12 +164,12 @@ const StudentBody = () => {
           className="w-full h-24 mb-4 object-cover"
         />
 
-        <h1 className="text-gray-700 text-2xl sm:text-3xl font-semibold text-center">
+        <h1 className="text-gray-700 text-2xl font-bold text-center">
           Welcome,
         </h1>
 
         <p
-          className="mt-1 text-3xl sm:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-400 text-center"
+          className="mt-1 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-400 text-center"
           aria-label={`Welcome ${fullName}`}
         >
           {fullName}
@@ -193,7 +192,7 @@ const StudentBody = () => {
         aria-labelledby="faculty-heading"
       >
         <div className="flex items-center justify-between mb-6">
-          <h2 id="faculty-heading" className="text-2xl font-bold text-gray-800">
+          <h2 id="faculty-heading" className="text-xl font-bold text-gray-800">
             What Faculty?
           </h2>
           <button
@@ -236,10 +235,10 @@ const StudentBody = () => {
                     </span>
 
                     <div className="text-left">
-                      <h3 className={`text-xl font-semibold ${accent.split(" ")[1]}`}>
+                      <h3 className={`text-xl font-bold ${accent.split(" ")[1]}`}>
                         {title}
                       </h3>
-                      <p className="mt-1 text-gray-600 text-sm leading-tight">{subtitle}</p>
+                      <p className="mt-1 text-sm text-gray-600 leading-tight">{subtitle}</p>
                     </div>
                   </div>
 

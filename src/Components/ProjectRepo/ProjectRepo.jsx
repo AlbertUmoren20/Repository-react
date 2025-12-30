@@ -40,10 +40,8 @@ export default function ProjectRepo({
   const [fileViewerOpen, setFileViewerOpen] = useState(false);
   
   const location = useLocation();
-  // Get user level from localStorage
-  // const userLevel = localStorage.getItem("userLevel") || "";
-  const userLevel = new URLSearchParams(location?.search).get("userLevel") || "";
- console.log(userLevel);
+  // Get user level from URL params or localStorage as fallback
+  const userLevel = new URLSearchParams(location?.search).get("userLevel") || localStorage.getItem("userLevel") || "";
   // Fetch projects
   const fetchProjects = useCallback(async (signal) => {
     setIsLoading(true);
@@ -52,7 +50,6 @@ export default function ProjectRepo({
       const res = await fetch(fetchUrl, { signal });
       if (!res.ok) throw new Error(res.statusText || "Failed to fetch");
       const data = await res.json();
-      console.log(data);
       setProjects(Array.isArray(data) ? data : []);
     } catch (err) {
       if (err.name !== "AbortError") setError(err.message || "Failed to load");
@@ -124,12 +121,12 @@ export default function ProjectRepo({
       {/* Header */}
       <header className="max-w-5xl mx-auto flex flex-col items-center text-center gap-3">
         <img src={logo} alt="logo" className="w-20 h-20 rounded-full shadow-md object-cover" />
-        <h1 className="text-4xl font-extrabold">{title}</h1>
+        <h1 className="text-2xl font-bold">{title}</h1>
         <p className="text-sm text-gray-500">{subtitle}</p>
 
         {/* Actions */}
         <div className="mt-4 flex gap-3">
-          {true && (
+          {userLevel === "400" && (
             <button
               onClick={() => navigate(attachPath)}
               className="px-4 py-2 bg-sky-600 text-white rounded-md shadow hover:bg-sky-700 transition"
@@ -138,7 +135,10 @@ export default function ProjectRepo({
             </button>
           )}
           <button
-            onClick={() => fetchProjects()}
+            onClick={() => {
+              const ctrl = new AbortController();
+              fetchProjects(ctrl.signal);
+            }}
             className="px-4 py-2 bg-white border rounded-md shadow hover:shadow-md transition"
             aria-label="Refresh projects"
           >
@@ -200,11 +200,14 @@ export default function ProjectRepo({
           <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-md flex items-center gap-3">
             <FaExclamationTriangle className="text-red-500" />
             <div>
-              <p className="font-semibold">No Live Projects</p>
+              <p className="text-sm font-medium">No Live Projects</p>
             </div>
             <div className="ml-auto">
               <button
-                onClick={() => fetchProjects()}
+                onClick={() => {
+                  const ctrl = new AbortController();
+                  fetchProjects(ctrl.signal);
+                }}
                 className="px-3 py-1 bg-red-600 text-white rounded"
               >
                 Retry
@@ -215,7 +218,7 @@ export default function ProjectRepo({
 
         {!isLoading && !error && filtered.length === 0 && (
           <div className="py-12 text-center text-gray-500">
-            <h3 className="text-2xl font-semibold">Nothing found</h3>
+            <h3 className="text-xl font-bold">Nothing found</h3>
             <p className="mt-2">Try a different search term or filter.</p>
           </div>
         )}
@@ -232,7 +235,7 @@ export default function ProjectRepo({
                 tabIndex={0}
                 onKeyDown={(e) => (e.key === "Enter" ? onOpenModal(p) : undefined)}
               >
-                <h3 className="text-lg font-semibold line-clamp-2">{p.title}</h3>
+                <h3 className="text-xl font-bold line-clamp-2">{p.title}</h3>
                 <p className="text-sm text-gray-500 mt-1">{p.projectBy}</p>
 
                 <div className="mt-3 text-xs text-gray-400 flex justify-between">
@@ -263,20 +266,20 @@ export default function ProjectRepo({
             >
               ✕
             </button>
-            <h2 className="text-2xl font-bold mb-2">{selectedProject.title}</h2>
+            <h2 className="text-xl font-bold mb-2">{selectedProject.title}</h2>
             <p className="text-sm text-gray-500 mb-4">
               By <strong>{selectedProject.projectBy}</strong> — {selectedProject.department} • Year: {selectedProject.year}
             </p>
             <div className="prose max-w-none text-sm text-gray-700">
-              <h3 className="font-semibold">Supervisor</h3>
-              <p>{selectedProject.supervisor || "N/A"}</p>
+              <h3 className="text-sm font-medium">Supervisor</h3>
+              <p className="text-sm">{selectedProject.supervisor || "N/A"}</p>
 
-              <h3 className="font-semibold mt-4">Abstract</h3>
+              <h3 className="text-sm font-medium mt-4">Abstract</h3>
               <p>{selectedProject.description || "No abstract provided."}</p>
             </div>
 
             <div className="mt-6 flex gap-3">
-              {true ? (
+              {userLevel === "400" ? (
                 <button
                   onClick={() => {
                     setFileViewerOpen(true);
@@ -339,7 +342,7 @@ export default function ProjectRepo({
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Permission Required</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Permission Required</h3>
               <p className="text-sm text-gray-500 mb-6">
                 You need permission from the librarian to view this file. Please contact the librarian for access.
               </p>

@@ -7,8 +7,8 @@ const NotFound = () => {
       <img src={errorImage} alt="404 Error" className="h-32 md:h-64 mb-6" />
 
       {/* Heading */}
-      <h2 className="text-blue-600 text-2xl md:text-4xl font-bold mb-4">
-        Oops! there’s nothing here
+      <h2 className="text-blue-600 text-2xl font-bold mb-4">
+        Oops! there's nothing here
       </h2>
 
       {/* Paragraph */}

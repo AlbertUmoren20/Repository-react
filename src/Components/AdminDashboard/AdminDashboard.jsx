@@ -11,11 +11,14 @@ import { FacultyProvider } from "../../Contexts/FacultyContext";
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("faculties");
   const navigate = useNavigate();
+  
+  const adminName = localStorage.getItem("userFullname") || "Admin";
 
   const handleLogout = () => {
     localStorage.removeItem("userFullname");
     localStorage.removeItem("userLevel");
     localStorage.removeItem("userRole");
+    localStorage.removeItem("userEmail");
     navigate("/Register");
   };
 
@@ -37,7 +40,7 @@ const AdminDashboard = () => {
                 <img src={logo} alt="Logo" className="w-12 h-12 rounded-full" />
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-                  <p className="text-sm text-gray-500">Trinity University E-Repository</p>
+                  <p className="text-sm text-gray-500">Welcome, {adminName}</p>
                 </div>
               </div>
               <button

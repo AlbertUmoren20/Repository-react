@@ -41,15 +41,15 @@ const StudentBody400 = () => {
           <h1>Which Faculty?</h1>
   
           <div className='faculty-container'>
-            <button class='faculty-button' onClick={handleButtOnClick}>
+            <button className='faculty-button' onClick={handleButtOnClick}>
               <h2>FBMAS</h2>
               <p>Faculty of Basic Medical <br/> and Applied Sciences</p>
         </button>
-           <button class='faculty-button-1' onClick={handleButtonOnClick1}>
+           <button className='faculty-button-1' onClick={handleButtonOnClick1}>
               <h2>FAMSS</h2>
               <p>Faculty of Art Management <br/> and Social Sciences</p>
         </button>
-        <button class='faculty-button-2' onClick={handleButtonOnClick2}>
+        <button className='faculty-button-2' onClick={handleButtonOnClick2}>
           <h2>*****</h2>
         <p>Faculty of Nursing  </p>
          </button>

@@ -17,6 +17,7 @@ import StudentBody400 from './Components/StudentBody/StudentBody400';
 import NursingStudent from './Components/NursingStudent/Nursing'
 import UploadProjectNursing from './Components/UploadProject/UploadProjectNursing'
 import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
+import LecturerDashboard from './Components/LecturerDashboard/LecturerDashboard';
 import NotFound from './Components/NotFound';
   import {BrowserRouter, Routes,Route} from "react-router-dom"
 
@@ -30,7 +31,7 @@ function App({ children }) {
       <Route path='/' element={<HomePage/>}/>
       {/* hmmm */}
        {/* <Route path='/Login' element={<LoginForm/>}/>  */}
-       <Route path='/Register' element= {<Register/>}/>
+       <Route path='/Login' element= {<Register/>}/>
        <Route path = '/SignUp' element = {<SignUp/>}/>
        <Route path='/StudentBody' element = {<StudentBody/>}/>
        {/* Legacy routes for backward compatibility */}
@@ -39,14 +40,15 @@ function App({ children }) {
        <Route path = '/Nursing' element = {<NursingStudent/>}/>
        {/* Dynamic faculty route - supports any faculty created by admin */}
        <Route path = '/Faculty/:facultyAbbr' element = {<FacultyStudent/>}/>
-       <Route path = '/400Famss' element = {<UploadProjectFamss/>}/>
-       <Route path = '/400Fbmas' element = {<UploadProjectFbmas/>}/>
-       <Route path = '/400Nursing' element = {<UploadProjectNursing/>}/>
+       {/* <Route path = '/400Famss' element = {<UploadProjectFamss/>}/> */}
+       {/* <Route path = '/400Fbmas' element = {<UploadProjectFbmas/>}/> */}
+       {/* <Route path = '/400Nursing' element = {<UploadProjectNursing/>}/> */}
        <Route path='/AttachProject' element= {<AttachProject/>}/>
        <Route path='/AttachProjectFamss' element={<AttachProjectFamss/>}/>
        <Route path='/AttachedProject' element={<AttachedProject/>}/>
         {/* <Route path='/StudentBody400Level' element= {<StudentBody400/>}/> */}
         <Route path='/AdminDashboard' element= {<AdminDashboard/>}/>
+        <Route path='/LecturerDashboard' element= {<LecturerDashboard/>}/>
         <Route path="*" element={<NotFound />} />
 
       </Routes>

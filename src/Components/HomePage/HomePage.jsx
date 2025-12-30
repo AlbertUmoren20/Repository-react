@@ -42,7 +42,7 @@ const HomePage = () => {
               </p>
               
               <Link 
-                to="/Register" 
+                to="/Signup" 
                 onClick={handleButtonClick}
                 className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >

@@ -9,10 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { ImSpinner8 } from "react-icons/im";
 import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
+import API_ENDPOINTS from "../../config/api";
 
 const Login = () => {
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isAdminOrLecturer, setIsAdminOrLecturer] = React.useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -26,34 +28,57 @@ const Login = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values) => {
+      setIsSubmitting(true);
       try {
-        // Check if API_BASE_URL is configured
-        if (!API_BASE_URL) {
-          console.error("API_BASE_URL is not configured. Please set REACT_APP_API_BASE_URL environment variable.");
-          toast.error("Configuration error: API URL not set");
-          return;
+        // Prepare the data to send (exclude matricnumber for admin and lecturer)
+        const emailLower = values.email.toLowerCase();
+        const isAdmin = emailLower.includes("admin") || emailLower.includes("@admin");
+        const isLecturer = emailLower.includes("lecturer") || emailLower.includes("@lecturer");
+        
+        const dataToSend = { ...values };
+        if (isAdmin || isLecturer) {
+          delete dataToSend.matricnumber;
         }
-
-        const response = await fetch(`${API_BASE_URL}/student/login`, {
+        
+        const response = await fetch(API_ENDPOINTS.LOGIN, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
+          body: JSON.stringify(dataToSend),
         });
 
         if (response.ok) {
           const data = await response.json();
           console.log(data.userLevel);
+          
+          // Store user data in localStorage
+          if (data.userFullname) {
+            localStorage.setItem("userFullname", data.userFullname);
+          }
+          if (data.userLevel) {
+            localStorage.setItem("userLevel", data.userLevel);
+          }
+          if (values.email) {
+            localStorage.setItem("userEmail", values.email);
+          }
+          
           setTimeout(() => {
-            const isAdmin = values.email.toLowerCase().includes("admin") || values.email.toLowerCase().includes("@admin");
-          if(isAdmin){
-            toast.success("Login Successful");
-            navigate("/AdminDashboard");
-          } else if (data.userLevel === "400") {
-            toast.success("Login Successful");
+            const emailLower = values.email.toLowerCase();
+            const isAdmin = emailLower.includes("admin") || emailLower.includes("@admin");
+            const isLecturer = emailLower.includes("lecturer") || emailLower.includes("@lecturer");
+            
+            if(isAdmin){
+              toast.success(`Welcome, ${data.userFullname || 'Admin'}! Login Successful`);
+              navigate("/AdminDashboard");
+            } else if (isLecturer) {
+              toast.success(`Welcome, ${data.userFullname || 'Lecturer'}! Login Successful`);
+              localStorage.setItem("userRole", "lecturer");
+              navigate("/LecturerDashboard");
+            } else if (data.userLevel === "400") {
+              toast.success(`Welcome, ${data.userFullname}! Login Successful`);
               navigate(`/StudentBody?email=${values.email}&level=${data.userLevel}&fullName=${data.userFullname}`);
             } else {
-              toast.success("Login Successful");
-              navigate("/StudentBody");
+              toast.success(`Welcome, ${data.userFullname}! Login Successful`);
+              navigate(`/StudentBody?fullName=${data.userFullname}&level=${data.userLevel || ''}`);
             }
           }, 500);
         } else {
@@ -74,11 +99,12 @@ const Login = () => {
             error: error || "No error message"
           });
           
-          setTimeout(() => {
-            toast.error(errorMessage);
-          }, 500);
-        }
-      } catch (error) {
+        setTimeout(() => {
+          toast.error(errorMessage);
+        }, 500);
+      }
+      setIsSubmitting(false);
+    } catch (error) {
         // Handle network errors, CORS errors, etc.
         let errorMessage = "An error occurred. Please try again.";
         
@@ -86,7 +112,7 @@ const Login = () => {
           errorMessage = "Cannot connect to server. This may be a CORS or network issue. Please check your backend configuration.";
           console.error("CORS or Network Error:", {
             message: error.message,
-            apiUrl: `${API_BASE_URL}/student/login`,
+            apiUrl: API_ENDPOINTS.LOGIN,
             frontendOrigin: window.location.origin,
             note: "Backend must allow CORS requests from this origin"
           });
@@ -98,6 +124,7 @@ const Login = () => {
           toast.error(errorMessage);
         }, 500);
       }
+      setIsSubmitting(false);
     },
   });
 
@@ -106,8 +133,8 @@ const Login = () => {
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>
-            <p className="text-gray-600 mt-2">Sign in to continue your journey</p>
+            <h1 className="text-2xl font-bold text-gray-800">Welcome Back</h1>
+            <p className="text-sm text-gray-500 mt-2">Sign in to continue your journey</p>
           </div>
 
           <form onSubmit={formik.handleSubmit} className="space-y-6">
@@ -127,7 +154,14 @@ const Login = () => {
                       : "border-gray-300"
                   } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                   value={formik.values.email}
-                  onChange={formik.handleChange}
+                  onChange={(e) => {
+                    formik.handleChange(e);
+                    const emailLower = e.target.value.toLowerCase();
+                    setIsAdminOrLecturer(
+                      emailLower.includes("admin") || emailLower.includes("@admin") || 
+                      emailLower.includes("lecturer") || emailLower.includes("@lecturer")
+                    );
+                  }}
                   onBlur={formik.handleBlur}
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -152,7 +186,7 @@ const Login = () => {
               )}
             </div>
 
-            <div>
+            <div className={`${isAdminOrLecturer ? "hidden" : ""}`}>
               <label htmlFor="matricnumber" className="block text-sm font-medium text-gray-700 mb-1">
                 Matric Number
               </label>
@@ -255,9 +289,10 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300"
+              disabled={isSubmitting}
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {formik.isSubmitting ? (
+              {isSubmitting ? (
                 <ImSpinner8 className="animate-spin h-5 w-5" />
               ) : (
                 "Sign In"

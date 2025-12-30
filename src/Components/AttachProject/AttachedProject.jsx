@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import BackButton from "../BackButton/BackButton";
 import { useNavigate, useSearchParams } from 'react-router-dom';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import API_ENDPOINTS from "../../config/api";
 
 // Default departments per faculty - can be fetched from API in the future
 const defaultDepartments = {
@@ -16,13 +16,13 @@ const defaultDepartments = {
 const getUploadEndpoint = (facultyAbbr) => {
   const upperAbbr = facultyAbbr?.toUpperCase() || "";
   const endpointMap = {
-    FBMAS: `${API_BASE_URL}/student/upload/FBMAS`,
-    FAMSS: `${API_BASE_URL}/student/upload/FAMSS`,
-    NURSING: `${API_BASE_URL}/student/upload/NURSING`,
+    FBMAS: API_ENDPOINTS.UPLOAD_FBMAS,
+    FAMSS: API_ENDPOINTS.UPLOAD_FAMSS,
+    NURSING: API_ENDPOINTS.UPLOAD_NURSING,
   };
   
   // If faculty exists in map, use it; otherwise use generic endpoint
-  return endpointMap[upperAbbr] || `${API_BASE_URL}/student/upload/${upperAbbr}`;
+  return endpointMap[upperAbbr] || API_ENDPOINTS.UPLOAD_GENERIC(upperAbbr);
 };
 
 // Color mapping for header decoration
@@ -64,7 +64,7 @@ const AttachedProject = () => {
 
   const fetchFacultyDetails = async (abbreviation) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/getFaculties`);
+      const response = await fetch(API_ENDPOINTS.GET_FACULTIES);
       if (response.ok) {
         const faculties = await response.json();
         const faculty = Array.isArray(faculties)
@@ -138,7 +138,9 @@ const AttachedProject = () => {
           transition: Bounce,
         });
       }, 1000);
-      navigate(`/Faculty/${facultyAbbr}`);
+      setTimeout(() => {
+        navigate(`/Faculty/${facultyAbbr}`);
+      }, 2000);
     } catch (error) {
       console.error('There was an error uploading the project!', error);
       toast.error("Project upload failed", {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlus, FaTrash, FaSpinner } from "react-icons/fa";
 import { useFaculties } from "../../Contexts/FacultyContext";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import API_ENDPOINTS from "../../config/api";
 
 const FacultyManagement = () => {
   const { faculties, isLoading, fetchFaculties, addFaculty, removeFaculty } = useFaculties();
@@ -18,7 +18,7 @@ const FacultyManagement = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/addFaculty`, {
+      const response = await fetch(API_ENDPOINTS.ADD_FACULTY, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -36,25 +36,12 @@ const FacultyManagement = () => {
         // Refresh the list to ensure consistency
         fetchFaculties();
       } else {
-        // Mock success for development
-        const newFaculty = {
-          id: faculties.length + 1,
-          ...formData,
-        };
-        addFaculty(newFaculty);
-        toast.success("Faculty added successfully! (Mock)");
-        setFormData({ name: "", abbreviation: "", description: "" });
+        const errorText = await response.text().catch(() => "Unknown error");
+        toast.error(`Failed to add faculty: ${errorText}`);
       }
     } catch (error) {
       console.error("Error adding faculty:", error);
-      // Mock success for development
-      const newFaculty = {
-        id: faculties.length + 1,
-        ...formData,
-      };
-      addFaculty(newFaculty);
-      toast.success("Faculty added successfully! (Mock)");
-      setFormData({ name: "", abbreviation: "", description: "" });
+      toast.error(`Failed to add faculty: ${error.message || "Network error"}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -64,7 +51,7 @@ const FacultyManagement = () => {
     if (!window.confirm("Are you sure you want to delete this faculty?")) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/deleteFaculty/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.DELETE_FACULTY}/${id}`, {
         method: "DELETE",
       });
 
@@ -73,15 +60,12 @@ const FacultyManagement = () => {
         toast.success("Faculty deleted successfully!");
         fetchFaculties();
       } else {
-        // Mock delete for development
-        removeFaculty(id);
-        toast.success("Faculty deleted successfully! (Mock)");
+        const errorText = await response.text().catch(() => "Unknown error");
+        toast.error(`Failed to delete faculty: ${errorText}`);
       }
     } catch (error) {
       console.error("Error deleting faculty:", error);
-      // Mock delete for development
-      removeFaculty(id);
-      toast.success("Faculty deleted successfully! (Mock)");
+      toast.error(`Failed to delete faculty: ${error.message || "Network error"}`);
     }
   };
 

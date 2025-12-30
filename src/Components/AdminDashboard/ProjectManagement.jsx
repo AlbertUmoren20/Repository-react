@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaSpinner, FaEdit, FaTrash, FaSearch } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useFaculties } from "../../Contexts/FacultyContext";
+import API_ENDPOINTS from "../../config/api";
 
 const ProjectManagement = () => {
   const { getFacultyAbbreviations } = useFaculties();
@@ -12,7 +13,6 @@ const ProjectManagement = () => {
   const [selectedYear, setSelectedYear] = useState("");
   const [editingProject, setEditingProject] = useState(null);
   const [editFormData, setEditFormData] = useState({});
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
    
   useEffect(() => {
     fetchProjects();
@@ -21,7 +21,7 @@ const ProjectManagement = () => {
   const fetchProjects = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/getAllProjects`);
+      const response = await fetch(API_ENDPOINTS.GET_ALL_PROJECTS);
       if (response.ok) {
         const data = await response.json();
         setProjects(Array.isArray(data) ? data : []);
@@ -87,7 +87,7 @@ const ProjectManagement = () => {
 
   const handleUpdate = async (id) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/updateProject/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.UPDATE_PROJECT}/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editFormData),
@@ -98,21 +98,12 @@ const ProjectManagement = () => {
         setEditingProject(null);
         fetchProjects();
       } else {
-        // Mock update for development
-        setProjects(
-          projects.map((p) => (p.id === id ? { ...p, ...editFormData } : p))
-        );
-        toast.success("Project updated successfully! (Mock)");
-        setEditingProject(null);
+        const errorText = await response.text().catch(() => "Unknown error");
+        toast.error(`Failed to update project: ${errorText}`);
       }
     } catch (error) {
       console.error("Error updating project:", error);
-      // Mock update for development
-      setProjects(
-        projects.map((p) => (p.id === id ? { ...p, ...editFormData } : p))
-      );
-      toast.success("Project updated successfully! (Mock)");
-      setEditingProject(null);
+      toast.error(`Failed to update project: ${error.message || "Network error"}`);
     }
   };
 
@@ -120,7 +111,7 @@ const ProjectManagement = () => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/deleteProject/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.DELETE_PROJECT}/${id}`, {
         method: "DELETE",
       });
 
@@ -128,15 +119,12 @@ const ProjectManagement = () => {
         toast.success("Project deleted successfully!");
         fetchProjects();
       } else {
-        // Mock delete for development
-        setProjects(projects.filter((p) => p.id !== id));
-        toast.success("Project deleted successfully! (Mock)");
+        const errorText = await response.text().catch(() => "Unknown error");
+        toast.error(`Failed to delete project: ${errorText}`);
       }
     } catch (error) {
       console.error("Error deleting project:", error);
-      // Mock delete for development
-      setProjects(projects.filter((p) => p.id !== id));
-      toast.success("Project deleted successfully! (Mock)");
+      toast.error(`Failed to delete project: ${error.message || "Network error"}`);
     }
   };
 

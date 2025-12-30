@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import BackButton from "../BackButton/BackButton";
 import { useNavigate } from 'react-router-dom';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import API_ENDPOINTS from "../../config/api";
 
 const AttachProject = () => {
   const [formData, setFormData] = useState({});
@@ -34,13 +34,9 @@ const AttachProject = () => {
     data.append('description', formData.description);
     data.append('file', formData.file);
 
-    // Log the FormData object
-    for (const pair of data.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
-    }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/student/uploadFbmas`, data, {
+      const response = await axios.post(API_ENDPOINTS.UPLOAD_FBMAS_LEGACY, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -58,7 +54,9 @@ const AttachProject = () => {
               transition: Bounce,
             });
           }, 1000);
-          navigate(`/StudentBody`);
+          setTimeout(() => {
+            navigate(`/StudentBody`);
+          }, 2000);
     } catch (error) {
       console.error('There was an error uploading the project!', error);
       toast.error("Project upload failed", {
@@ -88,19 +86,19 @@ const AttachProject = () => {
 
           <form onSubmit={handleSubmit}>
 
-          <div class="row">
-          <div class="col-25">
+          <div className="row">
+          <div className="col-25">
               <label className='address'>Name:</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input type="topic" name="projectBy" value={formData.projectBy} onChange={handleChange} required />
             </div>
             </div>
-            <div class="row">
-            <div class="col-25"> 
+            <div className="row">
+            <div className="col-25"> 
               <label className='address'>Year:</label>
             </div>
-            <div class="col-75">
+            <div className="col-75">
               <select name="year" value={formData.year} onChange={handleChange} required>
                 <option value="">Pick Year....</option>
                 <option value="2024">2024</option>
@@ -110,28 +108,28 @@ const AttachProject = () => {
             </div>
           </div>
 
-            <div class="row">
-            <div class="col-25"> 
+            <div className="row">
+            <div className="col-25"> 
               <label className='address'>Supervisor:</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input type="topic" name="supervisor" value={formData.supervisor} onChange={handleChange} required />
             </div>
             </div>
 
-            <div class="row">
-            <div class="col-25"> 
+            <div className="row">
+            <div className="col-25"> 
               <label className='address'>Project Name</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input type="topic" name="title" value={formData.title} onChange={handleChange} required />
             </div>
             </div>
-            <div class="row">
-            <div class="col-25">
+            <div className="row">
+            <div className="col-25">
               <label className='address'>Department:</label>
             </div>
-            <div class="col-75">
+            <div className="col-75">
               <select name="department" value={formData.department} onChange={handleChange} required>
                 <option value="">Pick Department....</option>
                 <option value="Computer Science">Computer Science</option>
@@ -144,25 +142,25 @@ const AttachProject = () => {
             </div>
           </div>
 
-            <div class="row">
-            <div class="col-25">
+            <div className="row">
+            <div className="col-25">
               <label className='address'>Abstract Of Project:</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <textarea name="description" value={formData.description} onChange={handleChange} required></textarea>
             </div>
             </div>
-            <div class="row">
-            <div class="col-25">    
+            <div className="row">
+            <div className="col-25">    
               <label className='address'>PDF File:</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input type="file" name="file" onChange={handleFileChange} required />
             </div>
             </div>
 
             <br/>
-            <div class="row">
+            <div className="row">
             <button type="Submit" value="Submit" className='fbmas-upload'>Upload Project</button>
             </div>
           </form>

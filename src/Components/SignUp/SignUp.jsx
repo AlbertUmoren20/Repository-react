@@ -7,11 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { Bounce } from "react-toastify";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
+import API_ENDPOINTS from "../../config/api";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [admin, setAdmin] =  useState(false);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const [admin, setAdmin] = useState(false);
   const formik = useFormik({
     initialValues: {
       fullname: "",
@@ -20,76 +20,142 @@ const Signup = () => {
       level: "",
       email: "",
     },
-    validationSchema: Yup.object({
+    validationSchema: Yup.object().shape({
       fullname: Yup.string().required("Required"),
-      matricnumber: Yup.string()
-        .required("Matric is Required")
-        .matches(/^[A-Za-z0-9]+$/, "Matric number must be alphanumeric"),
+      matricnumber: Yup.string().when("email", {
+        is: (email) => {
+          if (!email) return true; // Require matric if email is empty
+          const emailLower = email.toLowerCase();
+          return !emailLower.includes("admin") && !emailLower.includes("@admin") && 
+                 !emailLower.includes("lecturer") && !emailLower.includes("@lecturer");
+        },
+        then: (schema) => schema
+          .required("Matric is Required")
+          .matches(/^[A-Za-z0-9]+$/, "Matric number must be alphanumeric"),
+        otherwise: (schema) => schema.notRequired(),
+      }),
       password: Yup.string()
         .required("Password is Required")
         .min(6, "Password must be at least 6 characters"),
       email: Yup.string()
         .email("Invalid email address")
         .required("Email is required"),
-      level: Yup.string()
-        .required("Level is required")
-        .oneOf(["100", "200", "300", "400"], "Invalid level"),
+      level: Yup.string().when("email", {
+        is: (email) => {
+          if (!email) return true; // Require level if email is empty
+          const emailLower = email.toLowerCase();
+          return !emailLower.includes("admin") && !emailLower.includes("@admin") && 
+                 !emailLower.includes("lecturer") && !emailLower.includes("@lecturer");
+        },
+        then: (schema) => schema
+          .required("Level is required")
+          .oneOf(["100", "200", "300", "400"], "Invalid level"),
+        otherwise: (schema) => schema.notRequired(),
+      }),
     }),
     onSubmit: async (values) => {
       try {
-        const response = await fetch(`${API_BASE_URL}/student/add`, {
+        const emailLower = values.email.toLowerCase();
+        const isAdmin = emailLower.includes("admin") || emailLower.includes("@admin");
+        const isLecturer = emailLower.includes("lecturer") || emailLower.includes("@lecturer");
+        
+        // Prepare the data to send (exclude level and matricnumber for admin and lecturer)
+        const dataToSend = { ...values };
+        if (isAdmin || isLecturer) {
+          delete dataToSend.level;
+          delete dataToSend.matricnumber;
+        }
+     
+
+        const response = await fetch(API_ENDPOINTS.REGISTER, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
+          body: JSON.stringify(dataToSend),
         });
+
         if (response.ok) {
-          console.log("Registration successful");
+          let responseData = {};
+          try {
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+              responseData = await response.json();
+            } else {
+              const text = await response.text();
+              responseData = { message: text || "Registration successful" };
+            }
+          } catch (parseError) {
+            console.warn("Could not parse response:", parseError);
+            responseData = { message: "Registration successful" };
+          }
+
+          console.log("Registration successful", responseData);
+          
+          // Store user data in localStorage
+          localStorage.setItem("userFullname", values.fullname);
+          if (values.level) {
+            localStorage.setItem("userLevel", values.level);
+          }
+          if (values.email) {
+            localStorage.setItem("userEmail", values.email);
+          }
+          
+          toast.success(`Welcome, ${values.fullname}! Registration Successful`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+
           setTimeout(() => {
-                localStorage.setItem("userFullname", values.fullname);
-                localStorage.setItem("userLevel", values.level);
-            toast.success("Registration Successful", {
-              position: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
-        }, 1000);
-        setTimeout(() => {
-          const isAdmin = values.email.toLowerCase().includes("admin") || values.email.toLowerCase().includes("@admin");
-          if(isAdmin){
-            navigate("/AdminDashboard");
-          } else if  (values.level === "400") {
+            if (isAdmin) {
+              navigate("/AdminDashboard");
+            } else if (isLecturer) {
+              localStorage.setItem("userRole", "lecturer");
+              navigate("/LecturerDashboard");
+            } else if (values.level === "400") {
               navigate(`/StudentBody?fullName=${values.fullname}&level=400`);
-          } else{
+            } else {
               navigate("/Register");
             }
-          }, 4000)
+          }, 2000);
         } else {
-          const error = await response.text();
-          console.error("Registration failed:", error);
-          setTimeout(() => {
-            toast.error("Registration Failed", {
-              position: "top-left",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
-          }, 1000);
-        }
-      } catch (error) {
-        console.error("Error during registration:", error);
-        setTimeout(() => {
-          toast.error("An error occurred during registration.", {
+          let errorMessage = "Registration Failed";
+          let errorData = {};
+          
+          try {
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+              errorData = await response.json();
+              errorMessage = errorData.message || errorData.error || errorMessage;
+            } else {
+              const text = await response.text();
+              errorMessage = text || errorMessage;
+            }
+          } catch (parseError) {
+            console.warn("Could not parse error response:", parseError);
+            // Use status-based error messages
+            if (response.status === 400) {
+              errorMessage = "Invalid registration data. Please check your inputs.";
+            } else if (response.status === 409) {
+              errorMessage = "Account already exists with this email or matric number.";
+            } else if (response.status === 500) {
+              errorMessage = "Server error. Please try again later.";
+            }
+          }
+          
+          console.error("Registration failed:", {
+            status: response.status,
+            statusText: response.statusText,
+            error: errorMessage,
+            data: errorData
+          });
+          
+          toast.error(errorMessage, {
             position: "top-left",
             autoClose: 5000,
             hideProgressBar: false,
@@ -100,7 +166,20 @@ const Signup = () => {
             theme: "light",
             transition: Bounce,
           });
-        }, 1000);
+        }
+      } catch (error) {
+        console.error("Error during registration:", error);
+        toast.error(error.message || "An error occurred during registration. Please check your connection.", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       }
     },
   });
@@ -110,8 +189,8 @@ const Signup = () => {
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">Create Account</h1>
-            <p className="text-gray-600 mt-2">Join our academic community</p>
+            <h1 className="text-2xl font-bold text-gray-800">Create Account</h1>
+            <p className="text-sm text-gray-500 mt-2">Join our academic community</p>
           </div>
 
           <form onSubmit={formik.handleSubmit} className="space-y-6">
@@ -174,7 +253,9 @@ const Signup = () => {
                   value={formik.values.email}
                   onChange={(e) => {
                     formik.handleChange(e);
-                    setAdmin(e.target.value.toLowerCase().includes("admin") || e.target.value.toLowerCase().includes("@admin"));
+                    const emailLower = e.target.value.toLowerCase();
+                    setAdmin(emailLower.includes("admin") || emailLower.includes("@admin") || 
+                             emailLower.includes("lecturer") || emailLower.includes("@lecturer"));
                   }}
                   onBlur={formik.handleBlur}
                 />
@@ -241,7 +322,7 @@ const Signup = () => {
               )}
             </div>
 
-            <div>
+            <div  className={`${admin ? "hidden" : ""}`}>
               <label htmlFor="matricnumber" className="block text-sm font-medium text-gray-700 mb-1">
                 Matric Number
               </label>
@@ -371,8 +452,8 @@ const Signup = () => {
             <div className="text-center mt-6">
               <p className="text-gray-600">
                 Already have an account?{" "}
-                <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
-                  Sign in
+                <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
+                  Login
                 </Link>
               </p>
             </div>

@@ -2,7 +2,7 @@
 import React from "react";
 import ProjectRepo from "../ProjectRepo/ProjectRepo";
 import logo from "../Assets/Ellipse 2.png";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import API_ENDPOINTS from "../../config/api";
 export default function FbmasStudent() {
   const departments = [
     "Computer Science",
@@ -18,7 +18,7 @@ export default function FbmasStudent() {
     <ProjectRepo
       title="FBMAS E-REPOSITORY"
       subtitle="Faculty of Basic Medical and Applied Sciences"
-      fetchUrl={`${API_BASE_URL}/student/getFbmasUpload`}
+      fetchUrl={API_ENDPOINTS.GET_FBMAS_UPLOAD}
       departments={departments}
       years={years}
       attachPath="/AttachProject"

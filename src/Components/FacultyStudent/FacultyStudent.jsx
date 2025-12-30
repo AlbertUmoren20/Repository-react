@@ -3,7 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ProjectRepo from "../ProjectRepo/ProjectRepo";
 import logo from "../Assets/Ellipse 2.png";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import API_ENDPOINTS from "../../config/api";
 // Default departments and years - can be customized per faculty or fetched from API
 const defaultDepartments = {
   FBMAS: ["Computer Science", "Information science", "Biotech", "Microbiology", "Medical lab.", "BioChemistry"],
@@ -15,9 +15,9 @@ const defaultYears = [2022, 2023, 2024, 2025, 2026];
 
 // API endpoint mapping - can be made dynamic if backend supports it
 const fetchUrlMap = {
-  FBMAS: `${API_BASE_URL}/student/getFbmasUpload`,
-  FAMSS: `${API_BASE_URL}/student/getFamssUpload`,
-  NURSING: `${API_BASE_URL}/student/getNursingUpload`,
+  FBMAS: API_ENDPOINTS.GET_FBMAS_UPLOAD,
+  FAMSS: API_ENDPOINTS.GET_FAMSS_UPLOAD,
+  NURSING: API_ENDPOINTS.GET_NURSING_UPLOAD,
 };
 
 // Use dynamic route for all faculties
@@ -31,7 +31,7 @@ export default function FacultyStudent() {
   // Get faculty-specific data or use defaults
   const departments = defaultDepartments[abbreviation] || [];
   // fetchUrlMap[abbreviation] ||
-  const fetchUrl =  `${API_BASE_URL}/student/getUpload/${abbreviation}`;
+  const fetchUrl = API_ENDPOINTS.GET_UPLOAD_BY_FACULTY(abbreviation);
   const attachPath = getAttachPath(abbreviation);
 
   // Fetch faculty details from API to get proper name
@@ -42,7 +42,7 @@ export default function FacultyStudent() {
     // Fetch faculty details
     const fetchFacultyDetails = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/admin/getFaculties`);
+        const response = await fetch(API_ENDPOINTS.GET_FACULTIES);
         if (response.ok) {
           const faculties = await response.json();
           const faculty = Array.isArray(faculties)

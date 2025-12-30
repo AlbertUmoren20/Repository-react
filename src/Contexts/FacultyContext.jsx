@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import API_ENDPOINTS from "../config/api";
 
 const FacultyContext = createContext();
 
@@ -14,12 +15,11 @@ export const FacultyProvider = ({ children }) => {
   const [faculties, setFaculties] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const fetchFaculties = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/getFaculties`);
+      const response = await fetch(API_ENDPOINTS.GET_FACULTIES);
       if (response.ok) {
         const data = await response.json();
         setFaculties(Array.isArray(data) ? data : []);

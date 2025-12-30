@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaTimes, FaDownload, FaSpinner, FaExclamationTriangle } from "react-icons/fa";
-import { Document, Page, pdfjs } from "react-pdf";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; 
+import { Document, Page, pdfjs } from "react-pdf"; 
+import { getFileUrl } from "../../config/api";
 // import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 // import "react-pdf/dist/esm/Page/TextLayer.css";
 
@@ -85,29 +85,8 @@ const FileViewer = ({ fileUrl, fileName, onClose }) => {
     };
   }, [fileUrl, fileName]);
 
-  // Construct full URL if it's a relative path
-  const getFullUrl = () => {
-    if (!fileUrl || fileUrl === "#" || fileUrl === "null" || fileUrl === "undefined") {
-      return null;
-    }
-    
-    // If it's already a full URL, return as is
-    if (fileUrl.startsWith("http://") || fileUrl.startsWith("https://")) {
-      return fileUrl;
-    }
-    
-    // If it starts with a slash, it's an absolute path on the server
-    if (fileUrl.startsWith("/")) {
-      return `${API_BASE_URL}${fileUrl}`;
-    }
-    
-    // Otherwise, treat as relative path and prepend backend URL
-    // Remove any leading slashes to avoid double slashes
-    const cleanPath = fileUrl.replace(/^\/+/, "");
-    return `${API_BASE_URL}/${cleanPath}`;
-  };
-
-  const fullUrl = getFullUrl();
+  // Use the centralized getFileUrl function from API config
+  const fullUrl = getFileUrl(fileUrl);
 
   const handleDownload = () => {
     if (fullUrl) {
@@ -158,7 +137,7 @@ const FileViewer = ({ fileUrl, fileName, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-xl font-semibold text-gray-800 truncate flex-1 mr-4">
+          <h2 className="text-xl font-bold text-gray-800 truncate flex-1 mr-4">
             {fileName || "File Viewer"}
           </h2>
           <div className="flex items-center gap-2">
@@ -187,7 +166,7 @@ const FileViewer = ({ fileUrl, fileName, onClose }) => {
           {error ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
               <FaExclamationTriangle className="text-red-500 text-5xl mb-4" />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Error Loading File</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">Error Loading File</h3>
               <p className="text-gray-600 mb-4">{error}</p>
               {fullUrl && (
                 <button
@@ -295,7 +274,7 @@ const FileViewer = ({ fileUrl, fileName, onClose }) => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-gray-800 mb-2">
                 {fileType === "document" ? "Document File" : "File Preview Not Available"}
               </h3>
               <p className="text-gray-600 mb-6">

@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { FaThumbsDown } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
 import BackButton from "../BackButton/BackButton";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import API_ENDPOINTS from "../../config/api";
 const UploadProjectFbmas = () => {
   const [searchField, setSearchField] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
@@ -28,7 +28,7 @@ const UploadProjectFbmas = () => {
     setError(null);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/student/getFbmasUpload`);
+      const response = await fetch(API_ENDPOINTS.GET_FBMAS_UPLOAD);
       if (!response.ok) {
         throw new Error(`Error fetching projects: ${response.statusText}`);
       }
@@ -44,11 +44,11 @@ const UploadProjectFbmas = () => {
   const filterProjects = (projects, searchQuery, year, department) => {
     const parsedYear = year ? parseInt(year, 10) : null
     return projects.filter(project => {
-      return project.title.toLowerCase().includes(searchQuery) &&
-        (!parsedYear || project.year === parsedYear) &&
-        (!department || project.department.toLowerCase() === department.toLowerCase());
-    }
-  );
+      const titleMatch = project.title?.toLowerCase().includes(searchQuery) ?? false;
+      const yearMatch = !parsedYear || project.year === parsedYear;
+      const deptMatch = !department || project.department?.toLowerCase() === department.toLowerCase();
+      return titleMatch && yearMatch && deptMatch;
+    });
   }
 
   const uploadClick = (event) => {
@@ -118,7 +118,7 @@ const UploadProjectFbmas = () => {
         <img src={logo}
           alt="" />
       </div>
-      <div className='upload' onClick={uploadClick}><i class='bx bx-upload'> Upload</i>  </div>
+      <div className='upload' onClick={uploadClick}><i className='bx bx-upload'> Upload</i>  </div>
 
       <div className='search-box-container'>
         <input
