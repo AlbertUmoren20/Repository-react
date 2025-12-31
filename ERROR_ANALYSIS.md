@@ -3,10 +3,10 @@
 ## Errors Encountered
 
 ### 1. CORS Policy Error (Primary Issue)
-**Error**: `Access to fetch at 'https://back-end-repository.vercel.app/student/login' from origin 'https://repository-react-12z0wreiw-umoren-alberts-projects.vercel.app' has been blocked by CORS policy`
+**Error**: `Access to fetch at 'https://studentrepository-backend.onrender.com/student/login' from origin 'https://repository-react-12z0wreiw-umoren-alberts-projects.vercel.app' has been blocked by CORS policy`
 
 **Root Cause**: 
-The backend server at `https://back-end-repository.vercel.app` is not configured to allow cross-origin requests from your frontend origin. When a browser makes a request from one domain to another, it requires the server to explicitly allow it via CORS headers.
+The backend server at `https://studentrepository-backend.onrender.com` is not configured to allow cross-origin requests from your frontend origin. When a browser makes a request from one domain to another, it requires the server to explicitly allow it via CORS headers.
 
 **What's Happening**:
 - Browser sends a preflight OPTIONS request before the actual POST request
