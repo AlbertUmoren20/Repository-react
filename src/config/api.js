@@ -4,6 +4,10 @@
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://studentrepository-backend.onrender.com';
 
+// Log API URL for debugging (remove in production if needed)
+console.log('API Base URL:', API_BASE_URL);
+console.log('Environment Variable:', process.env.REACT_APP_API_BASE_URL || 'Using fallback URL');
+
 const API_ENDPOINTS = {
   // Authentication
   LOGIN: `${API_BASE_URL}/student/login`,
