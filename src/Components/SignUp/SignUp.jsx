@@ -31,7 +31,7 @@ const Signup = () => {
         },
         then: (schema) => schema
           .required("Matric is Required")
-          .matches(/^[A-Za-z0-9]+$/, "Matric number must be alphanumeric"),
+          .matches(/^[A-Za-z0-9\/\-_]+$/, "Matric number must be alphanumeric (may include /, -, or _). Any length is allowed."),
         otherwise: (schema) => schema.notRequired(),
       }),
       password: Yup.string()
@@ -65,7 +65,14 @@ const Signup = () => {
           delete dataToSend.level;
           delete dataToSend.matricnumber;
         }
-     
+
+        // Log the data being sent for debugging
+        console.log("Registration Request:", {
+          url: API_ENDPOINTS.REGISTER,
+          data: dataToSend,
+          isAdmin,
+          isLecturer
+        });
 
         const response = await fetch(API_ENDPOINTS.REGISTER, {
           method: "POST",
@@ -120,7 +127,7 @@ const Signup = () => {
             } else if (values.level === "400") {
               navigate(`/StudentBody?fullName=${values.fullname}&level=400`);
             } else {
-              navigate("/Register");
+              navigate("/StudentBody");
             }
           }, 2000);
         } else {
@@ -196,7 +203,7 @@ const Signup = () => {
           <form onSubmit={formik.handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="fullname" className="block text-sm font-medium text-gray-700 mb-1">
-                Full Name
+                Full Namee
               </label>
               <div className="relative">
                 <input
