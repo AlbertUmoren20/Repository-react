@@ -203,7 +203,7 @@ const Signup = () => {
           <form onSubmit={formik.handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="fullname" className="block text-sm font-medium text-gray-700 mb-1">
-                Full Namee
+                Full Name
               </label>
               <div className="relative">
                 <input
